@@ -15,5 +15,6 @@ public class ArrayCopy {
 		for (int ele : a1) {
 			System.out.println(ele);
 		}
+
 	}
 }
