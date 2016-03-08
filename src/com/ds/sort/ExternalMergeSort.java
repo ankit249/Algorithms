@@ -11,11 +11,11 @@ import java.util.Random;
 
 
 public class ExternalMergeSort {
-	static int N = 2000000; // size of the file in disk
-	static int M = 100000; // max items the memory buffer can hold
+	static int N = 200; // size of the file in disk
+	static int M = 50; // max items the memory buffer can hold
 
 	public static void externalSort(String fileName) {
-		String tfile = "temp-file-";
+		String tfile = "/app/data/temp-file-";
 		int[] buffer = new int[M < N ? M : N];
 
 		try {
@@ -65,7 +65,7 @@ public class ExternalMergeSort {
 					topNums[i] = Integer.MAX_VALUE;
 			}
 
-			FileWriter fw = new FileWriter("E:\\test\\external-sorted.txt");
+			FileWriter fw = new FileWriter("/app/data/external-sorted.txt");
 			PrintWriter pw = new PrintWriter(fw);
 
 			for (i = 0; i < N; i++) {

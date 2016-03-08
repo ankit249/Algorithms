@@ -1,6 +1,5 @@
 package com.ds.string;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,14 +16,14 @@ public class LongestSubstringWithoutRepeating {
 			return string;
 		}
 		Map<Character, Integer> map = new HashMap<Character, Integer>();
-		char[] chara = string.toCharArray();
+
 		int max = Integer.MIN_VALUE;
 
 		int hi = 0;
-		for (int i = 0; i < chara.length; i++) {
+		for (int i = 0; i < string.length() - 1; i++) {
 
-			if (!map.containsKey(chara[i])) {
-				map.put(chara[i], i);
+			if (!map.containsKey(string.charAt(i))) {
+				map.put(string.charAt(i), i);
 			} else {
 
 				// if you only need length of the largestsubstring
@@ -34,7 +33,7 @@ public class LongestSubstringWithoutRepeating {
 					hi = i;
 					max = map.size();
 				}
-				i = map.get(chara[i]); // loop starts from map.get plus one after for loop
+				i = map.get(string.charAt(i)); // loop starts from map.get plus one after for loop
 				map.clear();
 			}
 		}
@@ -44,7 +43,7 @@ public class LongestSubstringWithoutRepeating {
 		// return max
 
 		if (map.size() > max) {
-			hi = chara.length - 1;
+			hi = string.length() - 1;
 			max = map.size();
 		}
 
@@ -60,9 +59,9 @@ public class LongestSubstringWithoutRepeating {
 		System.out.println(longestSubstringWithoutRepeatation(""));
 		System.out.println(longestSubstringWithoutRepeatation(null));
 
-		System.out.println("acbdxx".indexOf('b'));
+		// System.out.println("acbdxx".indexOf('b'));
 
-		System.out.println(Arrays.toString("Hi Hello Hi".split("[\\s+]")));
+		// System.out.println(Arrays.toString("Hi Hello Hi".split("[\\s+]")));
 
 	}
 }

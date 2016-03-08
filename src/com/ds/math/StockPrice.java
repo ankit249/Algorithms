@@ -22,15 +22,25 @@ public class StockPrice {
 		return profit;
 	}
 
+
 	public static int maxProfit(int[] prices) {
-		int profit = 0;
-		int minElement = Integer.MAX_VALUE;
-		for (int i = 0; i < prices.length; i++) {
-			profit = Math.max(profit, prices[i] - minElement);
-			minElement = Math.min(minElement, prices[i]);
+
+		// make sure we have at least 2 prices
+		if (prices.length < 2) {
+			throw new IllegalArgumentException("Getting a profit requires at least 2 prices");
 		}
-		return profit;
+
+		int maxProfit = prices[1] - prices[0];
+		int minPrice = prices[0];
+		for (int i = 0; i < prices.length; i++) {
+			maxProfit = Math.max(maxProfit, prices[i] - minPrice);
+			minPrice = Math.min(minPrice, prices[i]);
+		}
+		return maxProfit;
 	}
+	
+	
+
 
 	public static void main(String[] args) {
 		System.out.println(buySellProfit(new int[] { 15, 50, 10, 45 }));
