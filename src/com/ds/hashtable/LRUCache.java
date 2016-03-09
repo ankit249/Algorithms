@@ -21,6 +21,7 @@ public class LRUCache {
 	}
 
 
+
 	int capacity;
 	HashMap<Integer, Node> map = new HashMap<Integer, Node>();
 	Node head = null;
