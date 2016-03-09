@@ -51,6 +51,6 @@ public class FindDuplicateSpaceEditionBeastMode {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(findDuplicate(new int[] { 6, 5, 7, 3, 18, 2, 1, 13, 13 }));
+		System.out.println(findDuplicate(new int[] { 6, 5, 4, 3, 2, 1, 6 }));
 	}
 }

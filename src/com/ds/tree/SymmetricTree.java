@@ -36,14 +36,13 @@ public class SymmetricTree {
 		return true;
 	}
 	
-	public boolean issymmetricrecursive(TreeNode root) {
+	public boolean isSymmetricRecursive(TreeNode root) {
 		if(root == null) return true;
 		if (root.left == null && root.right == null)
 			return true;
 		if (root.left != null && root.right != null) {
 			return (root.left.data == root.right.data) &&
-					issymmetricrecursive(root.left) &&
-					issymmetricrecursive(root.right); 
+					isSymmetricRecursive(root.left) && isSymmetricRecursive(root.right);
 		} else {
 			return false;
 		}
@@ -62,7 +61,7 @@ public class SymmetricTree {
 		BTreePrinter.printNode(root);
 
 		System.out.println(new SymmetricTree().isSymmetric(root));
-		System.out.println(new SymmetricTree().issymmetricrecursive(root));
+		System.out.println(new SymmetricTree().isSymmetricRecursive(root));
 
 	}
 }

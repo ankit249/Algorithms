@@ -44,7 +44,8 @@ public class MaxPathSum {
 		MaxPathSum mps = new MaxPathSum();
 		System.out.println(mps.maxPathSum(root));
 
-		System.out.print("The Sum (might not go thru root just like this example, this is also called diameter): ");
+		System.out.print(
+				"The Sum (might not go thru root just like this example, diameter is no. of nodes in this path): ");
 		System.out.println(18 + 17 + 19 + 21 + 23 + 24);
 	}
 }
