@@ -40,7 +40,7 @@ public class SymmetricTree {
 		if(root == null) return true;
 		if (root.left == null && root.right == null)
 			return true;
-		if(root.left != null && root.right !=null) {
+		if (root.left != null && root.right != null) {
 			return (root.left.data == root.right.data) &&
 					issymmetricrecursive(root.left) &&
 					issymmetricrecursive(root.right); 
