@@ -35,18 +35,34 @@ public class SymmetricTree {
 
 		return true;
 	}
+	
+	public boolean issymmetricrecursive(TreeNode root) {
+		if(root == null) return true;
+		if (root.left == null && root.right == null)
+			return true;
+		if(root.left != null && root.right !=null) {
+			return (root.left.data == root.right.data) &&
+					issymmetricrecursive(root.left) &&
+					issymmetricrecursive(root.right); 
+		} else {
+			return false;
+		}
+	}
 
 	public static void main(String[] args) {
 
 		TreeNode root = new TreeNode(30);
 		root.left = new TreeNode(10);
 		root.right = new TreeNode(10);
-
+		root.left.left = new TreeNode(5);
+		root.left.right = new TreeNode(5);
+		root.right.left = new TreeNode(40);
+		root.right.right = new TreeNode(40);
 
 		BTreePrinter.printNode(root);
 
 		System.out.println(new SymmetricTree().isSymmetric(root));
-
+		System.out.println(new SymmetricTree().issymmetricrecursive(root));
 
 	}
 }
