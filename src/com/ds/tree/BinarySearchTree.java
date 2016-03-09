@@ -150,6 +150,7 @@ public class BinarySearchTree {
 	public void inorderTraversal(TreeNode root) {
 		if (root == null)
 			return;
+
 		inorderTraversal(root.left);
 		System.out.print(root.data + " ");
 		inorderTraversal(root.right);
@@ -157,19 +158,21 @@ public class BinarySearchTree {
 	}
 
 	public void preorderTraversal(TreeNode root) {
-		if (root != null) {
-			System.out.print(root.data + " ");
-			preorderTraversal(root.left);
-			preorderTraversal(root.right);
-		}
+		if (root == null)
+			return;
+
+		System.out.print(root.data + " ");
+		preorderTraversal(root.left);
+		preorderTraversal(root.right);
 	}
 
 	public void postorderTraversal(TreeNode root) {
-		if (root != null) {
-			postorderTraversal(root.left);
-			postorderTraversal(root.right);
-			System.out.print(root.data + " ");
-		}
+		if (root == null)
+			return;
+
+		postorderTraversal(root.left);
+		postorderTraversal(root.right);
+		System.out.print(root.data + " ");
 	}
 
 	public static void main(String[] args) {
@@ -199,15 +202,9 @@ public class BinarySearchTree {
 		System.out.println("find 20: " + bst.find(root, 20));
 
 		/*
-		System.out.print("delete 30: ");
-		bst.delete(root, 30);
-		bst.inorderTraversal(root);
-		System.out.println();
-		System.out.print("insert 30: ");
-		bst.insert(root, 30);
-		bst.inorderTraversal(root);
-		System.out.println();
-		*/
+		 * System.out.print("delete 30: "); bst.delete(root, 30); bst.inorderTraversal(root); System.out.println();
+		 * System.out.print("insert 30: "); bst.insert(root, 30); bst.inorderTraversal(root); System.out.println();
+		 */
 		BTreePrinter.printNode(root);
 		System.out.print("delete 40: ");
 		bst.delete(root, 40);
@@ -219,8 +216,6 @@ public class BinarySearchTree {
 		bst.insert(root, 40);
 		bst.inorderTraversal(root);
 		System.out.println();
-
-
 
 		System.out.println("find 60: " + bst.find(root, 30));
 		System.out.println("find 30: " + bst.find(root, 25));
