@@ -11,7 +11,7 @@ public class ThreadSafeArrayList<T> {
 	private final Lock readLock = readWriteLock.readLock();
 	private final Lock writeLock = readWriteLock.writeLock();
 
-	private final List<T> list = new ArrayList<>();
+	private final List<T> list = new ArrayList<T>();
 
 	public void set(T o) {
 		writeLock.lock();

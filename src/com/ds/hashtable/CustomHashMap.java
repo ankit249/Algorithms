@@ -22,14 +22,15 @@ class Node {
 
 public class CustomHashMap {
 	int capacity = 4;
-	Node[] table = new Node[capacity];
+	Node[] arr = new Node[capacity];
 
 	public int hashcode(int key) {
 		return key % capacity;
 	}
 
 	public Node get(int key) {
-		Node head = table[hashcode(key)];
+		int hashcode = hashcode(key);
+		Node head = arr[hashcode];
 		Node current = head;
 		while (current != null) {
 			if (current.key == key) {
@@ -48,21 +49,20 @@ public class CustomHashMap {
 
 		Node tmp = new Node(key, data);
 
-		if (table[hashcode] == null) {
-			table[hashcode] = tmp;
+		if (arr[hashcode] == null) {
+			arr[hashcode] = tmp;
 		} else {
 			Node prev = null;
-			Node current = table[hashcode];
+			Node current = arr[hashcode];
 			while (current != null) {
 				if (current.key == key) {
 					if (prev == null) { // head
 						// no need to set previous pointer
 						tmp.next = current.next;
-						table[hashcode] = tmp;
+						arr[hashcode] = tmp;
 						return;
 					} else {
-						tmp.next = current.next;
-						prev.next = tmp;
+						current.data = data;
 						return;
 					}
 				}
@@ -80,6 +80,7 @@ public class CustomHashMap {
 		c.put(48, 200);
 		c.put(47, 200);
 		c.put(51, 200);
+		c.put(51, 300);
 
 		System.out.println(c.get(100).data);
 		System.out.println(c.get(48).data);
@@ -87,6 +88,7 @@ public class CustomHashMap {
 		System.out.println(c.get(51).data);
 
 		System.out.println(c.get(10));
+		System.out.println(c.get(51).data);
 	}
 
 }

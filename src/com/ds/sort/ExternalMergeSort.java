@@ -15,7 +15,7 @@ public class ExternalMergeSort {
 	static int M = 50; // max items the memory buffer can hold
 
 	public static void externalSort(String fileName) {
-		String tfile = "/app/data/temp-file-";
+		String tmpFile = "/app/data/temp-file-";
 		int[] buffer = new int[M < N ? M : N];
 
 		try {
@@ -40,7 +40,7 @@ public class ExternalMergeSort {
 
 
 				// Write the sorted numbers to temp file
-				FileWriter fw = new FileWriter(tfile + Integer.toString(i) + ".txt");
+				FileWriter fw = new FileWriter(tmpFile + Integer.toString(i) + ".txt");
 				PrintWriter pw = new PrintWriter(fw);
 				for (int k = 0; k < j; k++)
 					pw.println(buffer[k]);
@@ -53,28 +53,28 @@ public class ExternalMergeSort {
 			fr.close();
 
 			// Now open each file and merge them, then write back to disk
-			int[] topNums = new int[slices];
+			int[] holder = new int[slices];
 			BufferedReader[] brs = new BufferedReader[slices];
 
 			for (i = 0; i < slices; i++) {
-				brs[i] = new BufferedReader(new FileReader(tfile + Integer.toString(i) + ".txt"));
+				brs[i] = new BufferedReader(new FileReader(tmpFile + Integer.toString(i) + ".txt"));
 				String t = brs[i].readLine();
 				if (t != null)
-					topNums[i] = Integer.parseInt(t);
+					holder[i] = Integer.parseInt(t);
 				else
-					topNums[i] = Integer.MAX_VALUE;
+					holder[i] = Integer.MAX_VALUE;
 			}
 
 			FileWriter fw = new FileWriter("/app/data/external-sorted.txt");
 			PrintWriter pw = new PrintWriter(fw);
 
 			for (i = 0; i < N; i++) {
-				int min = topNums[0];
+				int min = holder[0];
 				int minFile = 0;
 
 				for (j = 0; j < slices; j++) {
-					if (min > topNums[j]) {
-						min = topNums[j];
+					if (min > holder[j]) {
+						min = holder[j];
 						minFile = j;
 					}
 				}
@@ -82,9 +82,9 @@ public class ExternalMergeSort {
 				pw.println(min);
 				String t = brs[minFile].readLine();
 				if (t != null)
-					topNums[minFile] = Integer.parseInt(t);
+					holder[minFile] = Integer.parseInt(t);
 				else
-					topNums[minFile] = Integer.MAX_VALUE;
+					holder[minFile] = Integer.MAX_VALUE;
 
 			}
 			for (i = 0; i < slices; i++)

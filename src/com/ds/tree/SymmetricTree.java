@@ -37,7 +37,7 @@ public class SymmetricTree {
 	}
 
 	public static void main(String[] args) {
-		BinarySearchTree bst = new BinarySearchTree();
+
 		TreeNode root = new TreeNode(30);
 		root.left = new TreeNode(10);
 		root.right = new TreeNode(10);
