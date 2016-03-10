@@ -2,21 +2,44 @@ package com.ds.string;
 
 public class ShortestPalindrome {
 	public static String shortestPalindrome(String s) {
-		StringBuilder result = new StringBuilder();
+		if (s == null || s.length() <= 1)
+			return s;
 
-		int lo = 0;
-		int hi = s.length() - 1;
+		String result = null;
 
-		while (lo < hi) {
-			if (s.charAt(lo) == s.charAt(hi)) {
-				lo++;
-				hi--;
+		int len = s.length();
+		int mid = len / 2;
+
+		for (int i = mid; i >= 1; i--) {
+			if (s.charAt(i) == s.charAt(i - 1)) {
+				if ((result = scanFromCenter(s, i - 1, i)) != null)
+					return result;
 			} else {
-				result.append(s.charAt(hi));
-				hi--;
+				if ((result = scanFromCenter(s, i - 1, i - 1)) != null)
+					return result;
 			}
 		}
-		return result.append(s).toString();
+
+		return result;
+	}
+
+	private static String scanFromCenter(String s, int l, int r) {
+		int i = 1;
+
+		// scan from center to both sides
+		for (; l - i >= 0; i++) {
+			if (s.charAt(l - i) != s.charAt(r + i))
+				break;
+		}
+
+		// if not end at the beginning of s, return null
+		if (l - i >= 0)
+			return null;
+
+		StringBuilder sb = new StringBuilder(s.substring(r + i));
+		sb.reverse();
+
+		return sb.append(s).toString();
 	}
 
 	public static void main(String[] args) {
