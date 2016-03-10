@@ -16,45 +16,6 @@ class ListNode {
 }
 
 public class MergeKSortedList {
-	public static void main(String[] args) {
-		MergeKSortedList m = new MergeKSortedList();
-
-		ListNode l1 = new ListNode(1);
-		ListNode l2 = new ListNode(8);
-		ListNode l3 = new ListNode(16);
-
-		m.add(l1, 2);
-		m.add(l1, 5);
-		m.add(l1, 9);
-		m.add(l1, 15);
-		System.out.print("list l1: ");
-		m.print(l1);
-
-
-		m.add(l2, 13);
-		m.add(l2, 14);
-		m.add(l2, 25);
-		System.out.print("list l2: ");
-		m.print(l2);
-
-
-		m.add(l3, 22);
-		m.add(l3, 23);
-		m.add(l3, 24);
-		System.out.print("list l3: ");
-		m.print(l3);
-
-
-		List<ListNode> list = new ArrayList<ListNode>();
-		list.add(l2);
-		list.add(l1);
-		list.add(l3);
-
-		ListNode result = m.mergeList(list);
-		System.out.print("Merging K lists: ");
-		m.print(result);
-	}
-
 
 	public ListNode mergeList(List<ListNode> list) {
 
@@ -76,7 +37,6 @@ public class MergeKSortedList {
 		}
 
 		// System.out.println("priority queue: " + pq);
-
 		ListNode head = new ListNode(0);
 		ListNode current = head;
 		while (!pq.isEmpty()) {
@@ -109,6 +69,42 @@ public class MergeKSortedList {
 		}
 
 		System.out.println();
+	}
+
+	public static void main(String[] args) {
+		MergeKSortedList m = new MergeKSortedList();
+
+		ListNode l1 = new ListNode(1);
+		ListNode l2 = new ListNode(8);
+		ListNode l3 = new ListNode(16);
+
+		m.add(l1, 2);
+		m.add(l1, 5);
+		m.add(l1, 9);
+		m.add(l1, 15);
+		System.out.print("list l1: ");
+		m.print(l1);
+
+		m.add(l2, 13);
+		m.add(l2, 14);
+		m.add(l2, 25);
+		System.out.print("list l2: ");
+		m.print(l2);
+
+		m.add(l3, 22);
+		m.add(l3, 23);
+		m.add(l3, 24);
+		System.out.print("list l3: ");
+		m.print(l3);
+
+		List<ListNode> list = new ArrayList<ListNode>();
+		list.add(l2);
+		list.add(l1);
+		list.add(l3);
+
+		ListNode result = m.mergeList(list);
+		System.out.print("Merging K lists: ");
+		m.print(result);
 	}
 
 }
