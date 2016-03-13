@@ -37,6 +37,8 @@ public class NonBinaryTree {
 					maxdepth = Math.max(maxdepth, maxdepth(m));
 				}
 			}
+
+			// System.out.println(root.data); // first time the pointer comes here thats the deepest node
 			return maxdepth + 1;
 		}
 	}
