@@ -11,7 +11,7 @@ public class LRUCache {
 	class Node {
 		int key;
 		int value;
-		Node pre;
+		Node previous;
 		Node next;
 
 		public Node(int key, int value) {
@@ -20,12 +20,10 @@ public class LRUCache {
 		}
 	}
 
-
-
 	int capacity;
 	HashMap<Integer, Node> map = new HashMap<Integer, Node>();
 	Node head = null;
-	Node end = null;
+	Node tail = null;
 
 	public LRUCache(int capacity) {
 		this.capacity = capacity;
@@ -43,31 +41,28 @@ public class LRUCache {
 	}
 
 	public void remove(Node n) {
-		if (n.pre != null) {
-			n.pre.next = n.next;
-		} else {
+		if (n.previous == null) {
 			head = n.next;
+		} else {
+			n.previous.next = n.next;
 		}
 
-		if (n.next != null) {
-			n.next.pre = n.pre;
+		if (n.next == null) {
+			tail = n.previous;
 		} else {
-			end = n.pre;
+			n.next.previous = n.previous;
 		}
 
 	}
 
 	public void setHead(Node n) {
+		if (head == null) {
+			tail = n;
+		} else {
+			head.previous = n;
+		}
 		n.next = head;
-		n.pre = null;
-
-		if (head != null)
-			head.pre = n;
-
 		head = n;
-
-		if (end == null)
-			end = head;
 	}
 
 	public void set(int key, int value) {
@@ -79,8 +74,8 @@ public class LRUCache {
 		} else {
 			Node created = new Node(key, value);
 			if (map.size() >= capacity) {
-				map.remove(end.key);
-				remove(end);
+				map.remove(tail.key);
+				remove(tail);
 				setHead(created);
 
 			} else {
@@ -99,8 +94,10 @@ public class LRUCache {
 		c.set(4, 400);
 		c.set(5, 500);
 		c.set(6, 600);
+		c.set(2, 500);
 
 		System.out.println(c.get(2));
+		System.out.println(c.get(1));
 
 	}
 }
