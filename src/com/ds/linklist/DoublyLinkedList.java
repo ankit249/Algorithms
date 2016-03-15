@@ -154,5 +154,13 @@ public class DoublyLinkedList {
 		System.out.println();
 		System.out.println();
 
+		DoublyLinkedList m = new DoublyLinkedList();
+		m.insertHead(1);
+		m.insertHead(2);
+		System.out.println("inserting head: ");
+		m.print();
+		System.out.println();
+		System.out.println();
+
 	}
 }
