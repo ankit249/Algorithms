@@ -6,14 +6,15 @@ import java.util.Arrays;
 @SuppressWarnings("unchecked")
 public class QueueWithArray<T> {
 	T[] a;
-	int head = -1;
-	int tail = -1;
+	int head;
+	int tail;
 	int current;
 
 	public QueueWithArray(Class<T> c, int size) {
-		T[] newInstance = (T[]) Array.newInstance(c, size);
-		this.a = newInstance;
-		this.current = 0;
+		a = (T[]) Array.newInstance(c, size);
+		current = 0;
+		head = -1;
+		tail = -1;
 	}
 
 	public void offer(T item) {
@@ -73,6 +74,9 @@ public class QueueWithArray<T> {
 
 		System.out.println(Arrays.toString(q.a));
 		q.offer(7);
+		System.out.println(Arrays.toString(q.a));
+
+		q.poll();
 		System.out.println(Arrays.toString(q.a));
 	}
 }

@@ -14,7 +14,6 @@ class ListNode {
 
 	public ListNode(int d) {
 		this.data = d;
-		this.next = null;
 	}
 }
 
@@ -47,6 +46,7 @@ public class LinkedList {
 					previous.next = current.next;
 				}
 				deletedNode = true;
+				break;
 			}
 
 			previous = current;

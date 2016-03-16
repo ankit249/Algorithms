@@ -2,7 +2,7 @@ package com.ds.linklist;
 
 // first and and last pointer, different from linklist is the last pointer
 // 1---> 2 ---> 3 -->
-// first      last
+// head      tail
 public class Queue {
 
 	class ListNode {
@@ -14,30 +14,30 @@ public class Queue {
 		}
 	}
 
-	ListNode first, last;
+	ListNode head, tail;
 
 	public ListNode dequeue() {
-		if (first == null) {
+		if (head == null) {
 			return null;
 		}
-		ListNode tmp = first;
-		first = first.next;
+		ListNode tmp = head;
+		head = head.next;
 		return tmp;
 	}
 
 	public void enqueue(int d) {
 		ListNode tmp = new ListNode(d);
-		if (first == null) {
-			first = tmp;
-			last = first;
+		if (head == null) {
+			head = tmp;
 		} else {
-			last.next = tmp;
-			last = last.next;
+			tail.next = tmp;
 		}
+
+		tail = tmp;
 	}
 
 	public void print() {
-		ListNode current = first;
+		ListNode current = head;
 		while (current != null) {
 			System.out.print(current.data + "->");
 			current = current.next;
@@ -59,6 +59,13 @@ public class Queue {
 		q.print();
 
 		System.out.print("deque: " + q.dequeue().data + "   ");
+		q.print();
+
+		System.out.print("deque: " + q.dequeue().data + "   ");
+		q.print();
+
+		System.out.print("queue 10: ");
+		q.enqueue(10);
 		q.print();
 
 		System.out.print("deque: " + q.dequeue().data + "   ");

@@ -4,13 +4,15 @@ import java.util.Arrays;
 
 public class QueueWithArraySimple {
 	Integer[] a;
-	int head = -1;
-	int tail = -1;
+	int head;
+	int tail;
 	int current;
 
 	QueueWithArraySimple(int size) {
 		a = new Integer[size];
 		current = 0;
+		head = -1;
+		tail = -1;
 	}
 
 	public void offer(int element) {
@@ -62,6 +64,9 @@ public class QueueWithArraySimple {
 
 		System.out.println(Arrays.toString(q.a));
 		q.offer(7);
+		System.out.println(Arrays.toString(q.a));
+
+		q.poll();
 		System.out.println(Arrays.toString(q.a));
 	}
 }

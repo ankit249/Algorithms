@@ -1,7 +1,5 @@
 package com.ds.linklist;
 
-import java.util.Scanner;
-
 class Palindrome {
 	class Node {
 		char data;
@@ -12,7 +10,7 @@ class Palindrome {
 		}
 	}
 
-	Node first, last;
+	Node head, tail;
 	Node top;
 
 	void pushCharacter(char ch) {
@@ -32,21 +30,20 @@ class Palindrome {
 
 	void enqueueCharacter(char ch) {
 		Node tmp = new Node(ch);
-		if (first == null) {
-			first = tmp;
-			last = first;
+		if (head == null) {
+			head = tmp;
 		} else {
-			last.next = tmp;
-			last = last.next;
+			tail.next = tmp;
 		}
+		tail = tmp;
 	}
 
 	char dequeueCharacter() {
-		if (first == null) {
+		if (head == null) {
 			return '\0';
 		} else {
-			Node tmp = new Node(first.data);
-			first = first.next;
+			Node tmp = new Node(head.data);
+			head = head.next;
 			return tmp.data;
 		}
 	}
@@ -54,7 +51,7 @@ class Palindrome {
 
 public class PalindromeWithStackQueue {
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+		// Scanner sc = new Scanner(System.in);
 		// read the string s.
 		// String s = sc.nextLine();
 
@@ -87,9 +84,9 @@ public class PalindromeWithStackQueue {
 
 		// finally print whether string s is palindrome or not.
 		if (f) {
-			System.out.println("The word, " + s + ", is a palindrome.");
+			System.out.println("The word: " + s + ", is a palindrome.");
 		} else {
-			System.out.println("The word, " + s + ", is not a palindrome.");
+			System.out.println("The word: " + s + ", is not a palindrome.");
 		}
 	}
 }

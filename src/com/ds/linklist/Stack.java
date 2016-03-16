@@ -1,6 +1,5 @@
 package com.ds.linklist;
 
-// using static method here unlike queue
 // 4----> 3----> 2----> 1 --->
 // top
 

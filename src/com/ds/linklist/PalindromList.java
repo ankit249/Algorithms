@@ -54,6 +54,8 @@ public class PalindromList {
 			c2 = c2.next;
 		}
 
+		// need condition if while exits before going thru either c1 or c2
+
 		return true;
 	}
 

@@ -17,16 +17,11 @@ public class MinStack {
 
 	public void push(int data) {
 		MinNode tmp = new MinNode(data);
-		if (top == null) {
-			tmp.next = top;
-			top = tmp;
-
-		} else {
+		if (top != null) {
 			tmp.min = Math.min(top.min, data);
-			tmp.next = top;
-			top = tmp;
-
 		}
+		tmp.next = top;
+		top = tmp;
 	}
 
 	public MinNode pop() {
