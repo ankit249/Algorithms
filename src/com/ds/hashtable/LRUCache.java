@@ -10,13 +10,13 @@ public class LRUCache {
 
 	class Node {
 		int key;
-		int value;
+		int data;
 		Node previous;
 		Node next;
 
 		public Node(int key, int value) {
 			this.key = key;
-			this.value = value;
+			this.data = value;
 		}
 	}
 
@@ -34,7 +34,7 @@ public class LRUCache {
 			Node n = map.get(key);
 			remove(n);
 			setHead(n);
-			return n.value;
+			return n.data;
 		}
 
 		return -1;
@@ -68,7 +68,7 @@ public class LRUCache {
 	public void set(int key, int value) {
 		if (map.containsKey(key)) {
 			Node old = map.get(key);
-			old.value = value;
+			old.data = value;
 			remove(old);
 			setHead(old);
 		} else {
