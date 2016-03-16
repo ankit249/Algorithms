@@ -2,7 +2,7 @@ package com.ds.sort;
 
 import java.util.Arrays;
 
-public class MergeSortGenerics<T> {
+public class MergeSortGenerics<E> {
 
 	public <T extends Comparable<T>> void mergeSort(T[] a, T[] aux, int lo, int hi) {
 		if (hi <= lo)

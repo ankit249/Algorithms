@@ -12,6 +12,7 @@ public class InsertionSort {
 			array[i] = scanner.nextInt();
 		}
 		insertionSort(array);
+		scanner.close();
 	}
 
 	private static void insertionSort(int[] a) {
