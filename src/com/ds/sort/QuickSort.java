@@ -21,13 +21,13 @@ public class QuickSort {
 		// repeat until i and j pointer cross
 		while (i < j) {
 
-			// increase i until a[i] < a[lo]
-			while (a[i] <= a[lo]) {
+			// increase i until a[i] < a[lo] and if its decreasing sorted want to make sure i doesn't go above hi.
+			while (a[i] <= a[lo] && i < hi) {
 				i++;
 			}
 
 			// decrease j until a[j] > a[lo]
-			while (a[j] > a[lo]) {
+			while (a[j] > a[lo] && j > lo) {
 				j--;
 			}
 
@@ -49,10 +49,19 @@ public class QuickSort {
 	}
 
 	public static void main(String[] args) {
-		int[] a = new int[] { 32, 16, 15, 18, 2, 40, 3, 38 };
-		// int[] a = new int[] { 6, 2, 3, 4, 1, 6, 7, 7, 4, 4, 1, 2, 1 };
+		// int[] a = new int[] { 32, 16, 15, 18, 2, 40, 3, 38 };
+		int[] a = new int[] { 6, 2, 3, 4, 1, 6, 7, 7, 4, 4, 1, 2, 1 };
 		// System.out.println(partition(a, 0, a.length));
 		// System.out.println(Arrays.toString(a));
+		/*
+		 
+		int[] a = new int[] { 406, 157, 415, 318, 472, 46, 252, 187, 364, 481, 450, 90, 390, 35, 452, 74, 196, 312, 142,
+				160, 143, 220, 483, 392, 443, 488, 79, 234, 68, 150, 356, 496, 69, 88, 177, 12, 288, 120, 222, 270, 441,
+				422, 103, 321, 65, 316, 448, 331, 117, 183, 184, 128, 323, 141, 467, 31, 172, 48, 95, 359, 239, 209,
+				398, 99, 440, 171, 86, 233, 293, 162, 121, 61, 317, 52, 54, 273, 30, 226, 421, 64, 204, 444, 418, 275,
+				263, 108, 10, 149, 497, 20, 97, 136, 139, 200, 266, 238, 493, 22, 17, 39 }; 
+				
+		*/
 		quicksort(a, 0, a.length - 1);
 		System.out.println(Arrays.toString(a));
 
