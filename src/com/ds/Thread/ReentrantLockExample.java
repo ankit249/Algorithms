@@ -1,6 +1,5 @@
 package com.ds.Thread;
 
-import java.util.Scanner;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -33,7 +32,7 @@ class Runner1 {
 		Thread.sleep(1000);
 		lock.lock();
 		System.out.println("press return");
-		new Scanner(System.in).nextLine();
+		// String nextLine = new Scanner(System.in).nextLine();
 		System.out.println("Got retruned key");
 		// lock.lock(); // this will create deadlock
 		condition.signal();
