@@ -33,5 +33,7 @@ public class BinarySearchInRotatedArray {
 		System.out.println(binarySearchRotatedArray(a, 2));
 		System.out.println(binarySearchRotatedArray(a, 5));
 		System.out.println(binarySearchRotatedArray(a, 13));
+
+		System.out.println("This is a FISH".replaceAll("IS", ""));
 	}
 }
