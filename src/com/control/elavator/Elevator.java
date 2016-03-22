@@ -3,7 +3,7 @@ package com.control.elavator;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Elevator implements IElevatorFactory {
+public class Elevator implements IElevator {
 	private Integer currentFloor;
 	private Queue<Integer> destinationFloors;
 

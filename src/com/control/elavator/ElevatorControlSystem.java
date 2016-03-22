@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class ElevatorControlSystem implements IElevatorControlSystemFactory {
+public class ElevatorControlSystem implements IElevatorControlSystem {
 
 	public static final int MAX_ELEVATORS = 16;
 	Integer numberOfElevators = 0;

@@ -1,6 +1,6 @@
 package com.control.elavator;
 
-public interface IElevatorFactory {
+public interface IElevator {
 
 	public void moveUp();
 
