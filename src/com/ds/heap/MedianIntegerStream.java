@@ -26,7 +26,7 @@ public class MedianIntegerStream {
 			if (minPQ.isEmpty()) {
 				count++;
 				return;
-			} else if (maxPQ.peek() > minPQ.peek()) { // only else would work, no need this condition.
+			} else if (maxPQ.peek() > minPQ.peek()) { // only else would not work, fails the hackerrank test
 				Integer maxroot = maxPQ.poll();
 				Integer minroot = minPQ.poll();
 				maxPQ.offer(minroot);

@@ -27,11 +27,28 @@ public class SwapNodes {
 		}
 	}
 
+	private TreeNode invert(TreeNode root) {
+		if (root == null)
+			return null;
+
+		if (root.left != null)
+			invert(root.left);
+		if (root.right != null)
+			invert(root.right);
+
+		TreeNode tmp = root.left;
+		root.left = root.right;
+		root.right = tmp;
+
+		return root;
+	}
+
 	public static void main(String[] args) {
 		BinarySearchTree bst = new BinarySearchTree();
 		TreeNode root = new TreeNode(30);
 		bst.insert(root, 20);
 		bst.insert(root, 25);
+		bst.insert(root, 27);
 		bst.insert(root, 15);
 		bst.insert(root, 50);
 		// bst.insert(root, 40);
@@ -44,6 +61,10 @@ public class SwapNodes {
 		obj.swap(root);
 		System.out.println("after swap:");
 		BTreePrinter.printNode(root);
+
+		TreeNode result = obj.invert(root);
+		System.out.println("after recusrive swap:");
+		BTreePrinter.printNode(result);
 
 	}
 }
