@@ -1,6 +1,9 @@
 package com.ds.tree;
 
 //https://crazycoderzz.wordpress.com/count-the-number-of-unival-subtrees-in-a-binary-tree/
+//The problem can be solved by divide-and-conquer. The only trick is to use different return values to mark different cases. 
+//Integer.MIN_VALUE -- Mark the subtree is not univaled. 
+//Integer.MAX_VALUE -- Mark if the root is null. 
 public class UnivalTree {
 
 	private int count = 0;
