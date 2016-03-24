@@ -6,7 +6,7 @@ import java.util.Queue;
 
 public class ElevatorControlSystem implements IElevatorControlSystem {
 
-	public static final int MAX_ELEVATORS = 16;
+	// public static final int MAX_ELEVATORS = 16;
 	Integer numberOfElevators = 0;
 	Integer numberOfFloors = 0;
 
@@ -16,7 +16,8 @@ public class ElevatorControlSystem implements IElevatorControlSystem {
 	public ElevatorControlSystem(Integer numberOfElevators, Integer numberOfFloors) throws Exception {
 		if (numberOfElevators < 0)
 			throw new Exception("Elevator number must be positive");
-		this.numberOfElevators = (numberOfElevators > MAX_ELEVATORS) ? MAX_ELEVATORS : numberOfElevators;
+		// this.numberOfElevators = (numberOfElevators > MAX_ELEVATORS) ? MAX_ELEVATORS : numberOfElevators;
+		this.numberOfElevators = numberOfElevators;
 		this.numberOfFloors = numberOfFloors;
 		initializeElevators();
 		pickupLocations = new LinkedList<Integer>();
