@@ -17,21 +17,33 @@ public class rotateMatrix {
 	}
 
 	// in place clockwise rotate
-	public static int[][] rotateInPlace(int[][] m) {
-		int n = m.length;
+	public static void rotateInPlace(int[][] a) {
+		int n = a.length;
 
 		for (int i = 0; i < n / 2; i++) {
 			for (int j = 0; j < Math.ceil((double) n / 2); j++) { // for odd length matrix , for even lenth matrix
 																	// n/2 will just work fine.
-				int tmp = m[i][j];
-				m[i][j] = m[n - 1 - j][i];
-				m[n - 1 - j][i] = m[n - 1 - i][n - 1 - j];
-				m[n - 1 - i][n - 1 - j] = m[j][n - 1 - i];
-				m[j][n - 1 - i] = tmp;
+				int tmp = a[i][j];
+				a[i][j] = a[n - 1 - j][i];
+				a[n - 1 - j][i] = a[n - 1 - i][n - 1 - j];
+				a[n - 1 - i][n - 1 - j] = a[j][n - 1 - i];
+				a[j][n - 1 - i] = tmp;
 			}
 		}
+	}
 
-		return m;
+	// in place anticlockwise rotate
+	public static void rotateAntiClockWiseInPlace(int[][] a) {
+		int n = a.length;
+		for (int i = 0; i < n / 2; i++) {
+			for (int j = 0; j < Math.ceil((double) n / 2); j++) {
+				int tmp = a[i][j];
+				a[i][j] = a[j][n - 1 - i];
+				a[j][n - 1 - i] = a[n - 1 - i][n - 1 - j];
+				a[n - 1 - i][n - 1 - j] = a[n - 1 - j][i];
+				a[n - 1 - j][i] = tmp;
+			}
+		}
 	}
 
 	public static void main(String[] args) {
@@ -49,15 +61,21 @@ public class rotateMatrix {
 		matrix[2][1] = 8;
 		matrix[2][2] = 9;
 
+		System.out.println("***** input matrix *****");
 		printMatrix(matrix);
 
 		int[][] result = rotateNotInPlace(matrix);
-		System.out.println("result*****");
+		System.out.println("***** result *****");
 		printMatrix(result);
 
-		// rotate in place
-		System.out.println("result in place *****");
-		matrix = rotateInPlace(matrix);
+		// rotate in place clockwise
+		System.out.println("**** rotate in place clockwise *****");
+		rotateInPlace(matrix);
+		printMatrix(matrix);
+
+		// rotate in place anti clockwise
+		System.out.println("**** rotate in place Anti clockwise *****");
+		rotateAntiClockWiseInPlace(matrix);
 		printMatrix(matrix);
 
 	}
