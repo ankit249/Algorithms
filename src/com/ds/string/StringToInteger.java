@@ -16,7 +16,7 @@ public class StringToInteger {
 		}
 
 		long result = 0;
-		for (int i = str.length() - 1; i >= 0; i--) {
+		for (int i = 0; i < str.length(); i++) {
 			result = (result * 10) + (str.charAt(i) - '0');
 		}
 
@@ -32,7 +32,8 @@ public class StringToInteger {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(myAtoi(""));
+		System.out.println("123: " + myAtoi("123"));
+		System.out.println("-7890: " + myAtoi("-7890"));
 		// System.out.println("+abc".substring(1));
 	}
 
