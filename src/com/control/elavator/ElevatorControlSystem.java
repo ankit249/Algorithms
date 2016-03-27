@@ -7,8 +7,8 @@ import java.util.Queue;
 public class ElevatorControlSystem implements IElevatorControlSystem {
 
 	// public static final int MAX_ELEVATORS = 16;
-	Integer numberOfElevators = 0;
-	Integer numberOfFloors = 0;
+	Integer numberOfElevators = 4;
+	Integer numberOfFloors = 50;
 
 	ArrayList<Elevator> elevators;
 	Queue<Integer> pickupLocations;
