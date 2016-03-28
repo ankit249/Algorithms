@@ -10,11 +10,15 @@ public class ReverseInteger {
 			n = n / 10;
 		}
 
+		if (x < 0) {
+			result = result * -1;
+		}
+
 		if (result > Integer.MAX_VALUE || result < Integer.MIN_VALUE) {
 			return 0;
 		}
 
-		return x >= 0 ? (int) result : (int) result * -1;
+		return (int) result;
 	}
 
 	public static boolean isPalindrome(int num) {
