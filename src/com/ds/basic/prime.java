@@ -15,6 +15,9 @@ public class prime {
 
 	// A faster method would be to skip all even numbers and only try up to the square root of the number.
 	public static boolean isPrimeEfficient(int num) {
+		if (num < 2)
+			return false;
+
 		if (num > 2 && num % 2 == 0) {
 			// System.out.println(num + " is not prime");
 			return false;
@@ -34,7 +37,7 @@ public class prime {
 		System.out.println(isPrime(7));
 		System.out.println(isPrimeEfficient(7));
 		System.out.println(isPrimeEfficient(2));
-		System.out.println(isPrimeEfficient(25));
+		System.out.println(isPrimeEfficient(1));
 
 	}
 }
