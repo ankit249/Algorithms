@@ -18,7 +18,7 @@ public class prime {
 		if (num < 2)
 			return false;
 
-		if (num > 2 && num % 2 == 0) {
+		if (num % 2 == 0) {
 			// System.out.println(num + " is not prime");
 			return false;
 		}
