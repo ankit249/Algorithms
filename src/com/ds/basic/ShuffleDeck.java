@@ -64,9 +64,8 @@ class Deck {
 			return;
 		}
 
-		int n = list.size();
-		for (int i = 0; i < n; i++) {
-			int random = r.nextInt(n - i);
+		for (int i = list.size() - 1; i > 0; i--) {
+			int random = r.nextInt(i);
 			Card tmp = list.get(random);
 			list.set(random, list.get(i));
 			list.set(i, tmp);
