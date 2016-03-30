@@ -14,35 +14,33 @@ public class MaximumSubArray {
 
 	public static void findMaxSubArray(int[] a) {
 
-		int maxStartIndex = 0;
-		int maxEndIndex = 0;
+		int lo = 0;
+		int hi = 0;
 		int maxSum = Integer.MIN_VALUE;
 
-		int sum = 0;
+		int currentsum = 0;
 		int indexUntilNow = 0;
 
 		for (int i = 0; i < a.length; i++) {
 
-			int item = a[i];
+			currentsum = currentsum + a[i];
 
-			sum += item;
-
-			if (sum > maxSum) {
-				maxSum = sum;
-				maxStartIndex = indexUntilNow;
-				maxEndIndex = i;
-			} else if (sum < 0) {
+			if (currentsum > maxSum) {
+				maxSum = currentsum;
+				lo = indexUntilNow;
+				hi = i;
+			} else if (currentsum < 0) {
 				indexUntilNow = i + 1;
-				sum = 0;
+				currentsum = 0;
 			}
 		}
 
 		System.out.println("Max sum         : " + maxSum);
-		System.out.println("Max start index : " + maxStartIndex);
-		System.out.println("Max end index   : " + maxEndIndex);
-		int lengthOfNewArray = maxEndIndex - maxStartIndex + 1; // / very important
+		System.out.println("Max start index : " + lo);
+		System.out.println("Max end index   : " + hi);
+		int lengthOfNewArray = hi - lo + 1; // / very important
 		int[] b = new int[lengthOfNewArray];
-		System.arraycopy(a, maxStartIndex, b, 0, lengthOfNewArray);
+		System.arraycopy(a, lo, b, 0, lengthOfNewArray);
 		System.out.println("Maximum SubArray   : " + Arrays.toString(b));
 
 	}
