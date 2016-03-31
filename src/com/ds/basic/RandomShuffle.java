@@ -37,7 +37,7 @@ public class RandomShuffle {
 
 	public static void main(String[] args) {
 		int[] a = { 6, 9, 2, 12, 34, 56, 43, 22 };
-
+		
 		// JDK shuffle method
 		// Collections.shuffle(Arrays.asList(a));
 		System.out.println("original array: " + Arrays.toString(a));
