@@ -26,27 +26,27 @@ public class BreadthFirstSearch {
 	}
 
 	private static class Queue {
-		GraphNode first, last;
+		GraphNode head, tail;
 
 		public void enqueue(GraphNode n) {
-			if (first == null) {
-				first = n;
-				last = first;
+			if (head == null) {
+				head = n;
+				tail = head;
 			} else {
-				last.next = n;
-				last = n;
+				tail.next = n;
+				tail = n;
 			}
 		}
 
 		public GraphNode dequeue() {
-			if (first == null) {
+			if (head == null) {
 				return null;
 			} else {
 
 				// from here: http://www.programcreek.com/2012/11/top-10-algorithms-for-coding-interview/
 				// notice the second parameter in the constructor...
-				GraphNode n = new GraphNode(first.data, first.neighbors);
-				first = first.next;
+				GraphNode n = new GraphNode(head.data, head.neighbors);
+				head = head.next;
 
 				return n;
 			}
@@ -83,7 +83,7 @@ public class BreadthFirstSearch {
 		root.visited = true;
 		queue.enqueue(root);
 
-		while (queue.first != null) {
+		while (queue.head != null) {
 			GraphNode c = (GraphNode) queue.dequeue();
 			for (GraphNode n : c.neighbors) {
 
