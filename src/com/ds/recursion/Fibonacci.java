@@ -2,7 +2,7 @@ package com.ds.recursion;
 
 public class Fibonacci {
 
-	// O(2n) exponential time complexity with O(1) space
+	// O(2^n) exponential time complexity with O(1) space
 	public static int fib(int n) {
 		if (n == 0) return 0;
 		if (n == 1) return 1;

@@ -24,7 +24,7 @@ public class makeChangeCoins {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(makeChange(25, 1));
+		System.out.println(makeChange(28, 5));
 
 		// System.out.println(coinChange(new int[] { 1, 2, 3 }, 4));
 	}
