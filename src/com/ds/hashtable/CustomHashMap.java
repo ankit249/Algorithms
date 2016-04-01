@@ -39,7 +39,7 @@ public class CustomHashMap {
 			current = current.next;
 		}
 
-		System.out.println("not found");
+		// System.out.println("not found");
 
 		return null;
 	}
@@ -56,17 +56,9 @@ public class CustomHashMap {
 			Node current = arr[hashcode];
 			while (current != null) {
 				if (current.key == key) {
-					if (prev == null) { // head
-						// no need to set previous pointer
-						tmp.next = current.next;
-						arr[hashcode] = tmp;
-						return;
-					} else {
 						current.data = data;
 						return;
-					}
 				}
-
 				prev = current;
 				current = current.next;
 			}
@@ -77,8 +69,9 @@ public class CustomHashMap {
 	public static void main(String[] args) {
 		CustomHashMap c = new CustomHashMap();
 		c.put(100, 100);
-		c.put(48, 200);
-		c.put(47, 200);
+		c.put(100, 200);
+		c.put(48, 121);
+		c.put(47, 921);
 		c.put(51, 200);
 		c.put(51, 300);
 
