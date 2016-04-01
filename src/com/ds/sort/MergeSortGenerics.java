@@ -38,12 +38,13 @@ public class MergeSortGenerics<E> {
 
 	public static void main(String[] args) {
 
-		Integer[] a = new Integer[5];
+		Integer[] a = new Integer[6];
 		a[0] = new Integer(2);
 		a[1] = new Integer(1);
 		a[2] = new Integer(4);
 		a[3] = new Integer(3);
 		a[4] = new Integer(-1);
+		a[5] = new Integer(3);
 
 		Integer[] aux = new Integer[a.length];
 		MergeSortGenerics<Integer> m = new MergeSortGenerics<Integer>();
