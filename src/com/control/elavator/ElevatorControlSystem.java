@@ -75,4 +75,9 @@ public class ElevatorControlSystem implements IElevatorControlSystem {
 			}
 		}
 	}
+
+	public static void main(String[] args) throws Exception {
+		ElevatorControlSystem ecs = new ElevatorControlSystem(4, 50);
+
+	}
 }
