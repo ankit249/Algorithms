@@ -16,16 +16,16 @@ public class kthLargest {
 				j--;
 			}
 
-			if (i < j) {
+			if (i <= j) {
 				swap(a, i, j);
 			}
 		}
 
 		swap(a, lo, j);
 
-		if (k == j + 1) {
+		if (j == k - 1) {
 			return a[j];
-		} else if (k > j + 1) {
+		} else if (j < k - 1) {
 			return getKth(a, k, j + 1, hi);
 		} else {
 			return getKth(a, k, lo, j - 1);
@@ -40,7 +40,7 @@ public class kthLargest {
 
 	public static void main(String[] args) {
 		int[] a = { 50, 20, 6, 56, 61, 91 };
-		System.out.println(getKth(a, 2, 0, a.length - 1));
+		System.out.println(getKth(a, 5, 0, a.length - 1));
 
 		// 6, 20, 50, 56, 61, 91
 	}
