@@ -27,7 +27,7 @@ public class Bits {
 		System.out.println(updateBits(n, m, i, j));
 
 		System.out.println(3 << 1);
-
+		System.out.println(1 << 4);
 		System.out.println(3 >> 1);
 	}
 
