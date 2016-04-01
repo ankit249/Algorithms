@@ -12,30 +12,29 @@ class Node {
 }
 
 public class DoublyLinkedList {
-	Node head = null;
-	Node tail = null;
+	Node head, tail;
 
 	public void insertHead(int data) {
-		Node tmp = new Node(data);
+		Node n = new Node(data);
 		if (head == null) {
-			tail = tmp;
+			tail = n;
 		} else {
-			head.previous = tmp;
+			head.previous = n;
 		}
-		tmp.next = head;
-		head = tmp;
+		n.next = head;
+		head = n;
 	}
 
 	public void insertTail(int data) {
-		Node tmp = new Node(data);
+		Node n = new Node(data);
 		if (head == null) {
-			head = tmp;
+			head = n;
 		} else {
-			tail.next = tmp;
-			tmp.previous = tail;
+			tail.next = n;
+			n.previous = tail;
 		}
 
-		tail = tmp;
+		tail = n;
 	}
 
 	public void insertAfter(int data, int key) {
