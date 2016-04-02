@@ -32,6 +32,7 @@ public class VolatileExample {
 		p.start();
 
 		System.out.println("press return to continue");
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		scanner.nextLine();
 
