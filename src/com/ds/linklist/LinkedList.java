@@ -32,7 +32,6 @@ public class LinkedList {
 	public boolean delete(ListNode head, int searchValue) {
 		ListNode current = head;
 		ListNode previous = null;
-		boolean deletedNode = false;
 
 		while (current != null) {
 			// once you find the seached Value
@@ -45,15 +44,14 @@ public class LinkedList {
 				} else {
 					previous.next = current.next;
 				}
-				deletedNode = true;
-				break;
+				return true;
 			}
 
 			previous = current;
 			current = current.next;
 		}
 
-		return deletedNode;
+		return false;
 	}
 
 	public void print(ListNode head) {
