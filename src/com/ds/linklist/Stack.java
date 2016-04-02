@@ -1,5 +1,7 @@
 package com.ds.linklist;
 
+//import java.util.NoSuchElementException;
+
 // 4----> 3----> 2----> 1 --->
 // top
 
@@ -9,6 +11,7 @@ public class Stack {
 	public ListNode pop() {
 		if (top == null) {
 			return null;
+			// throw new NoSuchElementException("No Element found");
 		}
 		ListNode tmp = top;
 		top = top.next;
