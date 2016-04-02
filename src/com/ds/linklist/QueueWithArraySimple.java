@@ -21,12 +21,12 @@ public class QueueWithArraySimple {
 			return;
 		}
 
-		head = (head + 1) % a.length;
-		a[head] = element;
+		tail = (tail + 1) % a.length;
+		a[tail] = element;
 		current++;
 
-		if (tail == -1) {
-			tail = head;
+		if (head == -1) {
+			head = tail;
 		}
 	}
 
@@ -36,10 +36,10 @@ public class QueueWithArraySimple {
 			return null;
 		}
 
-		int result = a[tail];
-		a[tail] = null;
+		int result = a[head];
+		a[head] = null;
 
-		tail = (tail + 1) % a.length;
+		head = (head + 1) % a.length;
 		current--;
 
 		if (current == 0) {

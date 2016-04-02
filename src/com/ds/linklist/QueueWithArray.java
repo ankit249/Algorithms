@@ -23,12 +23,12 @@ public class QueueWithArray<T> {
 			return;
 		}
 
-		head = (head + 1) % a.length;
-		a[head] = item;
+		tail = (tail + 1) % a.length;
+		a[tail] = item;
 		current++;
 
-		if (tail == -1) {
-			tail = head;
+		if (head == -1) {
+			head = tail;
 		}
 	}
 
@@ -38,9 +38,9 @@ public class QueueWithArray<T> {
 			return null;
 		}
 
-		T result = a[tail];
-		a[tail] = null;
-		tail = (tail + 1) % a.length;
+		T result = a[head];
+		a[head] = null;
+		head = (head + 1) % a.length;
 		current--;
 
 		if (current == 0) {
