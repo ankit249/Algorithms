@@ -16,7 +16,7 @@ public class Queue {
 
 	ListNode head, tail;
 
-	public ListNode dequeue() {
+	public ListNode poll() {
 		if (head == null) {
 			return null;
 		}
@@ -25,7 +25,7 @@ public class Queue {
 		return tmp;
 	}
 
-	public void enqueue(int d) {
+	public void offer(int d) {
 		ListNode tmp = new ListNode(d);
 		if (head == null) {
 			head = tmp;
@@ -49,29 +49,29 @@ public class Queue {
 	public static void main(String[] args) {
 		Queue q = new Queue();
 
-		q.enqueue(4);
-		q.enqueue(5);
-		q.enqueue(6);
+		q.offer(4);
+		q.offer(5);
+		q.offer(6);
 		System.out.print("queue: ");
 		q.print();
 
-		System.out.print("deque: " + q.dequeue().data + "   ");
+		System.out.print("deque: " + q.poll().data + "   ");
 		q.print();
 
-		System.out.print("deque: " + q.dequeue().data + "   ");
+		System.out.print("deque: " + q.poll().data + "   ");
 		q.print();
 
-		System.out.print("deque: " + q.dequeue().data + "   ");
+		System.out.print("deque: " + q.poll().data + "   ");
 		q.print();
 
 		System.out.print("queue 10: ");
-		q.enqueue(10);
+		q.offer(10);
 		q.print();
 
-		System.out.print("deque: " + q.dequeue().data + "   ");
+		System.out.print("deque: " + q.poll().data + "   ");
 		q.print();
 
-		System.out.print("deque: " + (q.dequeue() != null ? q.dequeue().data : " ") + " ");
+		System.out.print("deque: " + (q.poll() != null ? q.poll().data : " ") + " ");
 		q.print();
 
 	}
