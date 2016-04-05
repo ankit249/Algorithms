@@ -26,4 +26,4 @@ public class MaximumProductSubArrayElements {
 		int arr[] = { 1, -2, -3, 0, 7, -8, -2 };
 		System.out.println("Maximum Sub array product is " + maxProduct(arr));
 	}
-}/* This code is contributed by Devesh Agrawal */
+}
