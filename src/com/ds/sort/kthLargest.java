@@ -8,11 +8,11 @@ public class kthLargest {
 
 		while (i < j) {
 
-			while (a[lo] <= a[i]) {
+			while (a[lo] <= a[i] && i < hi) {
 				i++;
 			}
 
-			while (a[lo] > a[j]) {
+			while (a[lo] > a[j] && j > lo) {
 				j--;
 			}
 
