@@ -7,6 +7,7 @@ import java.util.concurrent.BlockingQueue;
 class ProducerConsumer3 {
 	// use queue.put() and queue.take() method because they are concurrent and syncronized.
 	// don't use queue.remove()
+	// ArrayBlockingQueue uses Reentrant locks
 	private BlockingQueue<Integer> queue = new ArrayBlockingQueue<Integer>(10);
 	Random random = new Random();
 
