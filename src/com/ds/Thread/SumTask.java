@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
+// understand fork join pool
+// http://www.javacreed.com/java-fork-join-example/
 public class SumTask extends RecursiveTask<Integer> {
 
 	private static final long serialVersionUID = 1L;
