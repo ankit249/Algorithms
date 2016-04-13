@@ -3,18 +3,21 @@ package com.ds.basic;
 public class TrippletSubsequenceIncreasing {
 
 	private static boolean isIncreasingTrippletSubsequence(int[] a) {
-		int count = 1;
-		for (int i = 1; i < a.length; i++) {
-			if (a[i] > a[i - 1]) {
-				count++;
-			} else {
-				count = 1;
-			}
+		int x = Integer.MAX_VALUE;
+		int y = Integer.MAX_VALUE;
 
-			if (count == 3) {
+		for (int i = 0; i < a.length; i++) {
+			int z = a[i];
+
+			if (x >= z) {
+				x = z;// update x to be a smaller value
+			} else if (y >= z) {
+				y = z; // update y to be a smaller value
+			} else {
 				return true;
 			}
 		}
+
 		return false;
 
 	}
@@ -24,6 +27,6 @@ public class TrippletSubsequenceIncreasing {
 		System.out.println(isIncreasingTrippletSubsequence(new int[] { 5, 4, 3, 2, 1 }));
 		System.out.println(isIncreasingTrippletSubsequence(new int[] { 5, 6, 7, 8, 10 }));
 		System.out.println(isIncreasingTrippletSubsequence(new int[] { 3, 4, 6, 7, 9 }));
-
+		System.out.println(isIncreasingTrippletSubsequence(new int[] { 1, 7, 6, 4, 5 }));
 	}
 }
