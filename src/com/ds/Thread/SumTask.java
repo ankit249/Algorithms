@@ -12,50 +12,59 @@ public class SumTask extends RecursiveTask<Integer> {
 	private static final long serialVersionUID = 1L;
 
 	static final int CHUNK_SIZE = 3; // execution batch size;
-	Integer[] numbers;
-	int begin;
-	int end;
+	Integer[] a_copy;
+	int lo;
+	int hi;
 
-	SumTask(Integer[] numbers, int begin, int end) {
-		this.numbers = numbers;
-		this.begin = begin;
-		this.end = end;
+	SumTask(Integer[] a_copy, int lo, int hi) {
+		this.a_copy = a_copy;
+		this.lo = lo;
+		this.hi = hi;
 	}
 
 	@Override
 	protected Integer compute() {
 		// sums the given number
-		if (end - begin <= CHUNK_SIZE) {
+
+		// problem is small - so solve the problem
+		if (hi - lo < CHUNK_SIZE) {
 			int sum = 0;
 			List<Integer> processedNumbers = new ArrayList<Integer>();
-			for (int i = begin; i < end; ++i) {
-				processedNumbers.add(numbers[i]);// just to track
-				sum += numbers[i];
+			for (int i = lo; i <= hi; i++) {
+				processedNumbers.add(a_copy[i]);// just to track
+				sum += a_copy[i];
 			}
 			// tracking thread, numbers processed, and sum
-			System.out.println(Thread.currentThread().getName() + " proceesing " + Arrays.asList(processedNumbers)
-					+ ", sum = " + sum);
+			System.out.println(Thread.currentThread().getName() + " proceesing " + Arrays.asList(processedNumbers) + ", sum = " + sum);
 			return sum;
 		}
+
 		// create chunks, fork and join
+		// split the problem into smaller problem
 		else {
-			int mid = begin + (end - begin) / 2; // mid point to partition
-			SumTask left = new SumTask(numbers, begin, mid); // left partition
-			SumTask right = new SumTask(numbers, mid, end); // right partition
-			left.fork(); // asynchronously execute on a separate thread
-			int leftAns = right.compute(); // recurse and compute
-			int rightAns = left.join(); // returns the asynchronously executed result
-			System.out.println("leftAns=" + leftAns + " + " + "rightAns=" + rightAns);
-			return leftAns + rightAns;
+			int mid = (lo + hi) / 2; // mid point to partition
+			SumTask t1 = new SumTask(a_copy, lo, mid - 1); // t1 partition
+			t1.fork(); // asynchronously execute on a separate thread
+
+			SumTask t2 = new SumTask(a_copy, mid, hi); // t2 partition
+			return t2.compute() + t1.join();
+			 
+			// int leftAns = t2.compute(); // recurse and compute
+			// int rightAns = t1.join(); // returns the asynchronously executed result
+			// System.out.println("leftAns=" + leftAns + " + " + "rightAns=" + rightAns);
+			 
+
 		}
 	}
 
 	public static void main(String[] args) {
-		int numberOfCpuCores = Runtime.getRuntime().availableProcessors();
-		ForkJoinPool forkJoinPool = new ForkJoinPool(numberOfCpuCores);
+		// int numberOfCpuCores = Runtime.getRuntime().availableProcessors();
+		// ForkJoinPool forkJoinPool = new ForkJoinPool(numberOfCpuCores);
 
-		Integer[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-		int sum = forkJoinPool.invoke(new SumTask(numbers, 0, numbers.length));
+		ForkJoinPool forkJoinPool = new ForkJoinPool();
+
+		Integer[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+		int sum = forkJoinPool.invoke(new SumTask(a, 0, a.length - 1));
 
 		System.out.println(sum);
 	}
