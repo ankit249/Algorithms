@@ -28,7 +28,8 @@ public class ExternalMergeSort {
 			// Iterate through the elements in the file
 			for (i = 0; i < slices; i++) {
 				// Read M-element chunk at a time from the file
-				for (j = 0; j < (M < N ? M : N); j++) {
+				int chunk = M < N ? M : N;
+				for (j = 0; j < chunk; j++) {
 					String t = br.readLine();
 					if (t != null)
 						buffer[j] = Integer.parseInt(t);
@@ -101,7 +102,7 @@ public class ExternalMergeSort {
 
 
 	static String generateInput(int n) {
-		String fileName = "external-sort.txt";
+		String fileName = "/app/data/external-sort-input.txt";
 		Random rand = new Random();
 
 		try {
