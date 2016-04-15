@@ -34,8 +34,8 @@ public class SubsetOfSum {
 	}
 
 	public static void main(String[] args) {
-		int[] a = { 3, 2, 7, 1 };
-		int target = 3;
+		int[] a = { 3, 2, 7, 1, 8, 4, 5, 6 };
+		int target = 8;
 		boolean[] barray = new boolean[a.length];
 
 		subsetofsum(0, a, barray, target, 0);
