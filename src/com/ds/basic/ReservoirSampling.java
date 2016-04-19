@@ -70,12 +70,12 @@ public class ReservoirSampling {
 	}
 
 	public static void main(String[] args) {
-		int[] a = new int[] { 3, 6, 3, 9, 8, 9, 4, 3, 2, 9, 1, 6 };
+		int[] a = new int[] { 3, 6, 2, 9, 1, 3, 4, 30, 20 };
 
 		int[] randomSample = selectRandomKItemsFromNElement(a, a.length, 3);
 		System.out.println(Arrays.toString(randomSample));
 
-		System.out.println(findMaxElementIndiceRandom(a));
+		// System.out.println(findMaxElementIndiceRandom(a));
 
 	}
 }
