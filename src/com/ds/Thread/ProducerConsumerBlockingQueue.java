@@ -13,7 +13,7 @@ class ProducerConsumer3 {
 
 	public void produce() throws InterruptedException {
 		while (true) {
-			Thread.sleep(5000);
+			Thread.sleep(80);
 			queue.put(random.nextInt(100 - 1) + 1);
 		}
 	}
