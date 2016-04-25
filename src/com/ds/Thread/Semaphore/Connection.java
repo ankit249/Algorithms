@@ -12,6 +12,7 @@ public class Connection {
 
 	// 10 permits available
 	// true - depicts the fairness, the thread which is waiting first will get the connection first
+	// Enforcing fairness comes at a performance / concurrency penalty, so don't enable it unless you need it.
 	private Semaphore sem = new Semaphore(10, true);
 
 	private Connection() {
