@@ -2,6 +2,19 @@ package com.ds.Thread.Semaphore;
 
 import java.util.concurrent.Semaphore;
 
+/**
+ * 
+ * Semaphore can be counted, while mutex can only count to 1.
+ * 
+ * Suppose you have a thread running which accepts client connections. This thread can handle 5 clients simultaneously.
+ * Then each new client sets the semaphore until it reaches 5. When the Semaphore has 5 permits, then your thread won't
+ * accept new connections
+ * 
+ * Mutex are usually used for guarding stuff. Suppose your 5 clients can access multiple parts of the system. Then you
+ * can protect a part of the system with a mutex so when 1 client is connected to that sub-system, no one else should
+ * have access. You can use a Semaphore for this purpose too. A mutex is a "Mutual Exclusion Semaphore".
+ */
+
 // semaphores are used for controlling or limiting the access to a resource
 // semaphores have available permit, acquire uses the permit and release - relinquish the permit
 // semaphore with 1 permit is like a reentrant lock, although the difference is locks has to be release by the same thread
