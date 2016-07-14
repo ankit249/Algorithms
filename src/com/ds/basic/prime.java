@@ -22,8 +22,9 @@ public class prime {
 			// System.out.println(num + " is not prime");
 			return false;
 		}
-		int top = (int) Math.sqrt(num) + 1;
-		for (int i = 3; i < top; i += 2) {
+		// int top = (int) Math.sqrt(num) + 1;
+		// for (int i = 3; i < top; i += 2) {
+		for (int i = 3; i * i <= num; i += 2) {
 			if (num % i == 0) {
 				// System.out.println(num + " is not prime");
 				return false;
@@ -36,6 +37,7 @@ public class prime {
 	public static void main(String[] args) {
 		System.out.println(isPrime(7));
 		System.out.println(isPrimeEfficient(7));
+		System.out.println(isPrimeEfficient(3));
 		System.out.println(isPrimeEfficient(2));
 		System.out.println(isPrimeEfficient(1));
 
