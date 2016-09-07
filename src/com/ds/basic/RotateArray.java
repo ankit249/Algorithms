@@ -21,8 +21,8 @@ public class RotateArray {
 	// o(n) time complexity in place solution with space o(1)
 	public static int[] rotateEff(int[] a, int k) {
 
-		reverse(a, 0, k);
-		reverse(a, k + 1, a.length - 1);
+		reverse(a, 0, a.length - k - 1);
+		reverse(a, a.length - k, a.length - 1);
 		reverse(a, 0, a.length - 1);
 
 		return a;
@@ -48,6 +48,10 @@ public class RotateArray {
 
 		a = new int[] { 1, 2, 3, 4, 5, 6, 7 };
 		k = 3;
+		System.out.println(Arrays.toString(rotateEff(a, k)));
+
+		a = new int[] { 1, 8, 3, 6, 2, 9 };
+		k = 2;
 		System.out.println(Arrays.toString(rotateEff(a, k)));
 	}
 }
