@@ -3,9 +3,6 @@ package com.ds.tree;
 //Java program to convert a given Binary Tree to 
 //Doubly Linked List
 
-/* Structure for tree and Linked List */
-
-
 public class ConvertTreeToDoublyLinkList {
 	// 'root' - root of binary tree
 	TreeNode root;
