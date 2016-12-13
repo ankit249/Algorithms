@@ -20,6 +20,9 @@ public class RotateArray {
 	// rotate array k times
 	// o(n) time complexity in place solution with space o(1)
 	public static int[] rotateEff(int[] a, int k) {
+		if (a == null || a.length == 0 || k < 0) {
+			throw new IllegalArgumentException("Illegal argument!");
+		}
 
 		reverse(a, 0, a.length - k - 1);
 		reverse(a, a.length - k, a.length - 1);
