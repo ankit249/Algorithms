@@ -1,15 +1,15 @@
 package com.ds.graphnode;
 
 public class Queue {
-	GraphNode head, last;
+	GraphNode head, tail;
 
 	public void enqueue(GraphNode n) {
 		if (head == null) {
 			head = n;
-			last = head;
+			tail = head;
 		} else {
-			last.next = n;
-			last = n;
+			tail.next = n;
+			tail = n;
 		}
 	}
 
