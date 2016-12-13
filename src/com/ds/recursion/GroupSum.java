@@ -13,10 +13,10 @@ No loops are needed -- the recursive calls progress down the array.
 
 /*
   
-  Hint: The base case is when start>=nums.length. In that case, return true if target==0. Otherwise, consider 
-  the element at nums[start]. The key idea is that there are only 2 possibilities -- nums[start] is chosen or it is not.
-  Make one recursive call to see if a solution is possible if nums[start] is chosen (subtract nums[start] from target
-  in that call). Make another recursive call to see if a solution is possible if nums[start] is not chosen. Return true
+  Hint: The base case is when start>=a.length. In that case, return true if target==0. Otherwise, consider 
+  the element at a[start]. The key idea is that there are only 2 possibilities -- a[start] is chosen or it is not.
+  Make one recursive call to see if a solution is possible if a[start] is chosen (subtract a[start] from target
+  in that call). Make another recursive call to see if a solution is possible if a[start] is not chosen. Return true
   if either of the two recursive calls returns true. 
 */
 public class GroupSum {
