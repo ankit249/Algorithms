@@ -20,10 +20,10 @@ No loops are needed -- the recursive calls progress down the array.
   if either of the two recursive calls returns true. 
 */
 public class GroupSum {
-	public static boolean groupSum(int start, int[] nums, int target) {
+	public static boolean groupSum(int start, int[] a, int target) {
 		// Base case: if there are no numbers left, then there is a
 		// solution only if target is 0.
-		if (start >= nums.length)
+		if (start >= a.length)
 			return target == 0;
 
 		// Key idea: nums[start] is chosen or it is not.
@@ -33,7 +33,7 @@ public class GroupSum {
 		// Recursive call trying the case that nums[start] is chosen --
 		// subtract it from target in the call.
 		// Recursive call trying the case that nums[start] is not chosen.
-		return groupSum(start + 1, nums, target - nums[start]) || groupSum(start + 1, nums, target);
+		return groupSum(start + 1, a, target - a[start]) || groupSum(start + 1, a, target);
 	}
 
 
