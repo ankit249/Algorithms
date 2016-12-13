@@ -7,5 +7,17 @@ public class PowerOf2 {
 		}
 
 		System.out.println(2 << 3);
+
+		System.out.println(isPowerOf2(4));
+		System.out.println(isPowerOf2(5));
+		System.out.println(isPowerOf2(7));
+		System.out.println(isPowerOf2(8));
+	}
+
+	// & the number and previous number to see if that is zero
+	private static boolean isPowerOf2(int v) {
+		// we want to see if v is a power of 2
+
+		return (v & (v - 1)) == 0;
 	}
 }
