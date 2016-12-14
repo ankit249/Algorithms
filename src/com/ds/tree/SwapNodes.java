@@ -6,7 +6,7 @@ import java.util.Queue;
 //or invert
 public class SwapNodes {
 
-	private void swap(TreeNode root) {
+	private TreeNode swap(TreeNode root) {
 		Queue<TreeNode> queue = new LinkedList<TreeNode>();
 		queue.offer(root);
 		TreeNode tmp = null;
@@ -25,6 +25,8 @@ public class SwapNodes {
 			n.left = n.right;
 			n.right = tmp;
 		}
+
+		return root;
 	}
 
 	private TreeNode invert(TreeNode root) {
@@ -63,7 +65,7 @@ public class SwapNodes {
 		BTreePrinter.printNode(root);
 
 		TreeNode result = obj.invert(root);
-		System.out.println("after recusrive swap:");
+		System.out.println("after recusrive swap / invert:");
 		BTreePrinter.printNode(result);
 
 	}
