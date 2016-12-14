@@ -3,12 +3,16 @@ package com.ds.tree;
 // without using additiona Data structre
 public class LevelOrderTraversal2 {
 	public static void PrintLevelNodes(TreeNode root, int level) {
-		if (root != null) {
-			if (level == 0) {
-				System.out.print(root.data + " ");
-				return;
-			}
+		if (level == 0) {
+			System.out.print(root.data + " ");
+			return;
+		}
+
+		if (root.left != null) {
 			PrintLevelNodes(root.left, level - 1);
+		}
+
+		if (root.right != null) {
 			PrintLevelNodes(root.right, level - 1);
 		}
 	}
@@ -30,6 +34,7 @@ public class LevelOrderTraversal2 {
 		bst.insert(root, 50);
 		bst.insert(root, 40);
 		bst.insert(root, 60);
+		bst.insert(root, 70);
 
 		BTreePrinter.printNode(root);
 
