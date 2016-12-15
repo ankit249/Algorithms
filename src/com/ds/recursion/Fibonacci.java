@@ -24,7 +24,7 @@ public class Fibonacci {
 		return c;
 	}
 
-	// tail recursion
+	// tail recursion, O(1) space and O(n) time complexity
 	public static int tailRecursive(int n) {
 		if(n == 0) return 0;
 		if(n == 1 || n == 2) return 1;
