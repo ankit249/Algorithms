@@ -12,6 +12,11 @@ public class Fibonacci {
 	}
 
 	// O(1) space and O(n) time complexity
+	
+
+	
+	// 1,1,2,3,5
+	// 1,2,3,4,5 (fib 5 is 5)
 	public static int fib_iterative(int n) {
 		int a = 0;
 		int b = 1;
@@ -29,14 +34,14 @@ public class Fibonacci {
 		if (n <= 2) {
 			return 1;
 		}
-		return tailRecursiveAux(0, 1, n);
+		return fibtail(0, 1, n);
 	}
 
-	private static int tailRecursiveAux(int a, int b, int n) {
+	private static int fibtail(int a, int b, int n) {
 		if (n <= 0) {
 			return a;
 		}
-		return tailRecursiveAux(b, a + b, n - 1);
+		return fibtail(b, a + b, n - 1);
 	}
 
 	public static void main(String[] args) {
