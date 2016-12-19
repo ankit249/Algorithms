@@ -1,5 +1,7 @@
 package com.ds.sort;
 
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class kthLargest {
 	public static int getKth(int[] a, int k, int lo, int hi) {
@@ -8,6 +10,7 @@ public class kthLargest {
 
 		while (i < j) {
 
+			// condition is different than the Quicksort.
 			while (a[lo] <= a[i] && i < hi) {
 				i++;
 			}
@@ -40,9 +43,21 @@ public class kthLargest {
 
 	public static void main(String[] args) {
 		int[] a = { 50, 20, 6, 56, 61, 91 };
-		System.out.println(getKth(a, 5, 0, a.length - 1));
+		System.out.println(getKth(a, 3, 0, a.length - 1));
 
 		// 6, 20, 50, 56, 61, 91
+		System.out.println(getKthUsingHeap(a, 3));
+	}
+
+	public static int getKthUsingHeap(int[] a, int k) {
+		Queue<Integer> q = new PriorityQueue<Integer>();
+		for (int i = 0; i < a.length; i++) {
+			q.offer(a[i]);
+
+			if (q.size() > k)
+				q.poll();
+		}
+		return q.peek();
 	}
 
 }
