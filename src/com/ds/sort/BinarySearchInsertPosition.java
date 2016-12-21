@@ -13,33 +13,35 @@ package com.ds.sort;
 
 // working code
 public class BinarySearchInsertPosition {
+
 	private static int searchInsertPosition(int[] a, int key) {
 		int lo = 0;
 		int hi = a.length - 1;
 		int mid;
-		while (true) { // notice the while(true)
+		while (lo <= hi) {
 			mid = (lo + hi) / 2;
-			if (key == a[mid])
-				return mid;
 			if (key < a[mid]) {
-				if (lo < mid) {
-					hi = mid - 1;
-				} else {
-					return lo;
-				}
+				hi = mid - 1;
+			} else if (key > a[mid]) {
+				lo = mid + 1;
 			} else {
-				if (hi > mid) {
-					lo = mid + 1;
-				} else {
-					return hi + 1;
-				}
+				return mid;
 			}
 		}
+		return lo;
 	}
 
+	// [1,3,5,6], 5 -> 2
+	// [1,3,5,6], 2 -> 1
+	// [1,3,5,6], 7 -> 4
+	// [1,3,5,6], 0 -> 0
 	public static void main(String[] args) {
-		int[] a = { 1, 3, 5, 6 }; // 5
-		// int[] a = { 1, 2, 3, 6, 8, 10 }; // 9
-		System.out.println(searchInsertPosition(a, 9));
+		int[] a = { 1, 3, 5, 6 };
+		System.out.println(searchInsertPosition(a, 5)); // 2
+		System.out.println(searchInsertPosition(a, 2)); // 1
+		System.out.println(searchInsertPosition(a, 7)); // 4
+		System.out.println(searchInsertPosition(a, 0)); // 0
+		// a={1,2,3,6,8,10}; // 9
+		// System.out.println(searchInsertPosition(a, 8));
 	}
 }
