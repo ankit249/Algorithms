@@ -22,7 +22,7 @@ public class QuickSort {
 		while (i < j) {
 
 			// increase i until a[i] < a[lo] and if its decreasing sorted want to make sure i doesn't go above hi.
-			while (a[i] <= a[lo] && i < hi) {
+			while (a[i] < a[lo] && i < hi) {
 				i++;
 			}
 
@@ -50,7 +50,7 @@ public class QuickSort {
 
 	public static void main(String[] args) {
 		// int[] a = new int[] { 32, 16, 15, 18, 2, 40, 3, 38 };
-		int[] a = new int[] { 6, 2, 3, 4, 1, 6, 7, 7, 4, 4, 1, 2, 1 };
+		int[] a = new int[] { 37, 25, 42, 16, 48, 39, 63 };
 		// System.out.println(partition(a, 0, a.length));
 		// System.out.println(Arrays.toString(a));
 		/*
