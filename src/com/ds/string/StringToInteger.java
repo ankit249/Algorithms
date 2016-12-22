@@ -20,15 +20,14 @@ public class StringToInteger {
 			result = (result * 10) + (str.charAt(i) - '0');
 		}
 
-		if (result > Integer.MAX_VALUE) {
+		if (negative)
+			result = result * -1;
+
+		if (result > Integer.MAX_VALUE || result < Integer.MIN_VALUE) {
 			return 0;
 		}
 
-		if (negative && result * -1 < Integer.MIN_VALUE) {
-			return 0;
-		}
-
-		return negative == true ? (int) result * -1 : (int) result;
+		return (int) result;
 	}
 
 	public static void main(String[] args) {
