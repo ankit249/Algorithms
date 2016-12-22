@@ -65,7 +65,6 @@ public class QuickSort {
 		quicksort(a, 0, a.length - 1);
 		System.out.println(Arrays.toString(a));
 
-
 	}
 
 }
