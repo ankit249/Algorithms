@@ -5,7 +5,7 @@ public class BinaryAddition {
 		int i = a.length() - 1;
 		int j = b.length() - 1;
 
-		StringBuilder result = new StringBuilder("");
+		StringBuilder result = new StringBuilder();
 		int carry = 0;
 		int sum = 0;
 
