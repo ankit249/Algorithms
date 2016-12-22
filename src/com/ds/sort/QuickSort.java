@@ -62,7 +62,6 @@ public class QuickSort {
 				263, 108, 10, 149, 497, 20, 97, 136, 139, 200, 266, 238, 493, 22, 17, 39 }; 
 				
 		*/
-
 		quicksort(a, 0, a.length - 1);
 		System.out.println(Arrays.toString(a));
 
