@@ -1,5 +1,6 @@
 package com.ds.string;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,6 +10,64 @@ import java.util.Set;
  * 
  **/
 public class MatchStringSlidingWindow {
+
+	// method 1:
+	public static String minWindow(String s, String t) {
+		if (t.length() > s.length()) return "";
+		String result = "";
+
+		// character counter for t
+		HashMap<Character, Integer> target = new HashMap<Character, Integer>();
+		for (int i = 0; i < t.length(); i++) {
+			char c = t.charAt(i);
+			if (target.containsKey(c)) {
+				target.put(c, target.get(c) + 1);
+			} else {
+				target.put(c, 1);
+			}
+		}
+
+		// character counter for s
+		HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+		int lo = 0;
+		int minLen = s.length() + 1;
+
+		int count = 0; // the total of mapped characters
+		for (int i = 0; i < s.length(); i++) {
+			char c = s.charAt(i);
+
+			if (target.containsKey(c)) {
+				if (map.containsKey(c)) {
+					if (map.get(c) < target.get(c)) {
+						count++;
+					}
+					map.put(c, map.get(c) + 1);
+				} else {
+					map.put(c, 1);
+					count++;
+				}
+			}
+
+			if (count == t.length()) {
+				char sc = s.charAt(lo);
+				while (!map.containsKey(sc) || map.get(sc) > target.get(sc)) {
+					if (map.containsKey(sc) && map.get(sc) > target.get(sc))
+						map.put(sc, map.get(sc) - 1);
+					lo++;
+					sc = s.charAt(lo);
+				}
+
+				if (i - lo + 1 < minLen) {
+					result = s.substring(lo, i + 1);
+					minLen = i - lo + 1;
+				}
+			}
+		}
+
+		return result;
+	}
+
+	// method 2:
 	private static int countMatches(int[] text, int[] pattern) {
 		int match = 0;
 		for (int i = 0; i < 256; i++) {
@@ -23,8 +82,8 @@ public class MatchStringSlidingWindow {
 	public static String minLenSubStringWithAllChars(String input, Set<Character> chars) {
 		int[] text = new int[256];
 		int[] pattern = new int[256];
-		int start = 0;
-		int end = 0;
+		int lo = 0;
+		int hi = 0;
 
 		int minLen = Integer.MAX_VALUE;
 
@@ -33,33 +92,33 @@ public class MatchStringSlidingWindow {
 
 		// prepare the initial window of size of the char set
 		for (char c : chars) {
-			text[input.charAt(end)]++;
+			text[input.charAt(hi)]++;
 			pattern[c]++;
-			end++;
+			hi++;
 		}
 
-		while (start < input.length()) {
+		while (lo < input.length()) {
 			int matches = countMatches(text, pattern);
 			// if current window doesn't contain all the characters
 			// then strech the window to right upto the end of string
-			if (matches < chars.size() && end < input.length()) {
+			if (matches < chars.size() && hi < input.length()) {
 				// strech window
-				text[input.charAt(end)]++;
-				end++;
+				text[input.charAt(hi)]++;
+				hi++;
 			}
 			// if current window contains all the characters with frequency
 			// at least one then we have the freedom to shrink the window
 			// from front.
 			else if (matches >= chars.size()) {
 				// as current window contains all character so update minLen
-				if (end - start < minLen) {
-					minLen = end - start;
-					resultStart = start;
-					resultEnd = end;
+				if (hi - lo < minLen) {
+					minLen = hi - lo;
+					resultStart = lo;
+					resultEnd = hi;
 				}
 				// shrink window
-				text[input.charAt(start)]--;
-				start++;
+				text[input.charAt(lo)]--;
+				lo++;
 			}
 			// if current window doesn't cntains all chars
 			// but we can't strech the window anymore then break
@@ -78,5 +137,6 @@ public class MatchStringSlidingWindow {
 		set.add('r');
 		set.add('w');
 		System.out.println(minLenSubStringWithAllChars("helloworld", set));
+		System.out.println(minWindow("helloworld", "llorw"));
 	}
 }
