@@ -8,7 +8,7 @@ public class BinarySearchInRotatedArray {
 		int lo = 0;
 		int hi = a.length - 1;
 
-		while (lo < hi) {
+		while (lo <= hi) {
 			int mid = (lo + hi) / 2;
 			if (a[mid] == key)
 				return mid;
@@ -18,7 +18,7 @@ public class BinarySearchInRotatedArray {
 				} else {
 					lo = mid + 1;
 				}
-			} else if (a[hi] > a[mid]) { // right portion is sorted half
+			} else if (a[mid] < a[hi]) { // right portion is sorted half
 				if (key > a[mid] && key < a[hi]) {
 					lo = mid + 1;
 				} else {
