@@ -19,30 +19,31 @@ public class TinyUrl {
 	private static final String ALPHABET_MAP = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 	private static final int BASE = ALPHABET_MAP.length();
 
-	public static String encode(int IndexNum) {
+	public static String decode(int n) {
 		StringBuilder sb = new StringBuilder();
 
-		while (IndexNum > 0) {
-			sb.append(ALPHABET_MAP.charAt(IndexNum % BASE));
-			IndexNum /= BASE;
+		while (n > 0) {
+			sb.append(ALPHABET_MAP.charAt(n % BASE));
+			n = n / BASE;
 		}
 		return sb.reverse().toString();
 	}
 
-	public static int decode(String str) {
-		int Num = 0;
-		int len = str.length();
+	public static int encode(String str) {
+		int n = 0;
 
-		for (int i = 0; i < len; i++) {
-			Num = Num * BASE + ALPHABET_MAP.indexOf(str.charAt(i));
+		for (int i = 0; i < str.length(); i++) {
+			n = n * BASE + ALPHABET_MAP.indexOf(str.charAt(i));
 		}
-		return Num;
+		return n;
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Encoding for 123 is " + encode(123));
-		System.out.println("Decoding for b9 is " + decode("b9"));
+		System.out.println("Encoding for b9 is " + encode("b9"));
+		System.out.println("Decoding for 123 is " + decode(123));
 
+		System.out.println("Encoding for ba9zz is " + encode("ba9zz"));
+		System.out.println("Decoding for 15012395 is " + decode(15012395));
 		// System.out.println("hashcode of a string: " + "abc".hashCode());
 
 	}
