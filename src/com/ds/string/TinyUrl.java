@@ -16,14 +16,14 @@ package com.ds.string;
  * 
  */
 public class TinyUrl {
-	private static final String ALPHABET_MAP = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-	private static final int BASE = ALPHABET_MAP.length();
+	private static final String ALPHABETS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	private static final int BASE = ALPHABETS.length();
 
 	public static String decode(int n) {
 		StringBuilder sb = new StringBuilder();
 
 		while (n > 0) {
-			sb.append(ALPHABET_MAP.charAt(n % BASE));
+			sb.append(ALPHABETS.charAt(n % BASE));
 			n = n / BASE;
 		}
 		return sb.reverse().toString();
@@ -33,7 +33,7 @@ public class TinyUrl {
 		int n = 0;
 
 		for (int i = 0; i < str.length(); i++) {
-			n = n * BASE + ALPHABET_MAP.indexOf(str.charAt(i));
+			n = n * BASE + ALPHABETS.indexOf(str.charAt(i));
 		}
 		return n;
 	}
