@@ -44,14 +44,17 @@ public class MinStack {
 
 	public static void main(String[] args) {
 		MinStack m = new MinStack();
-		m.push(3);
-		m.push(2);
-		m.push(1);
-		m.push(4);
 		m.push(5);
+		m.push(3);
+		m.push(4);
+		m.push(2);
+		m.push(6);
+		m.push(1);
 		// System.out.println(m.getMinimum());
-		while (m.pop() != null) {
-			System.out.println(m.getMinimum());
+		MinNode tmp = m.pop();
+		while (tmp != null) {
+			System.out.println("element data: " + tmp.data + ": " + tmp.min);
+			tmp = m.pop();
 		}
 
 	}
