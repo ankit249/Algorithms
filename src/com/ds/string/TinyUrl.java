@@ -44,7 +44,5 @@ public class TinyUrl {
 
 		System.out.println("Encoding for ba9zz is " + encode("ba9zz"));
 		System.out.println("Decoding for 15012395 is " + decode(15012395));
-		// System.out.println("hashcode of a string: " + "abc".hashCode());
-
 	}
 }
