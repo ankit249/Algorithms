@@ -39,6 +39,10 @@ public class TinyUrl {
 	}
 
 	public static void main(String[] args) {
+		System.out.println("Encoding for bc is " + encode("bc")); // (0 * 62 + 1) + (1 * 62 + 2) = 64
+		System.out.println("Decoding for 64 is " + decode(64)); // 64 % 62 = 2 ==> 2 sb = "c"
+																// 62 / 64 = 1 ==> 1 sb = "cb"
+
 		System.out.println("Encoding for b9 is " + encode("b9"));
 		System.out.println("Decoding for 123 is " + decode(123));
 
