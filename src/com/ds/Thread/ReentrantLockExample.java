@@ -1,5 +1,6 @@
 package com.ds.Thread;
 
+import java.util.Scanner;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -28,11 +29,12 @@ class Runner1 {
 		System.out.println("finished counting in the first thread");
 	}
 
+	@SuppressWarnings("resource")
 	public void secondThread() throws InterruptedException {
 		Thread.sleep(1000);
 		lock.lock();
 		System.out.println("press return");
-		// String nextLine = new Scanner(System.in).nextLine();
+		new Scanner(System.in).nextLine();
 		System.out.println("Got retruned key");
 		// lock.lock(); // this will create deadlock
 		condition.signal();
