@@ -136,7 +136,7 @@ public class DiningPhilosophers {
 
 			for (int i = 0; i < NO_OF_PHILOSOPHER; i++) {
 				philosophers[i] = new Philosopher(i, locks[i], locks[(i + 1) % NO_OF_PHILOSOPHER]);
-				executorService.execute(philosophers[i]);
+				executorService.submit(philosophers[i]);
 			}
 			// Main thread sleeps till time of simulation
 			Thread.sleep(SIMULATION_MILLIS);
