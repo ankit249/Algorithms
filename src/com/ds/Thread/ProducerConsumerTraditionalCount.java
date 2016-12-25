@@ -17,7 +17,7 @@ class PCTraditionalCount {
 				}
 				count++;
 				System.out.println("producing count: " + count);
-				lock1.notify();
+				lock1.notifyAll();
 				// Thread.sleep(ramdom.nextInt(3000));
 			}
 		}
@@ -34,7 +34,7 @@ class PCTraditionalCount {
 				count--;
 				Thread.sleep(ramdom.nextInt(3000));
 				System.out.println("consumed, count is: " + count);
-				lock1.notify();
+				lock1.notifyAll();
 			}
 		}
 	}
