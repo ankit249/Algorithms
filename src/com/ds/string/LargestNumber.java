@@ -1,37 +1,34 @@
 package com.ds.string;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
 
 public class LargestNumber {
 	private static String largestNumber(int[] a) {
-		final String sortString = "0123456789";
-		StringBuffer result = new StringBuffer();
-		List<String> list = new ArrayList<String>();
+		String[] sa = new String[a.length];
 		for (int i = 0; i < a.length; i++) {
-			String element = String.valueOf(a[i]);
-			for (int j = 1; j <= element.length(); j++) {
-				list.add(element.substring(j - 1, j));
-			}
+			sa[i] = a[i] + "";
 		}
 
-		Collections.sort(list, new Comparator<String>() {
-			public int compare(String s1, String s2) {
-				return sortString.indexOf(s2) - sortString.indexOf(s1);
+		// reverse array sorting with two string combination
+		Arrays.sort(sa, new Comparator<String>() {
+			public int compare(String a, String b) {
+				return (b + a).compareTo(a + b);
 			}
 		});
 
-		System.out.println(list);
-		for (String element : list) {
-			result = result.append(element);
+		StringBuilder sb = new StringBuilder();
+		for (String element : sa) {
+			sb.append(element);
 		}
-		return result.toString();
+
+		return sb.toString();
 	}
 
 	public static void main(String[] args) {
 		int[] a = { 3, 30, 34, 5, 9 };
+		// int[] a = { 45, 4 };
+		// int[] a = { 30, 3 };
 		System.out.println(largestNumber(a));
 	}
 }
