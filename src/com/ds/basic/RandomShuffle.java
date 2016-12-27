@@ -12,11 +12,11 @@ public class RandomShuffle {
 
 	
 	/**
-	 * random no from: 5 to 0 ---> swap a[5] with random
-	 * random no from: 4 to 0 ---> swap a[4] with random
-	 * random no from: 3 to 0 ---> swap a[3] with random
-	 * random no from: 2 to 0 ---> swap a[2] with random
-	 * random no from: 1 to 0 ---> swap a[1] with random
+	 * random no from: 5 to 0 ---> swap a[5] with random(5)
+	 * random no from: 4 to 0 ---> swap a[4] with random(4)
+	 * random no from: 3 to 0 ---> swap a[3] with random(3)
+	 * random no from: 2 to 0 ---> swap a[2] with random(2)
+	 * random no from: 1 to 0 ---> swap a[1] with random(1)
 	 * ...
 	 * ...
 	 * 
