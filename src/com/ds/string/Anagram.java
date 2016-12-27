@@ -1,9 +1,8 @@
 package com.ds.string;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 
 public class Anagram {
 
@@ -22,38 +21,42 @@ public class Anagram {
 		*/
 
 		String[] str = new String[] { "cat", "act", "tod", "tac", "dot", "kb" };
-		System.out.println(anagrams(str));
+		System.out.println(anagram(str));
 	}
 
-	public static List<String> anagrams(String[] strs) {
-		ArrayList<String> result = new ArrayList<String>();
-		if (strs == null || strs.length == 0)
-			return result;
+	private static Map<String, ArrayList<String>> anagram(String[] strs) {
+		Map<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
+		if (strs == null || strs.length == 0) {
+			return map;
+		}
 
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		for (int i = 0; i < strs.length; i++) {
-			char[] arr = strs[i].toCharArray();
-			Arrays.sort(arr);
-			String t = String.valueOf(arr);
-			if (map.get(t) == null) {
-				map.put(t, 1);
+		for (String s : strs) {
+			char[] arr = new char[26];
+
+			// either sort array or find out array of chars..
+			for (int i = 0; i < s.length(); i++) {
+				arr[s.charAt(i) - 'a']++;
+			}
+			String t = new String(arr);
+			// String t = String.copyValueOf(Arrays.sort(s.toCharArray()));
+			
+			if (map.containsKey(t)) {
+				/*
+				 * ArrayList<String> list = map.get(t); list.add(s); map.put(t, list);
+				 */
+				map.get(t).add(s);
 			} else {
-				map.put(t, map.get(t) + 1);
+				ArrayList<String> list = new ArrayList<String>();
+				list.add(s);
+				map.put(t, list);
 			}
 		}
 
-		for (String string : strs) {
-			char[] arr = string.toCharArray();
-			Arrays.sort(arr);
-			String t = String.valueOf(arr);
-			if (map.get(t) > 1) {
-				result.add(string);
-			}
+		// print map
+		for (Map.Entry<String, ArrayList<String>> entry : map.entrySet()) {
+			System.out.println(entry.getKey() + " :" + entry.getValue());
 		}
 
-		return result;
+		return map;
 	}
-
-
-
 }
