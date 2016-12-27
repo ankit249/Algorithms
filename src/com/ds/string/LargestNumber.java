@@ -26,7 +26,7 @@ public class LargestNumber {
 	}
 
 	public static void main(String[] args) {
-		int[] a = { 3, 30, 34, 5, 9 };
+		int[] a = { 3, 30, 34, 5, 9, 0 };
 		// int[] a = { 45, 4 };
 		// int[] a = { 30, 3 };
 		System.out.println(largestNumber(a));
