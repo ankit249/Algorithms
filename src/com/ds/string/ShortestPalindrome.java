@@ -1,6 +1,13 @@
 package com.ds.string;
 
+/**
+ * Given a string S, you are allowed to convert it to a palindrome by adding characters in front of it. 
+ * Find and return the shortest palindrome you can find by performing this transformation.
+ * 
+ * For example, given "aacecaaa", return "aaacecaaa"; given "abcd", return "dcbabcd".
+ */
 public class ShortestPalindrome {
+
 	public static String shortestPalindrome(String s) {
 		if (s == null || s.length() <= 1)
 			return s;
@@ -46,5 +53,6 @@ public class ShortestPalindrome {
 		System.out.println(shortestPalindrome("aacecaaa"));
 		System.out.println(shortestPalindrome("abcd"));
 		System.out.println(shortestPalindrome("aaabcbaa"));// this testcase doesn't work
+
 	}
 }

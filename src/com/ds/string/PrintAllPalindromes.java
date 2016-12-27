@@ -35,9 +35,9 @@ public class PrintAllPalindromes {
 	     return result;
 	  }
 
-	public static void expandPalindromes(final Set<String> result, final String s, int lo, int hi) {
-		while (lo >= 0 && hi < s.length() && s.charAt(lo) == s.charAt(hi)) {
-			result.add(s.substring(lo, hi + 1));
+	public static void expandPalindromes(final Set<String> result, final String input, int lo, int hi) {
+		while (lo >= 0 && hi < input.length() && input.charAt(lo) == input.charAt(hi)) {
+			result.add(input.substring(lo, hi + 1));
 			lo--;
 			hi++;
 	      }

@@ -44,7 +44,7 @@ public class LongestPalindromeSubstring {
 
 	private static String helper(String input, int lo, int hi) {
 		String result = "";
-		while (lo > 0 && hi < input.length() && input.charAt(lo) == input.charAt(hi)) {
+		while (lo >= 0 && hi < input.length() && input.charAt(lo) == input.charAt(hi)) {
 			result = input.substring(lo, hi + 1);
 			lo--;
 			hi++;
