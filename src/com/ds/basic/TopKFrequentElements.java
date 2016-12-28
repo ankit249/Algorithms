@@ -30,11 +30,8 @@ public class TopKFrequentElements {
 		Map<Integer, Integer> treemap = new TreeMap<Integer, Integer>(new Comparator<Integer>() {
 			public int compare(Integer o1, Integer o2) {
 				int diff = map.get(o2) - map.get(o1);
-				if (diff == 0) {
-					return 1;
-				}
-
-				return diff;
+				// TODO: RATTA
+				return diff == 0 ? 1 : diff;
 			}
 		});
 		treemap.putAll(map);
