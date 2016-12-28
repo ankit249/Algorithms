@@ -7,19 +7,17 @@ public class SerializeNAryTree {
 	static class Node {
 		char c;
 		List<Node> list = new LinkedList<Node>();
-		int index = 0;
 
 		public Node(char c) {
 			this.c = c;
 		}
 
 		public void addChild(Node node) {
-			list.add(index++, node);
+			list.add(node);
 		}
 	}
 
 	public Node deserialize(String str) {
-		new Node(str.charAt(0));
 		Node root = deserializeRecursive(str);
 		return root;
 	}
@@ -27,9 +25,7 @@ public class SerializeNAryTree {
 	private int currentIndex = 0;
 
 	private Node deserializeRecursive(String str) {
-		if (currentIndex >= str.length()) {
-			return null;
-		} else if (str.charAt(currentIndex) == ')') {
+		if (currentIndex > str.length() - 1 || str.charAt(currentIndex) == ')') {
 			return null;
 		}
 
@@ -69,6 +65,13 @@ public class SerializeNAryTree {
 		Node root = new SerializeNAryTree().deserialize(str);
 		String str1 = new SerializeNAryTree().serialize(root);
 		System.out.println(str1);
+
+		/*
+		str = "ABE)FK)))C)DG)))H)I)J)))";
+		root = new SerializeNAryTree().deserialize(str);
+		str1 = new SerializeNAryTree().serialize(root);
+		System.out.println(str1);
+		*/
 	}
 
 }
