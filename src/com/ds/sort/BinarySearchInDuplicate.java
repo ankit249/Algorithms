@@ -2,6 +2,7 @@ package com.ds.sort;
 
 public class BinarySearchInDuplicate {
 
+	// exactly similir to BST just the if loop addition in the match case.
 	private static int binarySearchDuplicate(int[] a, int key, boolean searchFirst) {
 		int lo = 0;
 		int hi = a.length - 1;
@@ -11,8 +12,10 @@ public class BinarySearchInDuplicate {
 			if (a[mid] == key) {
 				result = mid;
 				if (searchFirst) {
+					// if you want to search the first occurrence then go to the first half.
 					hi = mid - 1;
 				} else {
+					// if you want to search the last occurrence then go the the second half.
 					lo = mid + 1;
 				}
 			} else if (a[mid] < key) {
