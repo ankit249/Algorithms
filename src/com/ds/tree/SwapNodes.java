@@ -33,10 +33,8 @@ public class SwapNodes {
 		if (root == null)
 			return null;
 
-		if (root.left != null)
-			invert(root.left);
-		if (root.right != null)
-			invert(root.right);
+		invert(root.left);
+		invert(root.right);
 
 		TreeNode tmp = root.left;
 		root.left = root.right;
