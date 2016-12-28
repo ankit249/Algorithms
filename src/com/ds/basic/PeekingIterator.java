@@ -1,6 +1,8 @@
 package com.ds.basic;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class PeekingIterator implements Iterator<Integer> {
 	private Integer next; // cache the next peek
@@ -31,5 +33,20 @@ public class PeekingIterator implements Iterator<Integer> {
 	@Override
 	public boolean hasNext() {
 		return next != null;
+	}
+
+	public static void main(String[] args) {
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+
+		Iterator<Integer> it = list.iterator();
+		PeekingIterator peekIterator = new PeekingIterator(it);
+		System.out.println(peekIterator.peek());
+		while (peekIterator.hasNext()) {
+			System.out.println(peekIterator.next());
+		}
+		System.out.println(peekIterator.peek());
 	}
 }
