@@ -4,21 +4,22 @@ package com.ds.tree;
 public class DeepestNodeInBTree {
 
 	int deepestlevel;
-	int deepestnodedata;
+	TreeNode deepestnode;
 
 	private void findDfs(TreeNode root) {
 		findDfs(root, 0);
-		System.out.println("Node data: " + deepestnodedata + " at level: " + deepestlevel);
+		System.out.println("Node data: " + deepestnode.data + " at level: " + deepestlevel);
 	}
 
 	// like inorder traversal
 	private void findDfs(TreeNode root, int level) {
 		if (root != null) {
-			findDfs(root.left, ++level);
+			level = level + 1;
+			findDfs(root.left, level);
 
 			if (deepestlevel < level) {
 				deepestlevel = level;
-				deepestnodedata = root.data;
+				deepestnode = root;
 			}
 
 			findDfs(root.right, level);
