@@ -39,6 +39,7 @@ public class IntersectionOfArray {
 		return result;
 	}
 
+	// time: O(n) space: O(n)
 	private static int[] interSectionWithMap(int[] a, int[] b) {
 
 		System.out.println("Array input 1: " + Arrays.toString(a));
