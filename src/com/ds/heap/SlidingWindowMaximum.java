@@ -19,8 +19,8 @@ import java.util.PriorityQueue;
  1  3  -1  -3  5 [3  6  7]      7
  Therefore, return the max sliding window as [3,3,5,5,6,7].
  Note:
-    + create a MaxHeap size of k, add i = 0 to k
-    + in each step, extract the max, add i++
+    + create a MaxHeap size of k, add k elements in each out for loop
+    + in each step, extract the max and clear the queue for next iteration.
 
  */
 public class SlidingWindowMaximum {
