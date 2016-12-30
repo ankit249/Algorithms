@@ -22,7 +22,7 @@ import java.util.PriorityQueue;
     + in each step, extract the max, add i++
 
  */
-public class SlidingWindowMinimum {
+public class SlidingWindowMaximum {
 
 	private static int[] maxSlidingWindow(int[] a, int k) {
 		if(a == null || a.length == 0) return new int[] {};
