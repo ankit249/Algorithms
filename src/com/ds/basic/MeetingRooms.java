@@ -13,7 +13,7 @@ public class MeetingRooms {
 				return o1.start == o2.start ? o1.end - o2.end : o1.start - o2.start;
 			}
 		});
-		System.out.println(list);
+		System.out.println("Sorted meeting list: " + list);
 
 		int room = 1;
 		int max = room;
@@ -31,6 +31,25 @@ public class MeetingRooms {
 		return max;
 	}
 
+	public static boolean canOneAttendAllMeetings(List<MInterval> list) {
+
+		Collections.sort(list, new Comparator<MInterval>() {
+			public int compare(MInterval o1, MInterval o2) {
+				return o1.start == o2.start ? o1.end - o2.end : o1.start - o2.start;
+			}
+		});
+		System.out.println("Sorted meeting list: " + list);
+
+		MInterval prev = list.get(0);
+		for (int i = 1; i < list.size(); i++) {
+			MInterval current = list.get(i);
+			if (prev.end > current.start) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public static void main(String[] args) {
 		List<MInterval> list = new ArrayList<MInterval>();
 		list.add(new MInterval(1, 3));
@@ -40,7 +59,15 @@ public class MeetingRooms {
 		list.add(new MInterval(1, 8));
 		list.add(new MInterval(2, 9));
 
-		System.out.println(findMeetingRooms(list));
+		System.out.println("No. of Meeting Roooms needed: " + findMeetingRooms(list));
+		System.out.println("Can one person attend all the meetings ? " + canOneAttendAllMeetings(list));
+
+		list = new ArrayList<MInterval>();
+		list.add(new MInterval(1, 3));
+		list.add(new MInterval(5, 7));
+
+		System.out.println("No. of Meeting Roooms needed: " + findMeetingRooms(list));
+		System.out.println("Can one person attend all the meetings ? " + canOneAttendAllMeetings(list));
 	}
 }
 
