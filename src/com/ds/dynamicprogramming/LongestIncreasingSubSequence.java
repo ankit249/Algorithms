@@ -1,4 +1,4 @@
-package com.ds.string;
+package com.ds.dynamicprogramming;
 
 //https://www.youtube.com/watch?v=CE2b_-XfVDk
 public class LongestIncreasingSubSequence {
