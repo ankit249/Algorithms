@@ -5,9 +5,7 @@ import java.util.PriorityQueue;
 
 // logic,
 // two priority queue, min and max
-// alsways insert into Max
-// if count of element is odd insert into min priority queue by polling the element from max
-// if count of element is even and max pq element is greater than minPQ then poll both pq and insert them into one another (exchange)
+// always (1) offer into max (2) remove from max, offer into min (3) if max heap size is less then min hip, remove from min put it back onto max
 public class MedianIntegerStream {
 
 	static PriorityQueue<Integer> minPQ = new PriorityQueue<Integer>();
@@ -17,7 +15,53 @@ public class MedianIntegerStream {
 		}
 	}); // // first arugument 1 is for initial size
 	// you can also do this:
-	// static PriorityQueue<Integer> maxPQ = new PriorityQueue<Integer>(1, Collections.reverseOrder());;
+	// static PriorityQueue<Integer> maxPQ = new PriorityQueue<Integer>(Collections.reverseOrder());;
+
+	// Adds a number into the data structure.
+	public static void addNum(int num) {
+		maxPQ.offer(num);
+		minPQ.offer(maxPQ.poll());
+
+		if (maxPQ.size() < minPQ.size()) {
+			maxPQ.offer(minPQ.poll());
+		}
+	}
+
+	// Returns the median of current data stream
+	public static double findMedian() {
+		if (maxPQ.size() == minPQ.size()) {
+			return (double) (maxPQ.peek() + (minPQ.peek())) / 2;
+		} else {
+			return maxPQ.peek();
+		}
+	}
+
+	public static void main(String[] args) {
+
+		int n = 10;
+		for (int i = 0; i < n; i++) {
+			int number = i + 1;
+			addNum(number);
+			System.out.println("after inserting number " + number + " :" + findMedian());
+		}
+
+
+		/*
+		for (int i = 0; i < n; i++) { // int number = scanner.nextInt(); 
+			int number = i + 1;
+			insertNumberToStream(number);
+			System.out.println("after inserting number " + number + " :" + getMedian());
+		}
+		*/
+	}
+
+	// two priority queue, min and max
+	// alsways insert into Max
+	// if count of element is odd insert into min priority queue by polling the element from max
+	// if count of element is even and max pq element is greater than minPQ then poll both pq and insert them into one
+	// another (exchange)
+
+	/*
 	static int count = 0;
 
 	private static void insertNumberToStream(int num) {
@@ -38,19 +82,6 @@ public class MedianIntegerStream {
 		count++;
 	}
 
-	public static void main(String[] args) {
-
-		// Scanner scanner = new Scanner(System.in);
-		// int n = scanner.nextInt();
-		int n = 10;
-		for (int i = 0; i < n; i++) {
-			// int number = scanner.nextInt();
-			int number = i + 1;
-			insertNumberToStream(number);
-			System.out.println("after inserting number " + number + " :" + getMedian());
-		}
-	}
-
 	private static double getMedian() {
 
 		double median = 0;
@@ -64,5 +95,6 @@ public class MedianIntegerStream {
 
 		return median;
 	}
+	*/
 
 }
