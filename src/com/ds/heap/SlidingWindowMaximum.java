@@ -42,6 +42,7 @@ public class SlidingWindowMaximum {
 			pq.clear();
 		}
 		return result;
+
 	}
 
 	public static void main(String[] args) {
