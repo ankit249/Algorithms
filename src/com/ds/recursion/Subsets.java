@@ -2,7 +2,7 @@ package com.ds.recursion;
 
 import java.util.ArrayList;
 
-// refer subset 2 much easier
+// refer subsets2.java much easier
 public class Subsets {
 
 	public static ArrayList<ArrayList<Integer>> getSubsets(ArrayList<Integer> set, int index) {
