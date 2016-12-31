@@ -13,6 +13,17 @@ Note: If you need to find weather two strings are one edit distance or not use t
 http://www.programcreek.com/2014/05/leetcode-one-edit-distance-java/
 */
 
+/*
+ for Strings abcde and abxdz ==> it should be 2.
+
+	      '' a b c d e
+	    '' 0 1 2 3 4 5 
+	     a 1 0 1 2 3 4 
+	     b 2 1 0 1 2 3
+	     x 3 2 1 1 2 3
+	     d 4 3 2 2 1 2
+	 	 z 5 4 3 3 2 2
+*/
 public class FinMinEditDistanceBetweenTwoStringsDP {
 
 	private static int minEditDistance(String s, String t) {
