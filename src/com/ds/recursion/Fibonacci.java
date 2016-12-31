@@ -1,5 +1,6 @@
 package com.ds.recursion;
 
+// https://www.mathsisfun.com/numbers/fibonacci-sequence.html
 // 0, 1, 2, 3, 4, 5, 6
 // 0, 1, 1, 2, 3, 5, 8
 public class Fibonacci {
@@ -27,26 +28,26 @@ public class Fibonacci {
 	// tail recursion, O(1) space and O(n) time complexity
 	public static int tailRecursive(int n) {
 		if(n == 0) return 0;
-		if(n == 1 || n == 2) return 1;
-		return fibtail(0, 1, n);
+		return fibtail(n, 0, 1);
 	}
 
-	private static int fibtail(int a, int b, int n) {
-		if (n <= 0) {
-			return a;
-		}
-		return fibtail(b, a + b, n - 1);
+	private static int fibtail(int n, int a, int b) {
+		if (n == 0) return a;
+		return fibtail(n - 1, b, a + b);
 	}
 
 	public static void main(String[] args) {
-		for (int i = 0; i <= 5; i++) {
+		System.out.println("Using Iterative....");
+		for (int i = 0; i <= 6; i++) {
 			System.out.print(fib_iterative(i) + " ");
 		}
 
 		// Tail recursion
 		System.out.println();
 		System.out.println("Using Tail Recursion....");
-		System.out.println(tailRecursive(5));
+		for (int i = 0; i <= 6; i++) {
+			System.out.print(tailRecursive(i) + " ");
+		}
 
 	}
 
