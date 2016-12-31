@@ -1,33 +1,34 @@
-package com.ds.matrix;
+package com.ds.dynamicprogramming;
 
-public class MinimumPathSumBFS {
+/*
+Given a m x n grid filled with non-negative numbers, 
+find a path from top left to bottom right which minimizes the sum 
+of all numbers along its path.
+*/
+
+public class MinimumPathSumMatrixDP {
 
 	public static int mimumPathSum(int[][] matrix) {
-		int m = matrix.length;
-		int n = matrix[0].length;
+		int rows = matrix.length;
+		int cols = matrix[0].length;
 
-		int[][] dp = new int[m][n];
+		int[][] dp = new int[rows][cols];
 		dp[0][0] = matrix[0][0];
+		for (int i = 1; i < rows; i++) {
+			dp[i][0] = dp[i - 1][0] + matrix[i][0];
+		}
 
-		for (int i = 1; i < n; i++) {
+		for (int i = 1; i < cols; i++) {
 			dp[0][i] = dp[0][i - 1] + matrix[0][i];
 		}
 
-		for (int j = 1; j < m; j++) {
-			dp[j][0] = dp[j - 1][0] + matrix[j][0];
-		}
-
-		for (int i = 1; i < n; i++) {
-			for (int j = 1; j < m; j++) {
-				if (dp[i - 1][j] > dp[i][j - 1]) {
-					dp[i][j] = dp[i][j - 1] + matrix[i][j];
-				} else {
-					dp[i][j] = dp[i - 1][j] + matrix[i][j];
-				}
+		for (int i = 1; i < rows; i++) {
+			for (int j = 1; j < cols; j++) {
+				dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + matrix[i][j];
 			}
 		}
 
-		return dp[m - 1][n - 1];
+		return dp[rows - 1][cols - 1];
 	}
 
 	public static void main(String[] args) {
