@@ -1,6 +1,9 @@
 package com.ds.dynamicprogramming;
 
 // O(n) space and O(n) time complexity
+// series
+//     n = 0, 1, 2, 3, 4, 5, 6
+//fib(n) = 0, 1, 1, 2, 3, 5, 8
 public class FibonacciDP {
 
 	private static int fibDP(int n) {
