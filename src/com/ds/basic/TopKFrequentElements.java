@@ -18,11 +18,8 @@ public class TopKFrequentElements {
 		// 1. build a map
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 		for (int element : a) {
-			if (map.containsKey(element)) {
-				map.put(element, map.get(element) + 1);
-			} else {
-				map.put(element, 1);
-			}
+			Integer value = map.get(element);
+			map.put(element, value == null ? 1 : value + 1);
 		}
 		System.out.println("Initial Map: \n" + map.toString());
 
