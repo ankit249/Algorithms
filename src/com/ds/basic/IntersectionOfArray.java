@@ -17,7 +17,8 @@ public class IntersectionOfArray {
 		System.out.println("Array input 2: " + Arrays.toString(a2));
 
 		int i = 0, j = 0;
-		List<Integer> list = new ArrayList<Integer>();
+		int[] result = new int[a1.length > a2.length ? a2.length : a1.length];
+		int count = 0;
 
 		while (i < a1.length && j < a2.length) {
 			if (a1[i] < a2[j]) {
@@ -25,18 +26,13 @@ public class IntersectionOfArray {
 			} else if (a1[i] > a2[j]) {
 				j++;
 			} else {
-				list.add(a1[i]);
+				result[count++] = a1[i];
 				i++;
 				j++;
 			}
 		}
 
-		int[] result = new int[list.size()];
-		for (int p = 0; p < list.size(); p++) {
-			result[p] = list.get(p);
-		}
-
-		return result;
+		return Arrays.copyOf(result, count);
 	}
 
 	// time: O(n) space: O(n)
