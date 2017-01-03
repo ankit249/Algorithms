@@ -1,0 +1,41 @@
+package com.ds.math;
+
+public class MultiplyString {
+
+	public static String multiply(String num1, String num2) {
+		String n1 = new StringBuilder(num1).reverse().toString();
+		String n2 = new StringBuilder(num2).reverse().toString();
+
+		int[] a = new int[num1.length() + num2.length()];
+
+		// multiply each digit and sum at the corresponding positions
+		for (int i = 0; i < n1.length(); i++) {
+			for (int j = 0; j < n2.length(); j++) {
+				a[i + j] += (n1.charAt(i) - '0') * (n2.charAt(j) - '0');
+			}
+		}
+
+		StringBuilder sb = new StringBuilder();
+
+		// calculate each digit
+		for (int i = 0; i < a.length; i++) {
+			int mod = a[i] % 10;
+			int carry = a[i] / 10;
+			if (i + 1 < a.length) {
+				a[i + 1] += carry;
+			}
+			sb.insert(0, mod);
+		}
+
+		// remove front 0's
+		while (sb.charAt(0) == '0' && sb.length() > 1) {
+			sb.deleteCharAt(0);
+		}
+
+		return sb.toString();
+	}
+
+	public static void main(String[] args) {
+		System.out.println(multiply("15", "15"));
+	}
+}
