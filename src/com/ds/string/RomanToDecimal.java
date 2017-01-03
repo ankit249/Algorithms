@@ -60,7 +60,7 @@ public class RomanToDecimal {
 	}
 
 	public static void main(java.lang.String args[]) {
-		romanToDecimal("IL");
+		romanToDecimal("XLIX");
 		romanToDecimal("XIV");
 	}
 }
