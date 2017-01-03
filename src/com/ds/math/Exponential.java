@@ -1,4 +1,4 @@
-package com.ds.recursion;
+package com.ds.math;
 
 public class Exponential {
 

@@ -1,21 +1,22 @@
 package com.ds.dynamicprogramming;
 
+//https://www.youtube.com/watch?v=3hcaVyX00_4
 public class EggDropping {
 
 	public int calculate(int eggs, int floors) {
 
 		int dp[][] = new int[eggs + 1][floors + 1];
 		int c = 0;
-		for (int i = 0; i <= floors; i++) {
+		for (int i = 0; i < floors + 1; i++) {
 			dp[1][i] = i;
 		}
 
-		for (int e = 2; e <= eggs; e++) {
-			for (int f = 1; f <= floors; f++) {
-				dp[e][f] = Integer.MAX_VALUE;
-				for (int k = 1; k <= f; k++) {
-					c = 1 + Math.max(dp[e - 1][k - 1], dp[e][f - k]);
-					dp[e][f] = Math.min(dp[e][f], c);
+		for (int i = 2; i < eggs + 1; i++) {
+			for (int j = 1; j < floors + 1; j++) {
+				dp[i][j] = Integer.MAX_VALUE;
+				for (int k = 1; k < j + 1; k++) {
+					c = 1 + Math.max(dp[i - 1][k - 1], dp[i][j - k]);
+					dp[i][j] = Math.min(dp[i][j], c);
 				}
 			}
 		}
