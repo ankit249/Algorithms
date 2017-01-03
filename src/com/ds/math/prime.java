@@ -1,4 +1,4 @@
-package com.ds.basic;
+package com.ds.math;
 
 public class prime {
 
