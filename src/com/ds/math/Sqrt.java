@@ -2,10 +2,9 @@ package com.ds.math;
 
 public class Sqrt {
 	public static int sqrt(int n) {
+		int j = 0;
 		int sum = 1;
 		int result = 0;
-
-		int j = 0;
 
 		while (result < n) {
 			j++;
