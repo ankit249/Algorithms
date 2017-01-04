@@ -6,8 +6,8 @@ public class StringUniqueChars {
 	private static boolean isUniqueChars(String string) {
 		boolean[] b = new boolean[26];
 		for (int i = 0; i < string.length(); i++) {
-			if (!b['z' - string.charAt(i)]) { // or !b[string.charAt(i) - 'a']
-				b['z' - string.charAt(i)] = true;
+			if (b[string.charAt(i) - 'a'] == false) { // or !b[string.charAt(i) - 'a']
+				b[string.charAt(i) - 'a'] = true;
 			} else {
 				return false;
 			}
@@ -21,7 +21,7 @@ public class StringUniqueChars {
 	private static boolean isUniqueChars2(String string) {
 		int checker = 0;
 		for (int i = 0; i < string.length(); i++) {
-			int val = 'z' - string.charAt(i);
+			int val = string.charAt(i) - 'a';
 			if ((checker & (1 << val)) > 0)
 				return false;
 			checker |= 1 << val;
