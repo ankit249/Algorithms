@@ -20,7 +20,10 @@ public class Exponential {
 		System.out.println("");
 		System.out.println("Double solution");
 
-		System.out.println(dpow(2, 3));
+		for (int i = -10; i < 10; i++) {
+			System.out.print(dpow(2, i) + " ");
+		}
+
 	}
 
 	static double dpow(double x, int n) {

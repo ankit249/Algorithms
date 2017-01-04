@@ -23,18 +23,18 @@ public class StockPrice {
 	}
 
 
-	public static int maxProfit(int[] prices) {
+	public static int maxProfit(int[] a) {
 
 		// make sure we have at least 2 prices
-		if (prices.length < 2) {
+		if (a.length < 2) {
 			throw new IllegalArgumentException("Getting a profit requires at least 2 prices");
 		}
 
-		int maxProfit = prices[1] - prices[0];
-		int minPrice = prices[0];
-		for (int i = 0; i < prices.length; i++) {
-			maxProfit = Math.max(maxProfit, prices[i] - minPrice);
-			minPrice = Math.min(minPrice, prices[i]);
+		int maxProfit = a[1] - a[0];
+		int minPrice = a[0];
+		for (int i = 0; i < a.length; i++) {
+			maxProfit = Math.max(maxProfit, a[i] - minPrice);
+			minPrice = Math.min(minPrice, a[i]);
 		}
 		return maxProfit;
 	}
