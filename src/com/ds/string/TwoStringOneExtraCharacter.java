@@ -10,7 +10,7 @@ public class TwoStringOneExtraCharacter {
 		}
 		char ch = '\0';
 		for (int i = 0; i < s2.length(); i++) {
-			if (!b[s2.charAt(i)]) {
+			if (b[s2.charAt(i)] == false) {
 				ch = s2.charAt(i);
 				break;
 			}
