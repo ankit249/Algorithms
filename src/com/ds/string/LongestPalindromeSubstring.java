@@ -37,6 +37,10 @@ public class LongestPalindromeSubstring {
 			if (tmpPalindrome.length() > longest.length()) {
 				longest = tmpPalindrome;
 			}
+
+			if (longest.length() == input.length()) {
+				return longest;
+			}
 		}
 
 		return longest;
@@ -55,5 +59,7 @@ public class LongestPalindromeSubstring {
 
 	public static void main(String[] args) {
 		System.out.println(longestPalindromeSubstring("aaba"));
+		System.out.println(longestPalindromeSubstring("ccc"));
+		System.out.println(longestPalindromeSubstring("a"));
 	}
 }
