@@ -6,8 +6,8 @@ public class SpiralOrder {
 
 	public static void main(String[] args) {
 
-		// int[][] matrix = { { 1, 2, 3, 4 }, { 12, 13, 14, 5 }, { 11, 16, 15, 6 }, { 10, 9, 8, 7 } };
-		int[][] matrix = { { 1, 2, 3, 4 }, { 10, 11, 12, 5 }, { 9, 8, 7, 6 } };
+		//int[][] matrix = { { 1, 2, 3, 4 }, { 12, 13, 14, 5 }, { 11, 16, 15, 6 }, { 10, 9, 8, 7 } };
+		int[][] matrix = { { 1, 2, 3, 4 }, { 10,11,12,5 }, { 9,8,7,6} };
 
 		ArrayList<Integer> list = spiralOrder(matrix);
 		System.out.println(list);
