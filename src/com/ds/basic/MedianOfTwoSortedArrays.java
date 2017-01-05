@@ -1,80 +1,64 @@
 package com.ds.basic;
 
-import java.util.Arrays;
-
 public class MedianOfTwoSortedArrays {
 
-	private static int[] merge(int[] a, int[] b) {
-		int[] c = new int[a.length + b.length];
+	public static double findMedianSortedArrays(int a[], int b[]) {
+		int m = a.length;
+		int n = b.length;
 
-		int i = 0, j = 0, k = 0;
-		while (i < a.length && j < b.length) {
-			if (a[i] <= b[j]) {
-				c[k++] = a[i++];
-			} else {
-				c[k++] = b[j++];
-			}
+		// odd
+		if ((m + n) % 2 != 0)
+			return (double) findKth(a, b, (m + n) / 2, 0, m - 1, 0, n - 1);
+		// even
+		else {
+			return (double)(findKth(a, b, (m + n) / 2, 0, m - 1, 0, n - 1) + findKth(a, b, (m + n) / 2 - 1, 0, m - 1, 0, n - 1)) / 2;
 		}
-
-		while (i < a.length) {
-			c[k++] = a[i++];
-		}
-
-		while (j < b.length) {
-			c[k++] = b[j++];
-		}
-
-		return c;
 	}
 
-	private static double medianOfTwoSortedArrays(int[] a, int[] b) {
+	public static int findKth(int a[], int b[], int k, int alo, int ahi, int blo, int bhi) {
 
+		int aLen = ahi - alo + 1;
+		int bLen = bhi - blo + 1;
 
-		double median_a = findMedian(a);
-		double median_b = findMedian(b);
+		// Handle special cases
+		if (aLen == 0)
+			return b[blo + k];
+		if (bLen == 0)
+			return a[alo + k];
+		if (k == 0)
+			return a[alo] < b[blo] ? a[alo] : b[blo];
 
-		int[] new_array_a = new int[a.length / 2];
-		int[] new_array_b = new int[b.length / 2];
+		int aMid = aLen * k / (aLen + bLen); // a's middle count
+		int bMid = k - aMid - 1; // b's middle count
 
-		if (median_a == median_b) {
-			return median_a;
-		}
+		// make aMid and bMid to be array index
+		aMid = aMid + alo;
+		bMid = bMid + blo;
 
-		if (median_a < median_b) {
-			new_array_a = Arrays.copyOfRange(a, a.length / 2, a.length);
-			new_array_b = Arrays.copyOfRange(b, 0, b.length / 2);
+		if (a[aMid] > b[bMid]) {
+			k = k - (bMid - blo + 1);
+			ahi = aMid;
+			blo = bMid + 1;
 		} else {
-			new_array_a = Arrays.copyOfRange(a, 0, a.length / 2);
-			new_array_b = Arrays.copyOfRange(b, b.length / 2, b.length);
+			k = k - (aMid - alo + 1);
+			bhi = bMid;
+			alo = aMid + 1;
 		}
 
-		int[] c = merge(new_array_a, new_array_b);
-
-		return findMedian(c);
-	}
-
-	private static double findMedian(int[] a) {
-
-
-		double result;
-
-		if (a.length % 2 == 0) {
-			// even
-			int r1 = a[(a.length / 2) - 1];
-			int r2 = a[a.length / 2];
-			result = (double) (r1 + r2) / 2;
-		} else {
-			// odd
-			result = a[a.length / 2];
-		}
-
-		return result;
-
+		return findKth(a, b, k, alo, ahi, blo, bhi);
 	}
 
 	public static void main(String[] args) {
-		int[] b = { 2, 3, 4, 4, 4, 6 };
-		int[] a = { 6, 7, 7, 8, 9 };
-		System.out.println(medianOfTwoSortedArrays(a, b));
+		int[] a = { 2, 3, 4, 4, 4, 6 };
+		int[] b = { 6, 7, 7, 8, 9 };
+		System.out.println(findMedianSortedArrays(a, b));
+
+		int[] c = { 1, 12, 15, 26, 38 };
+		int[] d = { 2, 13, 17, 30, 45 };
+		System.out.println(findMedianSortedArrays(c, d));
+
+		int[] e = { 1, 2, 3, 4, 5 };
+		int[] f = { 1 };
+		System.out.println(findMedianSortedArrays(e, f));
 	}
 }
