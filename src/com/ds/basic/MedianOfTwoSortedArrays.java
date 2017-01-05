@@ -28,6 +28,7 @@ public class MedianOfTwoSortedArrays {
 		if (k == 0)
 			return a[alo] < b[blo] ? a[alo] : b[blo];
 
+		// TODO RATTA
 		int aMid = aLen * k / (aLen + bLen); // a's middle count
 		int bMid = k - aMid - 1; // b's middle count
 
@@ -56,6 +57,10 @@ public class MedianOfTwoSortedArrays {
 		int[] c = { 1, 12, 15, 26, 38 };
 		int[] d = { 2, 13, 17, 30, 45 };
 		System.out.println(findMedianSortedArrays(c, d));
+
+		int[] aa = { 4, 5, 6, 7, 8 };
+		int[] bb = { 1, 2, 3, 4, 5 };
+		System.out.println(findMedianSortedArrays(aa, bb));
 
 		int[] e = { 1, 2, 3, 4, 5 };
 		int[] f = { 1 };
