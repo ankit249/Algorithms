@@ -32,6 +32,7 @@ public class ReverseInteger {
 		System.out.println(reverse(number));
 		System.out.println(reverse(1534236469));
 		System.out.println(isPalindrome(4000));
+		System.out.println(isPalindrome(1));
 
 		System.out.println("MAX: " + Integer.MAX_VALUE);
 		System.out.println("MIN: " + Integer.MIN_VALUE);
