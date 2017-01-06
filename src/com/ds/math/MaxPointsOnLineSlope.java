@@ -3,6 +3,7 @@ package com.ds.math;
 import java.awt.Point;
 import java.util.HashMap;
 
+// slope : (y2 - y1) / (x2 - x1)
 public class MaxPointsOnLineSlope {
 	public int maxPoints(Point[] points) {
 		if (points == null || points.length == 0) return 0;
