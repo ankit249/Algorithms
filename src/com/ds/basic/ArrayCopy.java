@@ -11,6 +11,9 @@ public class ArrayCopy {
 		// System.out.println(p);
 		System.out.println(Arrays.toString(b));
 
+		int[] c = Arrays.copyOf(a, 4);
+
+		System.out.println(Arrays.toString(c));
 		Integer[] a1 = { 1 - 5 };
 		for (int ele : a1) {
 			System.out.println(ele);
