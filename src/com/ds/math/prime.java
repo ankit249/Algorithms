@@ -14,10 +14,11 @@ public class prime {
 	}
 
 	// A faster method would be to skip all even numbers and only try up to the square root of the number.
+	// 2 is a prime number
 	public static boolean isPrimeEfficient(int num) {
-		if (num < 2)
-			return false;
-
+		if (num < 2) return false;
+		if (num == 2) return true;
+		
 		if (num % 2 == 0) {
 			// System.out.println(num + " is not prime");
 			return false;
