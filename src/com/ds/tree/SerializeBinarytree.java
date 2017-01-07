@@ -2,7 +2,7 @@ package com.ds.tree;
 
 import java.util.StringTokenizer;
 
-public class SerializeBST {
+public class SerializeBinarytree {
 
 	StringBuilder sb = new StringBuilder();
 
@@ -40,7 +40,7 @@ public class SerializeBST {
 		// original tree
 		BTreePrinter.printNode(root);
 
-		SerializeBST object = new SerializeBST();
+		SerializeBinarytree object = new SerializeBinarytree();
 		object.serialize(root);
 		String result = object.sb.toString();
 		System.out.println(result);
