@@ -3,6 +3,7 @@ package com.ds.graphnode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
 /*
 Given a list of airline tickets represented by pairs of departure and arrival airports [from, to],
@@ -14,7 +15,7 @@ PriorityQueue should be used instead of TreeSet, because there are duplicate ent
 */
 
 public class ReconstructIternaryEulerianPath {
-	HashMap<String, PriorityQueue<String>> map = new HashMap<String, PriorityQueue<String>>();
+	Map<String, PriorityQueue<String>> map = new HashMap<String, PriorityQueue<String>>();
 	List<String> result = new ArrayList<String>();
 
 	public List<String> findItinerary(String[][] tickets) {
