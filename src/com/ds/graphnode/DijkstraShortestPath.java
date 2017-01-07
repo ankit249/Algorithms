@@ -49,18 +49,18 @@ public class DijkstraShortestPath {
 		q.offer(source);
 
 		while (!q.isEmpty()) {
-			Vertex u = q.poll();
+			Vertex v = q.poll();
 
-			// Visit each edge exiting u
-			for (Edge el : u.neighbors) {
-				Vertex v = el.target;
-				double weight = el.weight;
-				double distanceThroughU = u.minDistance + weight;
-				if (distanceThroughU < v.minDistance) {
-					q.remove(v);
-					v.minDistance = distanceThroughU;
-					v.previous = u;
-					q.offer(v);
+			// Visit each edge exiting v
+			for (Edge edge : v.neighbors) {
+				Vertex w = edge.target;
+				double weight = edge.weight;
+				double distancetoedge = v.minDistance + weight;
+				if (distancetoedge < w.minDistance) {
+					q.remove(w);
+					w.minDistance = distancetoedge;
+					w.previous = v;
+					q.offer(w);
 				}
 			}
 		}
