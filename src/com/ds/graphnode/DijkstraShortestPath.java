@@ -5,11 +5,15 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * E 9 / \ 6 / \ / 2 11 \ F-----C------D 14 | /9 10\ | 15 A------------B 7
- * 
- * graph on the wikipedia :https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
- */
+/*
+E 9 / \ 6 / \ / 2 11 \ F-----C------D 14 | /9 10\ | 15 A------------B 7
+
+graph on the wikipedia :https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+Dijkstra's shortest path algorithm is O(ElogV) where:
+
+V is the number of vertices
+E is the total number of edges
+*/
 
 class Vertex implements Comparable<Vertex> {
 	public String name;
