@@ -58,9 +58,8 @@ public class ReverseList {
 	}
 
 	public ListNode recursiveReverse(ListNode previous, ListNode current) {
-		if (current.next == null) {
-			current.next = previous;
-			return current;
+		if (current == null) {
+			return previous;
 		} else {
 			ListNode tmp = current.next;
 			current.next = previous;
