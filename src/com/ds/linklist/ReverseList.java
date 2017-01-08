@@ -31,10 +31,9 @@ public class ReverseList {
 		System.out.println();
 
 		System.out.print("recursive reverse the list: ");
-		ListNode current = head;
-		ListNode previous = null;
-		head = l.recursiveReverse(previous, current);
-		l.print(head);
+
+		ListNode m = l.recursiveReverse(head);
+		l.print(m);
 		System.out.println();
 	}
 
@@ -54,6 +53,14 @@ public class ReverseList {
 		}
 
 		head = previous;
+		return head;
+	}
+	
+	public ListNode recursiveReverse(ListNode head) {
+		if(head == null || head.next == null) return head;
+		ListNode current = head;
+		ListNode previous = null;
+		head = this.recursiveReverse(previous, current);
 		return head;
 	}
 
