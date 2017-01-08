@@ -71,7 +71,7 @@ public class SkyLineProblem {
 		PriorityQueue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
 		queue.offer(0);
 
-		int prevMaxHeight = 0;
+		int max = 0;
 		List<int[]> result = new ArrayList<>();
 		for (BuildingPoint buildingPoint : bp) {
 			// if it is start of building then add the height to map. If height already exists then increment
@@ -86,9 +86,9 @@ public class SkyLineProblem {
 			int currentMaxHeight = queue.peek();
 			// if height changes from previous height then this building x becomes critcal x.
 			// So add it to the result.
-			if (prevMaxHeight != currentMaxHeight) {
+			if (max != currentMaxHeight) {
 				result.add(new int[] { buildingPoint.x, currentMaxHeight });
-				prevMaxHeight = currentMaxHeight;
+				max = currentMaxHeight;
 			}
 		}
 		return result;
