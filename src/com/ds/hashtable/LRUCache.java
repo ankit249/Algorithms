@@ -21,11 +21,12 @@ public class LRUCache {
 	}
 
 	int capacity;
-	HashMap<Integer, Node> map = new HashMap<Integer, Node>();
+	HashMap<Integer, Node> map;
 	Node head, tail;
 
 	public LRUCache(int capacity) {
 		this.capacity = capacity;
+		map = new HashMap<Integer, Node>();
 	}
 
 	public int get(int key) {
@@ -94,6 +95,7 @@ public class LRUCache {
 
 		System.out.println(c.get(2));
 		System.out.println(c.get(1));
+		System.out.println(c.get(6));
 
 	}
 }

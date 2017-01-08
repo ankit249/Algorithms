@@ -1,7 +1,7 @@
 package com.ds.hashtable;
 
 //     ____    
-//    |____|-->|key|value| -->  |key|value|
+//    |____|-->|key|data| -->  |key|data|
 //    |____|   
 //    |____|
 //    |____|
@@ -21,27 +21,32 @@ class Node {
 }
 
 public class CustomHashMap {
-	int capacity = 4;
-	Node[] arr = new Node[capacity];
+	int capacity;
+	Node[] arr;
+
+	public CustomHashMap(int capacity) {
+		this.capacity = capacity;
+		arr = new Node[capacity];
+	}
 
 	public int hashcode(int key) {
 		return key % capacity;
 	}
 
-	public Node get(int key) {
+	public int get(int key) {
 		int hashcode = hashcode(key);
 		Node head = arr[hashcode];
 		Node current = head;
 		while (current != null) {
 			if (current.key == key) {
-				return current;
+				return current.data;
 			}
 			current = current.next;
 		}
 
 		// System.out.println("not found");
 
-		return null;
+		return -1;
 	}
 
 	public void put(int key, int data) {
@@ -67,7 +72,7 @@ public class CustomHashMap {
 	}
 
 	public static void main(String[] args) {
-		CustomHashMap c = new CustomHashMap();
+		CustomHashMap c = new CustomHashMap(4);
 		c.put(100, 100);
 		c.put(100, 200);
 		c.put(48, 121);
@@ -75,13 +80,13 @@ public class CustomHashMap {
 		c.put(51, 200);
 		c.put(51, 300);
 
-		System.out.println(c.get(100).data);
-		System.out.println(c.get(48).data);
-		System.out.println(c.get(47).data);
-		System.out.println(c.get(51).data);
+		System.out.println(c.get(100));
+		System.out.println(c.get(48));
+		System.out.println(c.get(47));
+		System.out.println(c.get(51));
 
 		System.out.println(c.get(10));
-		System.out.println(c.get(51).data);
+		System.out.println(c.get(51));
 	}
 
 }

@@ -8,14 +8,14 @@ package com.ds.linklist;
 public class Stack {
 	ListNode top;
 
-	public ListNode pop() {
+	public int pop() {
 		if (top == null) {
-			return null;
+			return -1;
 			// throw new NoSuchElementException("No Element found");
 		}
 		ListNode tmp = top;
 		top = top.next;
-		return tmp;
+		return tmp.data;
 	}
 
 	public void push(int d) {
@@ -41,15 +41,15 @@ public class Stack {
 		obj.push(4);
 
 		obj.print();
-		System.out.print("popped element:" + obj.pop().data + "   ");
+		System.out.print("popped element:" + obj.pop() + "   ");
 		obj.print();
-		System.out.print("popped element:" + obj.pop().data + "   ");
+		System.out.print("popped element:" + obj.pop() + "   ");
 		obj.print();
-		System.out.print("popped element:" + obj.pop().data + "   ");
+		System.out.print("popped element:" + obj.pop() + "   ");
 		obj.print();
-		System.out.print("popped element:" + obj.pop().data + "   ");
+		System.out.print("popped element:" + obj.pop() + "   ");
 		obj.print();
-		System.out.print("popped element:" + (obj.pop() != null ? obj.pop().data : " " + "   "));
+		System.out.print("popped element:" + obj.pop() + "   ");
 		obj.print();
 	}
 }
