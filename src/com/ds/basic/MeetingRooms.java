@@ -46,6 +46,7 @@ public class MeetingRooms {
 			if (prev.end > current.start) {
 				return false;
 			}
+			prev = current;
 		}
 		return true;
 	}
@@ -55,6 +56,7 @@ public class MeetingRooms {
 		list.add(new MInterval(1, 3));
 		list.add(new MInterval(5, 7));
 		list.add(new MInterval(6, 8));
+		list.add(new MInterval(4, 7));
 		list.add(new MInterval(2, 4));
 		list.add(new MInterval(1, 8));
 		list.add(new MInterval(2, 9));
@@ -65,6 +67,7 @@ public class MeetingRooms {
 		list = new ArrayList<MInterval>();
 		list.add(new MInterval(1, 3));
 		list.add(new MInterval(5, 7));
+		list.add(new MInterval(6, 8));
 
 		System.out.println("No. of Meeting Roooms needed: " + findMeetingRooms(list));
 		System.out.println("Can one person attend all the meetings ? " + canOneAttendAllMeetings(list));
