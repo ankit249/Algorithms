@@ -36,7 +36,7 @@ public class MergeKSortedArrayPQ {
 		PriorityQueue<ArrayHolder> pq = new PriorityQueue<ArrayHolder>();
 		int count = 0;
 		for (int i = 0; i < a.length; i++) {
-			pq.add(new ArrayHolder(a[i], 0));
+			pq.offer(new ArrayHolder(a[i], 0));
 			count = count + a[i].length;
 		}
 
@@ -47,7 +47,7 @@ public class MergeKSortedArrayPQ {
 			ArrayHolder tmp = pq.poll();
 			result[currentIndex++] = tmp.array[tmp.index++];
 			if (tmp.array.length > tmp.index) {
-				pq.add(new ArrayHolder(tmp.array, tmp.index));
+				pq.offer(new ArrayHolder(tmp.array, tmp.index));
 			}
 		}
 		return result;
