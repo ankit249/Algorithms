@@ -26,8 +26,7 @@ public class RemoveElementFromArrayPassedIn {
 			}
 		}
 
-		int[] b = Arrays.copyOf(a, i);
-		return b;
+		return Arrays.copyOf(a, i);
 
 	}
 
