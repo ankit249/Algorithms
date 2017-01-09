@@ -1,15 +1,13 @@
 package com.ds.string;
 
 public class RomanToDecimal {
-	public static void romanToDecimal(java.lang.String romanNumber) {
+	public static void romanToDecimal(String romanNumber) {
 		int decimal = 0;
 		int lastNumber = 0;
 		String romanNumeral = romanNumber.toUpperCase();
-		/*
-		 * operation to be performed on upper cases even if user enters roman values in lower case chars
-		 */
-		for (int x = romanNumeral.length() - 1; x >= 0; x--) {
-			char convertToDecimal = romanNumeral.charAt(x);
+
+		for (int i = romanNumeral.length() - 1; i >= 0; i--) {
+			char convertToDecimal = romanNumeral.charAt(i);
 
 			switch (convertToDecimal) {
 			case 'M':
