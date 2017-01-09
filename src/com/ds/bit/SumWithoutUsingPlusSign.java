@@ -16,6 +16,7 @@ public class SumWithoutUsingPlusSign {
 
 	public static void main(String[] args) {
 		
+		System.out.println(getsum(1, 2));
 		System.out.println(getsum(5, 3));
 		System.out.println(getsum(1, -3));
 		System.out.println(getsum(-1, 3));
