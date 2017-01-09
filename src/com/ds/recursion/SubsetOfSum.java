@@ -4,9 +4,9 @@ package com.ds.recursion;
 // time complexity O(2n)   <-- Exponential
 public class SubsetOfSum {
 
-	public static void subsetofsum(int[] a, int index, boolean[] barray, int target, int currentsum) {
+	public static void subsetofsum(int[] a, int index, boolean[] barray, int target) {
 
-		if (currentsum == target) {
+		if (target == 0) {
 			for (int i = 0; i < barray.length; i++) {
 				if (barray[i]) {
 					System.out.print(a[i] + " ");
@@ -22,13 +22,11 @@ public class SubsetOfSum {
 
 		// select the start index in the current sum
 		barray[index] = true;
-		currentsum = currentsum + a[index];
-		subsetofsum(a, index + 1, barray, target, currentsum);
+		subsetofsum(a, index + 1, barray, target - a[index]);
 
 		// don't select the start index in the current sum
 		barray[index] = false;
-		currentsum = currentsum - a[index];
-		subsetofsum(a, index + 1, barray, target, currentsum);
+		subsetofsum(a, index + 1, barray, target);
 
 	}
 
@@ -37,7 +35,7 @@ public class SubsetOfSum {
 		int target = 8;
 		boolean[] barray = new boolean[a.length];
 
-		subsetofsum(a, 0, barray, target, 0);
+		subsetofsum(a, 0, barray, target);
 
 	}
 }
