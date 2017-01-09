@@ -11,7 +11,7 @@ public class GCD {
 
 	public static void main(String[] args) {
 		System.out.println(gcd(15, 27));
-		System.out.println(gcd(3, 4));
+		System.out.println(gcd(9, 6));
 		System.out.println(gcd(144, 224));
 
 		System.out.println("3 % 4 = " + 3 % 4);
