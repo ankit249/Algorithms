@@ -14,7 +14,7 @@ public class MaximumProductSubArrayElements {
 
 		for (int i = 1; i < a.length; i++) {
 			int temp = maxLocal;
-			maxLocal = Math.max(Math.max(a[i] * maxLocal, a[i]), a[i] * minLocal);
+			maxLocal = Math.max(Math.max(a[i] * temp, a[i]), a[i] * minLocal);
 			minLocal = Math.min(Math.min(a[i] * temp, a[i]), a[i] * minLocal);
 			global = Math.max(global, maxLocal);
 		}
