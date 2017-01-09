@@ -1,9 +1,10 @@
-package com.ds.basic;
+package com.ds.heap;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class MeetingRooms {
 
@@ -15,20 +16,23 @@ public class MeetingRooms {
 		});
 		System.out.println("Sorted meeting list: " + list);
 
-		int room = 1;
-		int max = room;
-		MInterval prev = list.get(0);
-		for (int i = 1; i < list.size(); i++) {
-			MInterval current = list.get(i);
-			if (prev.end > current.start) {
-				room++;
+		PriorityQueue<Integer> queue = new PriorityQueue<Integer>();
+		int count = 1;
+		queue.offer(list.get(0).end);
+
+		// remove it since in the queue, if it was array start the i loop from 1.
+		list.remove(0);
+
+		for (MInterval interval : list) {
+			if (interval.start < queue.peek()) {
+				count++;
 			} else {
-				room--;
+				queue.poll();
 			}
-			max = Math.max(max, room);
+			queue.offer(interval.end);
 		}
 
-		return max;
+		return count;
 	}
 
 	public static boolean canOneAttendAllMeetings(List<MInterval> list) {
