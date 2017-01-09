@@ -3,51 +3,43 @@ package com.ds.basic;
 public class MaximumProduct3Elements {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		// int[] a = { 0, -1, 3, 100, -70, -5 };// {1, 3, 5, 2, 8, 0, -1, 3};
+		// int[] a = { 0, -1, 3, 100, -70, -5 };
+		// int[] a = {1, 3, 5, 2, 8, 0, -1, 3};
 		int[] a = { 1, 3, 5, 2, 8, 0, -1, 3 };
-		int largestPos = 0, maxPos1 = 0, maxPos2 = 0, maxNeg1 = 0, maxNeg2 = 0;
+		int max1 = Integer.MIN_VALUE;
+		int max2 = Integer.MIN_VALUE;
+		int max3 = Integer.MIN_VALUE;
+		int maxNeg1 = Integer.MAX_VALUE;
+		int maxNeg2 = Integer.MAX_VALUE;
 
 		for (int element : a) {
 			if (element > 0) {
-				if (largestPos < element) {
-					if (largestPos != 0) {
-						if (maxPos1 != 0) {
-							maxPos2 = maxPos1;
-						}
-						maxPos1 = largestPos;
-					}
-					largestPos = element;
-				} else {
-					if (maxPos1 < element) {
-						if (maxPos1 != 0)
-							maxPos2 = maxPos1;
-						maxPos1 = element;
-					} else {
-						if (maxPos2 < element) {
-							maxPos2 = element;
-						}
-					}
+				if (max1 < element) {
+					max3 = max2;
+					max2 = max1;
+					max1 = element;
+				} else if (max2 < element) {
+					max3 = max2;
+					max2 = element;
+				} else if (max3 < element) {
+					max3 = element;
 				}
 			} else {
 				if (element < 0) {
 					if (maxNeg1 > element) {
-						if (maxNeg1 != 0)
-							maxNeg2 = maxNeg1;
+						maxNeg2 = maxNeg1;
 						maxNeg1 = element;
-					} else {
-						if (maxNeg2 > element) {
-							maxNeg2 = element;
-						}
+					} else if (maxNeg2 > element) {
+						maxNeg2 = element;
 					}
 				}
 			}
 		}
 
-		if (maxPos1 * maxPos2 > maxNeg1 * maxNeg2)
-			System.out.println(maxPos1 * maxPos2 * largestPos);
+		if (max2 * max3 > maxNeg1 * maxNeg2)
+			System.out.println(max1 * max2 * max3);
 		else {
-			System.out.println(maxNeg1 * maxNeg2 * largestPos);
+			System.out.println(max1 * maxNeg1 * maxNeg2);
 		}
 	}
 
