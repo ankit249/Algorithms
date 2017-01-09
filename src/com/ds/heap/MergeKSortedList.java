@@ -32,7 +32,7 @@ public class MergeKSortedList {
 
 		for (ListNode listnode : list) {
 			if (list != null) {
-				pq.add(listnode);
+				pq.offer(listnode);
 			}
 		}
 
@@ -43,7 +43,7 @@ public class MergeKSortedList {
 			ListNode tmp = pq.poll();
 			current.next = tmp;
 			if (tmp.next != null) {
-				pq.add(tmp.next);
+				pq.offer(tmp.next);
 			}
 			current = current.next;
 		}
