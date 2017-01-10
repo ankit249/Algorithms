@@ -18,8 +18,8 @@ public class SumTask extends RecursiveTask<Integer> {
 	int lo;
 	int hi;
 
-	SumTask(Integer[] a_copy, int lo, int hi) {
-		this.a = a_copy;
+	SumTask(Integer[] a, int lo, int hi) {
+		this.a = a;
 		this.lo = lo;
 		this.hi = hi;
 	}
