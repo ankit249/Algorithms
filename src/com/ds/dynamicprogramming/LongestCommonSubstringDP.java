@@ -1,5 +1,6 @@
 package com.ds.dynamicprogramming;
 
+//https://www.youtube.com/watch?v=BysNXJHzCEs
 public class LongestCommonSubstringDP {
 	private static int longestCommonSubString(char[] str1, char[] str2) {
 		int[][] dp = new int[str1.length + 1][str2.length + 1];
