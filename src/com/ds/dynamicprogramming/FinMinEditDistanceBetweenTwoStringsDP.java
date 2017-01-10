@@ -27,10 +27,11 @@ http://www.programcreek.com/2014/05/leetcode-one-edit-distance-java/
 public class FinMinEditDistanceBetweenTwoStringsDP {
 
 	private static int minEditDistance(String s, String t) {
-		char str1[] = s.toCharArray();
-		char str2[] = t.toCharArray();
 
-		int[][] dp = new int[str1.length + 1][str2.length + 1];
+		int m = s.length();
+		int n = t.length();
+
+		int[][] dp = new int[m + 1][n + 1];
 		for (int i = 0; i < dp[0].length; i++) {
 			dp[0][i] = i;
 		}
@@ -39,9 +40,9 @@ public class FinMinEditDistanceBetweenTwoStringsDP {
 			dp[i][0] = i;
 		}
 		
-		for (int i = 1; i < str1.length + 1; i++) {
-			for (int j = 1; j < str2.length + 1; j++) {
-				if (str1[i - 1] == str2[j - 1]) {
+		for (int i = 1; i < m + 1; i++) {
+			for (int j = 1; j < n + 1; j++) {
+				if (s.charAt(i - 1) == t.charAt(j - 1)) {
 					dp[i][j] = dp[i - 1][j - 1];
 				} else {
 					dp[i][j] = 1 + Math.min(Math.min(dp[i - 1][j], dp[i][j - 1]), dp[i - 1][j - 1]);
@@ -49,7 +50,7 @@ public class FinMinEditDistanceBetweenTwoStringsDP {
 			}
 		}
 		
-		return dp[str1.length][str2.length];
+		return dp[m][n];
 	}
 
 	public static void main(String args[]) {
