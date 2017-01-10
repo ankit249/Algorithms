@@ -14,12 +14,12 @@ public class SumTask extends RecursiveTask<Integer> {
 	private static final long serialVersionUID = 1L;
 
 	static final int CHUNK_SIZE = 3; // execution batch size;
-	Integer[] a_copy;
+	Integer[] a;
 	int lo;
 	int hi;
 
 	SumTask(Integer[] a_copy, int lo, int hi) {
-		this.a_copy = a_copy;
+		this.a = a_copy;
 		this.lo = lo;
 		this.hi = hi;
 	}
@@ -33,8 +33,8 @@ public class SumTask extends RecursiveTask<Integer> {
 			int sum = 0;
 			List<Integer> processedNumbers = new ArrayList<Integer>();
 			for (int i = lo; i <= hi; i++) {
-				processedNumbers.add(a_copy[i]);// just to track
-				sum += a_copy[i];
+				processedNumbers.add(a[i]);// just to track
+				sum += a[i];
 			}
 			// tracking thread, numbers processed, and sum
 			System.out.println(Thread.currentThread().getName() + " proceesing " + Arrays.asList(processedNumbers) + ", sum = " + sum);
@@ -45,10 +45,10 @@ public class SumTask extends RecursiveTask<Integer> {
 		// split the problem into smaller problem
 		else {
 			int mid = (lo + hi) / 2; // mid point to partition
-			SumTask t1 = new SumTask(a_copy, lo, mid - 1); // t1 partition
+			SumTask t1 = new SumTask(a, lo, mid - 1); // t1 partition
 			t1.fork(); // asynchronously execute on a separate thread
 
-			SumTask t2 = new SumTask(a_copy, mid, hi); // t2 partition
+			SumTask t2 = new SumTask(a, mid, hi); // t2 partition
 			return t2.compute() + t1.join();
 			 
 			// int leftAns = t2.compute(); // recurse and compute
