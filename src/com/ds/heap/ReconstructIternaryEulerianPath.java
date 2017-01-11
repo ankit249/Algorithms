@@ -1,4 +1,4 @@
-package com.ds.graphnode;
+package com.ds.heap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
