@@ -71,6 +71,11 @@ public class DeepestNodeInBTree {
 		bst.insert(root, 70);
 		bst.insert(root, 80);
 		bst.insert(root, 90);
+		bst.insert(root, 10);
+		bst.insert(root, 5);
+		bst.insert(root, 4);
+		bst.insert(root, 3);
+		bst.insert(root, 2);
 
 		BTreePrinter.printNode(root);
 
