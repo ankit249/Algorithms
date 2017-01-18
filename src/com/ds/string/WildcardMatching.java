@@ -35,6 +35,7 @@ public class WildcardMatching {
 	public static void main(String[] args) {
 
 		System.out.println(isMatch("aab", "*b"));
+		System.out.println(isMatch("b", "*b"));
 		System.out.println(isMatch("ab", "a*"));
 	}
 
