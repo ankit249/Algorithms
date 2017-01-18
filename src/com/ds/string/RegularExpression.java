@@ -33,7 +33,7 @@ public class RegularExpression {
 		if (p.length() == 1) {
 
 			// if the length of s is 0, return false
-			if (s.length() < 1) {
+			if (s.length() == 0) {
 				return false;
 			}
 
