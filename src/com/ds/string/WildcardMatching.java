@@ -9,9 +9,9 @@ public class WildcardMatching {
 		int iIndex = -1;
 
 		while (i < s.length()) {
-			if (j < p.length() && (p.charAt(j) == '?' || p.charAt(j) == s.charAt(i))) {
-				++i;
-				++j;
+			if (j < p.length() && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '?')) {
+				i++;
+				j++;
 			} else if (j < p.length() && p.charAt(j) == '*') {
 				starIndex = j;
 				iIndex = i;
