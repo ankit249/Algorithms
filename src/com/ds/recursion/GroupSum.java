@@ -23,7 +23,7 @@ public class GroupSum {
 	public static boolean groupSum(int start, int[] a, int target) {
 		// Base case: if there are no numbers left, then there is a
 		// solution only if target is 0.
-		if (start >= a.length)
+		if (start == a.length)
 			return target == 0;
 
 		// Key idea: nums[start] is chosen or it is not.
