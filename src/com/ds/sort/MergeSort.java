@@ -83,11 +83,16 @@ public class MergeSort {
 		mergeSort(a, aux, 0, a.length - 1);
 		System.out.println(Arrays.toString(a));
 
-		/*
 		//mergesort while arraylist is given
+		/*
 		Integer[] array = { 9, 2, 6, 3, 5, 1 };
 		List<Integer> list = Arrays.asList(array);
 		System.out.println(list);
+
+		Integer[] a = list.toArray(new Integer[0]);
+		Integer[] aux = new Integer[a.length];
+		mergeSort(a, aux, 0, a.length - 1);
+		System.out.println(Arrays.asList(a));
 		*/
 
 		// merge two sorted arrays
