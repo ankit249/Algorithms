@@ -1,6 +1,7 @@
 package com.ds.sort;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class MergeSort {
 
@@ -8,7 +9,7 @@ public class MergeSort {
 	public static void mergeSort(int[] a, int[] aux, int lo, int hi) {
 		if (hi <= lo)
 			return;
-		int mid = (lo + hi) / 2;
+		int mid = lo + ((hi - lo) / 2 );
 		mergeSort(a, aux, lo, mid);
 		mergeSort(a, aux, mid + 1, hi);
 		merge(a, aux, lo, mid, hi);
@@ -76,19 +77,24 @@ public class MergeSort {
 
 	public static void main(String[] args) {
 
+		// mergesort
 		int[] a = { 9, 2, 6, 3, 5, 1 };
 		int[] aux = new int[a.length];
 		mergeSort(a, aux, 0, a.length - 1);
-
 		System.out.println(Arrays.toString(a));
 
+		/*
+		//mergesort while arraylist is given
+		Integer[] array = { 9, 2, 6, 3, 5, 1 };
+		List<Integer> list = Arrays.asList(array);
+		System.out.println(list);
+		*/
+
+		// merge two sorted arrays
 		int[] m = { 2, 3, 5, 6, 7 };
 		int[] n = { 6, 7, 8, 9, 10 };
-
 		int[] res = merge(m, n);
-
 		System.out.println(Arrays.toString(res));
-
 	}
 
 	public static int[] merge(int[] a, int[] b) {
