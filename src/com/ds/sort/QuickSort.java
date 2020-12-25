@@ -13,8 +13,10 @@ public class QuickSort {
 	}
 
 	public static int partition(int[] a, int lo, int hi) {
-		// lo is the pivot pointer and hence a[lo] is the pivot element
 
+		// lo = pickpivot(a);
+
+		// lo is the pivot pointer and hence a[lo] is the pivot element
 		int i = lo + 1;
 		int j = hi;
 
@@ -33,19 +35,21 @@ public class QuickSort {
 
 			// exchange a[i] and a[j] if i and j not crossed
 			if (i <= j) {
-				int tmp = a[i];
-				a[i] = a[j];
-				a[j] = tmp;
+				swap(a, i, j);
 			}
 		}
 
 		// exchange a[lo] with a[j],
 		// now a[lo] the pivot is in its proper position
-		int tmp = a[lo];
-		a[lo] = a[j];
-		a[j] = tmp;
+		swap(a, j, lo);
 
 		return j;
+	}
+
+	private static void swap(int[] a, int i, int j) {
+		int tmp = a[i];
+		a[i] = a[j];
+		a[j] = tmp;
 	}
 
 	public static void main(String[] args) {

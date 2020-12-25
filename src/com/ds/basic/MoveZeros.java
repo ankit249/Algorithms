@@ -7,28 +7,51 @@ import java.util.Arrays;
 
 //For example, given a = [0, 1, 0, 3, 12], after calling your function, 
 // a should be [1, 3, 12, 0, 0].
+
+// ANSWER EXPLANATION
+/*
+lo
+0  1  0  3  12
+hi
+
+lo hi
+0  1  0  3  12
+
+   lo hi
+1  0  0  3  12
+
+   lo	 hi
+1  0  0  3  12
+
+      lo    hi
+1  3  0  0  12     hi = a.lenth - 1 ( one more swap remaining )
+
+          lo    hi
+1  3  12  0  0
+
+ */
 public class MoveZeros {
 
 	private static int[] moveZerosToEnd(int[] a) {
-		int i = 0;
-		int j = 0;
+		int lo = 0;
+		int hi = 0;
 
-		while (j < a.length) {
-			if (a[j] == 0) {
-				j++;
-			} else {
-				a[i] = a[j];
-				i++;
-				j++;
+		while (hi <= a.length - 1) {
+			if(a[hi] != 0) {
+				swap(a, lo, hi);
+				lo++;
+				hi++;
+			} else if(a[hi] == 0) {
+				hi++;
 			}
 		}
-
-		while (i < a.length) {
-			a[i] = 0;
-			i++;
-		}
-
 		return a;
+	}
+
+	private static void swap(int[] a, int i, int j) {
+		int tmp = a[i];
+		a[i] = a[j];
+		a[j] = tmp;
 	}
 
 	public static void main(String[] args) {

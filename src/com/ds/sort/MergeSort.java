@@ -3,6 +3,8 @@ package com.ds.sort;
 import java.util.Arrays;
 import java.util.List;
 
+
+
 public class MergeSort {
 
 	
@@ -16,6 +18,51 @@ public class MergeSort {
 
 	}
 
+	// ANSWER EXPLANATION
+	/*
+    merge two sorted halves 3456 and 1278
+
+	auxilliary array                        main array
+	a										a
+
+	lo      mid          hi                k
+	3  4  5  6  1  2  7  8                 3  4  5  6  1  2  7  8
+	i           j
+
+    lo      mid          hi					  k
+	3  4  5  6  1  2  7  8                 1  4  5  6  1  2  7  8
+	i              j
+
+	lo      mid          hi					     k
+	3  4  5  6  1  2  7  8                 1  2  5  6  1  2  7  8
+	i				  j
+
+	lo      mid          hi					        k
+	3  4  5  6  1  2  7  8                 1  2  3  6  1  2  7  8
+       i			  j
+
+	lo      mid          hi					           k
+	3  4  5  6  1  2  7  8                 1  2  3  4  1  2  7  8
+          i			  j
+
+	lo      mid          hi					              k
+	3  4  5  6  1  2  7  8                 1  2  3  4  5  2  7  8
+          	 i		  j
+
+	lo      mid          hi					                 k
+	3  4  5  6  1  2  7  8                 1  2  3  4  5  6  7  8    here i > mid
+          	 	i	  j
+
+	lo      mid          hi					                    k
+	3  4  5  6  1  2  7  8                 1  2  3  4  5  6  7  8
+          	 	i	     j
+
+	lo      mid          hi					                    k
+	3  4  5  6  1  2  7  8                 1  2  3  4  5  6  7  8
+          	 	i	        j
+
+
+	 */
 	public static void merge(int[] a, int[] aux, int lo, int mid, int hi) {
 		for (int k = lo; k <= hi; k++) {
 			aux[k] = a[k];
@@ -34,46 +81,6 @@ public class MergeSort {
 				a[k] = aux[j++];
 		}
 	}
-	
-
-	/*
-	public static void mergeSort(int[] a, int[] b, int lo, int hi) {
-		if (lo < hi) {
-			int mid = (lo + hi) / 2;
-			mergeSort(a, b, lo, mid);
-			mergeSort(a, b, mid + 1, hi);
-			merge(a, b, lo, mid + 1, hi);
-		}
-	}
-
-	public static void merge(int[] a, int[] b, int lo, int mid, int hi) {
-		int leftEnd = mid - 1;
-		int count = lo;
-		int num = (hi - lo) + 1;
-
-		while ((lo <= leftEnd) && (mid <= hi)) {
-			if (a[lo] < a[mid]) {
-				b[count++] = a[lo++];
-			} else {
-				b[count++] = a[mid++];
-			}
-		}
-
-		while (lo <= leftEnd) {
-			b[count++] = a[lo++];
-		}
-
-		while (mid <= hi) {
-			b[count++] = a[mid++];
-		}
-
-		// Copy b back to a.
-		for (int i = 0; i < num; i++, hi--) {
-			a[hi] = b[hi];
-		}
-
-	}
-	*/
 
 	public static void main(String[] args) {
 
@@ -101,6 +108,13 @@ public class MergeSort {
 		int[] res = merge(m, n);
 		System.out.println(Arrays.toString(res));
 	}
+
+	// ANSWER EXPLANATION
+	/*
+     merge two sorted halves sorted array
+	 2, 3, 5, 6, 7        6, 7, 8, 9, 10
+	 i                    j
+	 */
 
 	public static int[] merge(int[] a, int[] b) {
 		int[] c = new int[a.length + b.length];
