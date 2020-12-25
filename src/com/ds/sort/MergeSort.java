@@ -29,35 +29,35 @@ public class MergeSort {
 	3  4  5  6  1  2  7  8                 3  4  5  6  1  2  7  8
 	i           j
 
-	lo      mid          hi                   k
+    lo      mid          hi                   k
 	3  4  5  6  1  2  7  8                 1  4  5  6  1  2  7  8
 	i              j
 
-	lo      mid          hi                      k
+    lo      mid          hi                      k
     3  4  5  6  1  2  7  8                 1  2  5  6  1  2  7  8
     i                 j
 
-	lo      mid          hi                         k
+    lo      mid          hi                         k
     3  4  5  6  1  2  7  8                 1  2  3  6  1  2  7  8
        i              j
 
-	lo      mid          hi                            k
+    lo      mid          hi                            k
     3  4  5  6  1  2  7  8                 1  2  3  4  1  2  7  8
           i           j
 
-	lo      mid          hi                               k
+    lo      mid          hi                               k
     3  4  5  6  1  2  7  8                 1  2  3  4  5  2  7  8
              i        j
 
-	lo      mid          hi                                  k
+    lo      mid          hi                                  k
     3  4  5  6  1  2  7  8                 1  2  3  4  5  6  7  8    here i > mid
                 i     j
 
-	lo      mid          hi                                     k
+    lo      mid          hi                                     k
     3  4  5  6  1  2  7  8                 1  2  3  4  5  6  7  8
                 i        j
 
-	lo      mid          hi                                     k
+    lo      mid          hi                                     k
     3  4  5  6  1  2  7  8                 1  2  3  4  5  6  7  8
                 i          j
 
