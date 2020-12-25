@@ -11,7 +11,47 @@ public class QuickSort {
 		quicksort(a, lo, j - 1);
 		quicksort(a, j + 1, hi);
 	}
+/*
+// ANSWER EXPLANATION
+while (i < j) {
+lo                        hi
+32  16  15  18  2  40  3  38
+    i                      j
 
+lo                        hi
+32  16  15  18  2  40  3  38
+         i                j
+
+lo                        hi
+32  16  15  18  2  40  3  38
+             i            j
+
+lo                        hi
+32  16  15  18  2  40  3  38
+                i         j
+
+lo                        hi
+32  16  15  18  2  40  3  38
+                   i       j
+
+lo                        hi
+32  16  15  18  2  40  3  38   i < j ? yes -- swap a[i] and a[j]
+                    i  j
+
+lo                         hi
+32  16  15  18  2   3  40  38  (both i and j at same)
+                       ij
+
+lo                         hi
+32  16  15  18  2   3  40  38  (j went left)
+                    j   i
+}
+
+lo                         hi
+3  16  15  18  2   32  40  38   now swap a[j] with a[lo]
+                    j  i
+
+ */
 	public static int partition(int[] a, int lo, int hi) {
 
 		// lo = pickpivot(a);
@@ -53,8 +93,8 @@ public class QuickSort {
 	}
 
 	public static void main(String[] args) {
-		// int[] a = new int[] { 32, 16, 15, 18, 2, 40, 3, 38 };
-		int[] a = new int[] { 37, 25, 42, 16, 48, 39, 63 };
+		int[] a = new int[] { 32, 16, 15, 18, 2, 40, 3, 38 };
+		//int[] a = new int[] { 37, 25, 42, 16, 48, 39, 63 };
 		// System.out.println(partition(a, 0, a.length));
 		// System.out.println(Arrays.toString(a));
 		/*
