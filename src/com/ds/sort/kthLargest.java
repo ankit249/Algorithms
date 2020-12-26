@@ -44,13 +44,13 @@ public class kthLargest {
 	public static void main(String[] args) {
 		// best solution, linear time
 		// find k largest numbers also the same solution (everything to the right of k is all k largets)
-		// same for top most frequencies
+
 		int[] a = { 50, 20, 6, 56, 61, 91 };
 		System.out.println(getKth(a, 3, 0, a.length - 1));
 
 		// 6, 20, 50, 56, 61, 91
 		// this nlogn
-		System.out.println(getKthUsingHeap(a, 3));
+		// System.out.println(getKthUsingHeap(a, 3));
 	}
 
 	// kth largest in a constant stream of incoming numbers, (keep a heap size is k, new incoming number that is coming in will be ignored)

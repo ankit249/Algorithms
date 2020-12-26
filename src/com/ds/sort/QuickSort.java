@@ -74,7 +74,7 @@ lo                         hi
 			}
 
 			// exchange a[i] and a[j] if i and j not crossed
-			if (i <= j) {
+			if (i < j) {
 				swap(a, i, j);
 			}
 		}
