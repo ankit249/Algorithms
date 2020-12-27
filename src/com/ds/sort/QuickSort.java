@@ -60,8 +60,8 @@ lo                         hi
 		int i = lo + 1;
 		int j = hi;
 
-		// repeat until i and j pointer cross
-		while (i < j) {
+		// repeat until i and j pointer cross (i <= j works, equal to is needed)
+		while (i <= j) {
 
 			// increase i until a[i] < a[lo] and if its decreasing sorted want to make sure i doesn't go above hi.
 			while (a[i] < a[lo] && i < hi) {
