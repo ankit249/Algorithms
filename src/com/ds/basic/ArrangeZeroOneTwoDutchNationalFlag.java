@@ -72,7 +72,7 @@ public class ArrangeZeroOneTwoDutchNationalFlag {
         int lo = 0;
         int mid = 0;
         int hi = input.length - 1;
-        while(hi >= mid) {
+        while(mid <= hi) {
             if(input[mid] == 'R') {
                 swap(input, lo, mid);
                 lo++;
