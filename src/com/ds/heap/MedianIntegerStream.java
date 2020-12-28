@@ -39,20 +39,27 @@ public class MedianIntegerStream {
 	public static void main(String[] args) {
 
 		int n = 10;
+
 		for (int i = 0; i < n; i++) {
 			int number = i + 1;
 			addNum(number);
 			System.out.println("after inserting number " + number + " :" + findMedian());
 		}
 
-
 		/*
-		for (int i = 0; i < n; i++) { // int number = scanner.nextInt(); 
-			int number = i + 1;
-			insertNumberToStream(number);
-			System.out.println("after inserting number " + number + " :" + getMedian());
-		}
+
+		addNum(3);
+		System.out.println("after inserting number: " + findMedian());
+
+		addNum(2);
+		System.out.println("after inserting number: " + findMedian());
+
+		addNum(7);
+		System.out.println("after inserting number: " + findMedian());
 		*/
+
+
+
 	}
 
 	// two priority queue, min and max
