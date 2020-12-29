@@ -110,11 +110,34 @@ public class MergeSort {
 	}
 
 	// ANSWER EXPLANATION
-	/*
-     merge two sorted halves sorted array
-	 2, 3, 5, 6, 7        6, 7, 8, 9, 10
-	 i                    j
-	 */
+/*
+merge two sorted halves sorted array
+2, 3, 5, 6, 7        6, 7, 8, 9, 10        0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+i                    j                     k
+
+2, 3, 5, 6, 7        6, 7, 8, 9, 10        2, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   i                 j                        k
+
+2, 3, 5, 6, 7        6, 7, 8, 9, 10        2, 3, 0, 0, 0, 0, 0, 0, 0, 0
+      i              j                           k
+
+2, 3, 5, 6, 7        6, 7, 8, 9, 10        2, 3, 5, 0, 0, 0, 0, 0, 0, 0
+         i           j                              k
+
+2, 3, 5, 6, 7        6, 7, 8, 9, 10        2, 3, 5, 6, 0, 0, 0, 0, 0, 0
+            i        j                              k
+
+2, 3, 5, 6, 7        6, 7, 8, 9, 10        2, 3, 5, 6, 6, 0, 0, 0, 0, 0
+            i           j                              k
+
+2, 3, 5, 6, 7        6, 7, 8, 9, 10        2, 3, 5, 6, 6, 7, 0, 0, 0, 0      // i < a.length && j < b.length
+              i         j                                 k
+
+2, 3, 5, 6, 7        6, 7, 8, 9, 10        2, 3, 5, 6, 6, 7, 7, 8, 9, 10     // j < b.length
+              i                     j                                    k
+
+
+*/
 
 	public static int[] merge(int[] a, int[] b) {
 		int[] c = new int[a.length + b.length];
