@@ -9,6 +9,7 @@ public class MergeSort {
 
 	// TC - O(nlogn)  = merge takes o(n) and number of times mergesort gets called recursively is (logn)
 	// SC - O(n) - one tmp array
+	// this is the best version of mergesort since the returned array is original input (so its inplace solution)
 	public static void mergeSort(int[] a, int[] aux, int lo, int hi) {
 		if (hi <= lo)
 			return;
