@@ -49,6 +49,7 @@ public class MoveZeros {
 	}
 
 	private static void swap(int[] a, int i, int j) {
+		// minimize the swap if its same location or both i and j are even
 		int tmp = a[i];
 		a[i] = a[j];
 		a[j] = tmp;
