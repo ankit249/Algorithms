@@ -7,7 +7,8 @@ import java.util.List;
 
 public class MergeSort {
 
-	
+	// TC - O(nlogn)  = merge takes o(n) and number of times mergesort gets called recursively is (logn)
+	// SC - O(n) - one tmp array
 	public static void mergeSort(int[] a, int[] aux, int lo, int hi) {
 		if (hi <= lo)
 			return;
