@@ -53,5 +53,7 @@ public class TopKFrequentElements {
 		List<Integer> list = topKFrequentElements(a, 3);
 		System.out.println("Result is: " + list.toString());
 
+		// you can also run TOP K elements on the frequency to get the anaswer
+
 	}
 }

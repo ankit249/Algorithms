@@ -3,43 +3,47 @@ package com.ds.sort;
 import java.util.Arrays;
 import java.util.Random;
 
+/*
+TC - O(n)
+SC - O(n)
+stable - yes
+*/
 public class CountingSort {
 
 	private static void countSort(int[] a, int max) {
-		int n = a.length;
-		int[] countArray = new int[n];
+		int[] count = new int[10];
+		int[] output = new int[a.length];
 
-		for (int i = 0; i < n; i++) {
-			countArray[a[i]] = countArray[a[i]] + 1;
+		for (int i = 0; i < a.length; i++) {
+			count[a[i]]++;
 		}
 
-		for (int i = 1; i < n; i++) {
-			countArray[i] = countArray[i - 1] + countArray[i];
+		for (int i = 1; i < 10; i++) {
+			count[i] = count[i] + count[i - 1];
 		}
 
-		// inplace solution o(1) space
+		// i came up with this commented and it works for finite set of inputs
+		/*
 		int p = 0;
-		int indx = 0;
-		while (indx < countArray[p] && p < max) {
-			a[indx++] = p;
-			if (indx == countArray[p]) {
-				p = p + 1;
+		for (int i = 0; i < a.length; i++) {
+			if(count[p] > 0) {
+				output[i] = p;
+				if(count[p] == i + 1) {
+					p = p + 1;
+				}
 			}
 		}
-		System.out.println("Output: " + Arrays.toString(a));
 
-		/*
-		for (int i = 0; i < n; i++) {
-			int index = countArray[arr[i]] - 1;
-			countArray[arr[i]] = countArray[arr[i]] - 1;
-			sorted[index] = arr[i];
+       */
+
+		// this is general block of code and it works for any input
+		// Build the output array
+		for (int i = a.length - 1; i >= 0; i--) {
+			output[count[a[i] % 10] - 1] = a[i];
+			count[a[i] % 10]--;
 		}
 
-		for (int k = 0; k < sorted.length; k++) {
-			System.out.print(sorted[k] + " ");
-		}
-		*/
-
+		System.out.println("Output: " + Arrays.toString(output));
 	}
 
 	/*

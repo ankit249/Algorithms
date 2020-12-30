@@ -16,6 +16,7 @@ public class QuickSort {
 	}
 /*
 // ANSWER EXPLANATION
+// THIS IS HOARE's partition
 while (i < j) {
 lo                        hi
 32  16  15  18  2  40  3  38
