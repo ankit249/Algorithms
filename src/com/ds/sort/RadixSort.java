@@ -65,7 +65,7 @@ stable - no
             int exp = (int) Math.pow(10, j);
 
 
-            // count array is 0 to 9 -- possible buckets
+            // count array is 0 to 9 -- possible buckets since we use modulo possible digts can be 0 to 9
             int[] count = new int[10];
             int[] output = new int[a.length];
 
