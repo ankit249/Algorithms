@@ -7,9 +7,16 @@ import java.util.List;
 
 public class MergeSort {
 
-	// TC - O(nlogn)  = merge takes o(n) and number of times mergesort gets called recursively is (logn)
+	// TC - O(nlogn)  = merge takes o(n) and number of times mergesort gets called recursively is (logn) (best, average and worst is O(nlogn)
 	// SC - O(n) - one tmp array
+	// stability - Mergesort is more stable than Quicksort (sort by name, age) - when name is same age would kick in for example, first based on
+	//               one field and then second based on another field, so when more than one key is involved or sorting objects use Mergesort like Java uses Timesort(hybrid of Mergesort and InsertionSort) for Objects
+	//				and TimeSort is stable because both Mergesort and Insertion Sort is stable
+	// stable because lets say you have 3a and 3b in two sorted merged halves
+	// 1 3a 4 5       2 3b 6 7    since aux[i] <= aux[j]   we use a[k++] = aux[i++]
+    //   i              j
 	// this is the best version of mergesort since the returned array is original input (so its inplace solution)
+
 	public static void mergeSort(int[] a, int[] aux, int lo, int hi) {
 		if (hi <= lo)
 			return;

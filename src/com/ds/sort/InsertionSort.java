@@ -44,7 +44,8 @@ j
 
 
 */
-
+	// TC - O(n2), SC - In place O(1)
+	// stable - yes ( 1 2 3a 4 5 3b)  -- after sorting it will be 1 2 3a 3b 4 5 (3b will not cross 3a)
 	private static void insertionSort(int[] a) {
 
 		int swap_count = 0;

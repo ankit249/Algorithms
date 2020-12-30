@@ -4,6 +4,9 @@ import java.util.Arrays;
 
 public class QuickSort {
 
+	// TC - Best and avg case O(nlogn) - worst case O(n2)
+	// SC - In Place even though since recursion is involved both Quicksort and Mergesort has call stack space needed
+	// stable - No   ( 2 1 3a 3b) could become 1 2 3a 3b
 	public static void quicksort(int[] a, int lo, int hi) {
 		if (hi <= lo)
 			return;

@@ -12,8 +12,8 @@ public class BubbleSort {
 
  i
 15, 3, 9, 4, 8, 2, 14
-
                    j
+
  i
 15, 3, 9, 4, 2, 8, 14
                 j
@@ -43,6 +43,8 @@ i
 
 */
 
+    // TC - O(n2), SC - In place O(1)
+	// stable - yes ( 4 3a 1 2 3b 5)  -- bubble up the minimum 3a will always come before 3b
 	private static void bubblesort(int[] a) {
 
 		for (int i = 0; i < a.length; i++) {
