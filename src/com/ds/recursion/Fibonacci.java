@@ -8,8 +8,7 @@ public class Fibonacci {
 
 	// O(2^n) exponential time complexity with O(n) space
 	public static int fib(int n) {
-		if (n == 0) return 0;
-		if (n == 1 || n == 2) return 1;
+		if (n == 0 || n == 1) return n;
 		return fib(n - 1) + fib(n - 2);
 	}
 
@@ -27,6 +26,7 @@ public class Fibonacci {
 	}
 
 	// tail recursion, O(1) space and O(n) time complexity
+	// top down memoization
 	public static int tailRecursive(int n) {
 		if(n == 0) return 0;
 		return fibtail(n, 0, 1);
@@ -41,6 +41,13 @@ public class Fibonacci {
 		System.out.println("Using Iterative....");
 		for (int i = 0; i <= 6; i++) {
 			System.out.print(fib_iterative(i) + " ");
+		}
+
+		// recursion
+		System.out.println();
+		System.out.println("Using Recursion....");
+		for (int i = 0; i <= 6; i++) {
+			System.out.print(fib(i) + " ");
 		}
 
 		// Tail recursion
