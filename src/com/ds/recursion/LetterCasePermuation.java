@@ -16,6 +16,17 @@ Recursion Fundamental
 (4) recursive call
 (5) unmodify shared state
 
+
+                                slate ""
+                   "a"                            "A"
+                   "a1"                           "A1"
+                   "a12"                          "A12"
+              "a12b"   "a12B"               "A12b"     "A12B"
+              "a12b3"  "a12B3"              "A12b3"    "A12B3"
+
+
+TC: O(2^k) where k are number of characters in the string with length n
+
  */
 
 public class LetterCasePermuation {
