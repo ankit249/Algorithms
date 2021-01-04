@@ -2,7 +2,8 @@ package com.ds.recursion;
 
 import java.util.ArrayList;
 
-public class Subsets2 {
+
+public class NonRecrusiveSubstes {
 	public static ArrayList<ArrayList<Integer>> subsets(int[] a) {
 
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
