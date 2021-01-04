@@ -37,7 +37,7 @@ Instead of keeping two list, we would merge the available and slate list
 
                                       [1,2,3]
                       /                 |                       \
-              [1,2,3]                [2,1,3]                    [3,1,2]
+              [1,2,3]                [2,1,3]                    [3,2,1]
            /        \              /       \                   /     \
        [1,2,3]    [1,3,2]     [2,1,3]    [2,3,1]          [3,2,1]   [3,1,2]
           |          |            |         |               |          |
@@ -60,8 +60,11 @@ public class AllPermutations {
         return results;
     }
 
-    private static void helper(List<Integer> slate, int placed,List<List<Integer>> results)  {
-        if(placed >= slate.size()) {
+    private static void helper(List<Integer> slate, int placed, List<List<Integer>> results)  {
+        // no backtracking
+
+        // base case
+        if(placed >= slate.size()) {       // you can stop early as well placed >= slate.size() - 1
             results.add(new ArrayList<>(slate));
             return;
         }
