@@ -2,6 +2,7 @@ package com.ds.recursion;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class StringPermutations {
@@ -16,8 +17,8 @@ public class StringPermutations {
 
 
 */
-	private static List<List<String>> getAllPermuation(char[] input) {
-		List<List<String>> result = new ArrayList<List<String>>();
+	private static List<String> getAllPermuation(char[] input) {
+		List<String> result = new ArrayList<String>();
 		List<String> slate = new ArrayList<>();
 		for(char ch: input) {
 			slate.add(String.valueOf(ch));
@@ -26,9 +27,9 @@ public class StringPermutations {
 		return result;
 	}
 
-	private static void helper(char[] input, List<String> slate, int placed, List<List<String>> result) {
+	private static void helper(char[] input, List<String> slate, int placed, List<String> result) {
 		if(placed >= input.length) {
-			result.add(new ArrayList<>(slate));
+			result.add(slate.toString());
 			return;
 		}
 
@@ -49,7 +50,7 @@ public class StringPermutations {
 	public static void main(String[] args) {
 		// IK Approach
 		String input = "abc";
-		List<List<String>> results = getAllPermuation(input.toCharArray());
+		List<String> results = getAllPermuation(input.toCharArray());
 		System.out.println(results);
 
 		// original approach

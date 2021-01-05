@@ -1,5 +1,8 @@
 package com.ds.recursion;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  given 123
  print 1+2+3, 
@@ -11,6 +14,57 @@ package com.ds.recursion;
        
 */
 public class StringFBRecursion {
+
+	private static List<String> getCombinations(char[] input) {
+		List<String> result = new ArrayList<>();
+		helper(input, new char[input.length], 0, result);
+		return result;
+	}
+
+	private static void helper(char[] input, char[] slate, int pos, List<String> result) {
+		if(pos >= input.length) {
+			if(slate[0] == '+') {
+				result.add(new String(slate, 1, slate.length - 1));
+			} else {
+				result.add(new String(slate));
+			}
+			return;
+		}
+
+		if(input[pos] == '+') {
+			slate[pos] = '+';
+			helper(input, slate, pos + 1, result);
+
+			slate[pos] = '-';
+			helper(input, slate, pos + 1, result);
+		} else {
+			slate[pos] = input[pos];
+			helper(input, slate, pos + 1, result);
+		}
+	}
+
+
+	public static void main(String[] args) {
+		// IK Approach
+		String string = "123";
+		char[] input = new char[2 * string.length()];
+		int j = 0;
+		for(int i = 0; i < string.length(); i++) {
+			input[j++] = '+';
+			input[j++] = string.charAt(i);
+		}
+		//System.out.println(input);
+		List<String> result = getCombinations(input);
+		System.out.println(result);
+
+		// ORIGINAL APPROACH
+		/*
+		fn("123");
+		System.out.println();
+		System.out.println("--------------------");
+		fn("1");
+		*/
+	}
 
 	private static void fn(String input) {
 		function(input, new StringBuilder());
@@ -41,12 +95,5 @@ public class StringFBRecursion {
 			sb.deleteCharAt(sb.length() - 1);
 			sb.deleteCharAt(sb.length() - 1);
 		}
-	}
-
-	public static void main(String[] args) {
-		fn("123");
-		System.out.println();
-		System.out.println("--------------------");
-		fn("1");
 	}
 }

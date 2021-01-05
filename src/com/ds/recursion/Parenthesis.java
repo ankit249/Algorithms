@@ -39,23 +39,68 @@ keep track of left parenthesis still available, right parenthesis still availabl
 
 
 
-  if( l is more than right -- you backtrack)
-  here you cut half of the tree with backtracking if you notice and draw the full tree
+ if( l is more than right -- you backtrack)
+ here you cut half of the tree with backtracking if you notice and draw the full tree
 
 
-TC:    O(2^2k)
+TC:    O(2^2k)  -- check with k=2 (look at the depth of tree - it will be length 4 - so 2^4)
 SC:    O(2^2k)
 
  */
 public class Parenthesis {
 
-	public static List<String> generateParenthesis(int k) {
+	private static List<String>  generateParenthesis(int k) {
+		char[] slate = new char[k * 2];
 		List<String> result = new ArrayList<String>();
-		helper("", k, k, result);
+		helper(k, k, 0, slate, result);
 		return result;
 	}
 
-	public static void helper(String slate, int left, int right, List<String> result) {
+	private static void helper(int l, int r, int pos, char[] slate, List<String> result) {
+
+		// backtracking - stop before we have reached the end (no need to go beyond this -- its optimization)
+		if (l > r) {
+			return;
+		}
+
+		// base case -- means we have reached the end
+		if (l == 0 && r == 0) {
+			result.add(new String(slate));
+			return;
+
+		}
+
+		// since strings are immutable -- nothing to unmodify here, if you use char[] then you will have to unmodify
+		// in practice don't use string since the price is very high for immutable strings, use char[]
+		if (l > 0) {
+			slate[pos] = '(';
+			helper(l - 1, r, pos + 1, slate, result);
+		}
+		if (r > 0) {
+			slate[pos] = ')';
+			helper(l, r - 1, pos + 1, slate, result);
+		}
+
+	}
+
+	public static void main(String[] args) {
+		int k = 3;
+
+		// using char[] array IK Style
+		List<String> results = generateParenthesis(k);
+		System.out.println(results);
+
+		List<String> list = generateParenthesisString(k);
+		System.out.println(list);
+	}
+
+	public static List<String> generateParenthesisString(int k) {
+		List<String> result = new ArrayList<String>();
+		helperString("", k, k, result);
+		return result;
+	}
+
+	public static void helperString(String slate, int left, int right, List<String> result) {
 		// backtracking - stop before we have reached the end (no need to go beyond this -- its optimization)
 		if (left > right) {
 			return;
@@ -70,41 +115,11 @@ public class Parenthesis {
 		// since strings are immutable -- nothing to unmodify here, if you use char[] then you will have to unmodify
 		// in practice don't use string since the price is very high for immutable strings, use char[]
 		if (left > 0) {
-			helper(slate + "(", left - 1, right, result);
+			helperString(slate + "(", left - 1, right, result);
 		}
 
 		if (right > 0) {
-			helper(slate + ")", left, right - 1, result);
-		}
-	}
-
-	public static void main(String[] args) {
-		int k = 3;
-
-		List<String> list = generateParenthesis(k);
-		System.out.println(list);
-
-		// using char[] array
-		char[] result = new char[k * 2];
-		helperPrint(0, k, k, result);
-
-	}
-
-	private static void helperPrint(int count, int l, int r, char[] result) {
-		if (l < 0 || r < l)
-			return; // invalid state
-		if (l == 0 && r == 0) {
-			System.out.print(result); // found one, so print it
-			System.out.print(" ");
-		} else {
-			if (l > 0) { // try a left paren, if there are some available
-				result[count] = '(';
-				helperPrint(count + 1, l - 1, r, result);
-			}
-			if (r > l) { // try a right paren, if there’s a matching left
-				result[count] = ')';
-				helperPrint(count + 1, l, r - 1, result);
-			}
+			helperString(slate + ")", left, right - 1, result);
 		}
 	}
 }
