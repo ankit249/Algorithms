@@ -114,7 +114,6 @@ public class PhoneNumberStrings {
         }
 
         // no backtracking needed
-
         char[] map = dictionaryMap.get(input[pos] - '0');
         for(int i = 0; i < map.length; i++) {
             slate[pos] = map[i];
