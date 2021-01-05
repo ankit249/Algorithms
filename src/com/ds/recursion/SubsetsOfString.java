@@ -55,21 +55,34 @@ import java.util.List;
 public class SubsetsOfString {
     public static List<String> getSubsets(String input) {
         var results = new ArrayList<String>();
-        helper(input, 0, new char[input.length()], 0, results);
+        helper(input, 0, new ArrayList<String>(), results);
         return results;
     }
 
-    private static void helper(String input, int pos, char[] slate, int slateSize, List<String> results) {
+    private static void helper(String input, int pos, List<String> slate, List<String> results) {
         // (1) basecase
         if(pos >= input.length()) {
-            results.add(slateSize == 0? new String("") : new String(slate, 0, slateSize));
+            results.add(getString(slate));
             return;
         }
 
         // (2) recursion
-        helper(input, pos + 1, slate, slateSize, results);
-        slate[slateSize] = input.charAt(pos);
-        helper(input, pos + 1, slate, slateSize + 1, results);
+        slate.add(String.valueOf(input.charAt(pos)));
+        helper(input, pos + 1, slate, results);
+
+        // remove is needed, if in doubt in any recursion always use remove
+        // remove the last character
+        slate.remove(slate.size() - 1) ;   //  (3) unmodify
+        helper(input, pos + 1, slate, results);
+    }
+
+    private static String getString(List<String> slate) {
+        if(slate.isEmpty()) return "";
+        StringBuilder sb = new StringBuilder();
+        for(String s: slate) {
+            sb.append(s);
+        }
+        return sb.toString();
     }
 
     public static void main(String[] args) {
