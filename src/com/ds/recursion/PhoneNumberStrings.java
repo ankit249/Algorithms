@@ -60,10 +60,9 @@ public class PhoneNumberStrings {
         }
 
         // no backtracking needed
-
-        char[] map = dictionary[input[pos] - '0'];
-        for(int i = 0; i < map.length; i++) {
-            slate[pos] = map[i];
+        char[] carray = dictionary[input[pos] - '0'];
+        for(char ch : carray) {
+            slate[pos] = ch;
             helper(input, slate, pos + 1, results);
         }
     }
@@ -114,10 +113,10 @@ public class PhoneNumberStrings {
         }
 
         // no backtracking needed
-        char[] map = dictionaryMap.get(input[pos] - '0');
-        for(int i = 0; i < map.length; i++) {
-            slate[pos] = map[i];
-            helperD(input, slate, pos + 1, results);
+        char[] carray = dictionaryMap.get(input[pos] - '0');
+        for(char ch : carray) {
+            slate[pos] = ch;
+            helper(input, slate, pos + 1, results);
         }
     }
     */
