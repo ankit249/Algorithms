@@ -43,7 +43,7 @@ keep track of left parenthesis still available, right parenthesis still availabl
  here you cut half of the tree with backtracking if you notice and draw the full tree
 
 
-TC:    O(2^2k)  -- check with k=2 (look at the depth of tree - it will be length 4 - so 2^4)
+TC:    O(2^2k)  -- check with k=2 (look at the depth of tree - it will be length 4 - so 2^4) (loose upperbound is 2^2n -- because we are pruning a lot of subtrees)
 SC:    O(2^2k)
 
  */
@@ -58,7 +58,7 @@ public class Parenthesis {
 
 	private static void helper(int l, int r, int pos, char[] slate, List<String> result) {
 
-		// backtracking - stop before we have reached the end (no need to go beyond this -- its optimization)
+		// backtracking or pruning ? - stop before we have reached the end (no need to go beyond this -- its optimization)
 		if (l > r) {
 			return;
 		}
