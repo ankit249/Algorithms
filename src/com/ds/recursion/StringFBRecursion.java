@@ -46,7 +46,9 @@ public class StringFBRecursion {
 
 	public static void main(String[] args) {
 		// IK Approach
+
 		String string = "123";
+		/*
 		char[] input = new char[2 * string.length()];
 		int j = 0;
 		for(int i = 0; i < string.length(); i++) {
@@ -56,7 +58,11 @@ public class StringFBRecursion {
 		//System.out.println(input);
 		List<String> result = getCombinations(input);
 		System.out.println(result);
+		*/
 
+		// IK 2 approach
+		string = "123";
+		System.out.println(getcombo(string));
 		// ORIGINAL APPROACH
 		/*
 		fn("123");
@@ -64,6 +70,33 @@ public class StringFBRecursion {
 		System.out.println("--------------------");
 		fn("1");
 		*/
+	}
+
+	private static List<String> getcombo(String input) {
+ 		List<String> slate = new ArrayList<>();
+ 		var result = new ArrayList<String>();
+ 		helperCombo(input.toCharArray(), 0, slate, result);
+ 		return result;
+	}
+
+	private static void helperCombo(char[] input, int pos, List<String> slate, List<String> results) {
+		if(pos >= input.length) {
+			results.add(String.join("",slate));
+			return;
+		}
+
+		slate.add("+");
+		slate.add(String.valueOf(input[pos]));
+		helperCombo(input, pos + 1, slate, results);
+
+		slate.remove(slate.size() - 1);
+		slate.remove(slate.size() - 1);
+
+		slate.add("-");
+		slate.add(String.valueOf(input[pos]));
+		helperCombo(input, pos + 1, slate, results);
+		slate.remove(slate.size() - 1);
+		slate.remove(slate.size() - 1);
 	}
 
 	private static void fn(String input) {
