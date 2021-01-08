@@ -19,8 +19,11 @@ public class SubsetOfSumLessThanTarget {
 			return;
 		}
 
-		if(pos >= input.length && slate.size() == N && sum < target) {
-			result.add(new ArrayList<Integer>(slate));
+		if(pos >= input.length) {
+			if(slate.size() == N && sum < target) {
+				result.add(new ArrayList<Integer>(slate));
+			}
+
 			return;
 		}
 
