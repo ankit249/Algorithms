@@ -1,7 +1,11 @@
 package com.ds.tree;
 
+// DON"T USE RECURSION for LevelORDER - there is no stop
+// - using BFS you can stop whereever you want
 // without using additiona Data structre
-public class LevelOrderTraversal2 {
+// you will fail the interview if you use lvel order traversal like this recursively --
+
+public class LevelOrderTraversalRecursion {
 	public static void PrintLevelNodes(TreeNode root, int level) {
 		if (level == 0) {
 			System.out.print(root.data + " ");

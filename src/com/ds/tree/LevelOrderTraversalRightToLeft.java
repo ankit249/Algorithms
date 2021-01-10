@@ -8,7 +8,7 @@ import java.util.Queue;
 // it is like BFS so use queue's here 2 queues
 // TC: O(n)
 // SC: finalresult - n, templist - n /2 equivalend to O(n)
-public class LevelOrderTraversal {
+public class LevelOrderTraversalRightToLeft {
 	public List<List<Integer>> levelOrderTraversal(TreeNode root) {
 
 		List<List<Integer>> finalList = new ArrayList<>();
@@ -26,12 +26,13 @@ public class LevelOrderTraversal {
 			TreeNode n = currentQueue.poll();
 			list.add(n.data);
 
-			if (n.left != null) {
-				nextQueue.offer(n.left);
-			}
-
+			// right first
 			if (n.right != null) {
 				nextQueue.offer(n.right);
+			}
+
+			if (n.left != null) {
+				nextQueue.offer(n.left);
 			}
 
 			if (currentQueue.isEmpty()) {
@@ -45,39 +46,7 @@ public class LevelOrderTraversal {
 		return finalList;
 	}
 
-	public void levelOrderTraversal_1(TreeNode root) {
 
-		StringBuilder sb = new StringBuilder();
-		Queue<TreeNode> currentQueue = new LinkedList<TreeNode>();
-		Queue<TreeNode> nextQueue = new LinkedList<TreeNode>();
-
-		if (root == null) {
-			System.out.println(sb.toString());
-			return;
-		}
-
-		currentQueue.offer(root);
-		while (!currentQueue.isEmpty()) {
-			TreeNode n = currentQueue.poll();
-			sb.append(n.data + " ");
-
-			if (n.left != null) {
-				nextQueue.offer(n.left);
-			}
-
-			if (n.right != null) {
-				nextQueue.offer(n.right);
-			}
-
-			if (currentQueue.isEmpty()) {
-				currentQueue = nextQueue;
-				System.out.println(sb.toString());
-				sb = new StringBuilder();
-				nextQueue = new LinkedList<TreeNode>();
-			}
-		}
-
-	}
 
 
 	public static void main(String[] args) {
@@ -93,10 +62,8 @@ public class LevelOrderTraversal {
 
 		BTreePrinter.printNode(root);
 
-		LevelOrderTraversal lt = new LevelOrderTraversal();
+		LevelOrderTraversalRightToLeft lt = new LevelOrderTraversalRightToLeft();
 		System.out.println(lt.levelOrderTraversal(root));
-
-		lt.levelOrderTraversal_1(root);
 
 	}
 }

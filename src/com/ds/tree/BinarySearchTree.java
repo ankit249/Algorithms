@@ -13,6 +13,8 @@ class TreeNode {
 	}
 }
 
+// BINARY TREE is not SORTED
+// BINARYSEARCHTREE is sorted
 public class BinarySearchTree {
 
 	public void insert(TreeNode root, int data) {
@@ -25,6 +27,14 @@ public class BinarySearchTree {
 			TreeNode parent = null;
 			while (true) {
 				parent = current;
+				/*
+				if(data == current.data) {
+					System.out.println("data already present");
+					return;
+
+				}
+
+				 */
 				if (data < current.data) {
 					current = current.left;
 					if (current == null) {
