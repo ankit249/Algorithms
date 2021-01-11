@@ -1,20 +1,17 @@
 package com.ds.tree;
 import javax.management.Query;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 //TODO
 
 public class BinaryTreeOrderTraversalBottomToTop {
-    public List<Integer> levelOrderTraversalBottomToTop(TreeNode root) {
+    public static void levelOrderTraversalBottomToTop(TreeNode root) {
 
-        List<Integer> finalList = new ArrayList<>();
+        Stack<List<Integer>> finalList = new Stack<>();
         List<Integer> list = new ArrayList<>();
 
         Queue<TreeNode> currentQueue = new LinkedList<>();
-        Queue<TreeNode> previousQueue = new LinkedList<>();
+        Queue<TreeNode> nextQueue = new LinkedList<>();
 
         currentQueue.offer(root);
         while (!currentQueue.isEmpty()) {
@@ -22,12 +19,25 @@ public class BinaryTreeOrderTraversalBottomToTop {
             list.add(tmp.data);
 
             if(tmp.left != null) {
-                
+                nextQueue.offer(tmp.left);
+            }
+
+            if(tmp.right != null) {
+                nextQueue.offer(tmp.right);
+            }
+
+            if(currentQueue.isEmpty()) {
+                currentQueue = nextQueue;
+                finalList.push(list);
+                list = new ArrayList<>();
+                nextQueue = new LinkedList<>();
             }
 
         }
 
-        return finalList;
+        while(!finalList.isEmpty()) {
+            System.out.println(finalList.pop());
+        }
     }
 
 
@@ -47,8 +57,8 @@ public class BinaryTreeOrderTraversalBottomToTop {
 
         BTreePrinter.printNode(root);
 
-        BinaryTreeOrderTraversalBottomToTop lt = new BinaryTreeOrderTraversalBottomToTop();
-        System.out.println(lt.levelOrderTraversalBottomToTop(root));
+
+        levelOrderTraversalBottomToTop(root);
 
     }
 }

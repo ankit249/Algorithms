@@ -1,12 +1,13 @@
 package com.ds.tree;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class TraversalNonRecursive {
 
-	public ArrayList<Integer> preorderTraversal(TreeNode root) {
-		ArrayList<Integer> result = new ArrayList<Integer>();
+	public List<Integer> preorderTraversal(TreeNode root) {
+		List<Integer> result = new ArrayList<Integer>();
 
 		if (root == null)
 			return result;
@@ -29,8 +30,8 @@ public class TraversalNonRecursive {
 		return result;
 	}
 
-	public ArrayList<Integer> postorderTraversal(TreeNode root) {
-		ArrayList<Integer> res = new ArrayList<Integer>();
+	public List<Integer> postorderTraversal(TreeNode root) {
+		List<Integer> res = new ArrayList<Integer>();
 		if (root == null) {
 			return res;
 		}
@@ -56,8 +57,8 @@ public class TraversalNonRecursive {
 		return res;
 	}
 
-	public ArrayList<Integer> inorderTraversal(TreeNode root) {
-		ArrayList<Integer> result = new ArrayList<Integer>();
+	public List<Integer> inorderTraversal(TreeNode root) {
+		List<Integer> result = new ArrayList<Integer>();
 
 		if (root == null)
 			return result;
