@@ -38,11 +38,9 @@ public class SymmetricTree {
 	
 	public boolean isSymmetricRecursive(TreeNode root) {
 		if(root == null) return true;
-		if (root.left == null && root.right == null)
-			return true;
+		if (root.left == null && root.right == null) return true;
 		if (root.left != null && root.right != null) {
-			return (root.left.data == root.right.data) &&
-					isSymmetricRecursive(root.left) && isSymmetricRecursive(root.right);
+			return (root.left.data == root.right.data) && isSymmetricRecursive(root.left) && isSymmetricRecursive(root.right);
 		} else {
 			return false;
 		}
@@ -56,7 +54,7 @@ public class SymmetricTree {
 		root.left.left = new TreeNode(5);
 		root.left.right = new TreeNode(5);
 		root.right.left = new TreeNode(40);
-		root.right.right = new TreeNode(40);
+		root.right.right = new TreeNode(45);
 
 		BTreePrinter.printNode(root);
 

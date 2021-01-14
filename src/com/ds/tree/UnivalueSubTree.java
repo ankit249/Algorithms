@@ -59,7 +59,7 @@ public class UnivalueSubTree {
         // check if right is unival
         if(node.right != null) {
             rUval = helper(node.right);
-            myUval = (myUval) && (node.data == node.right.data) && rUval;
+            myUval = myUval && (node.data == node.right.data) && rUval;
         }
 
         // check if imunival = (node.data == node.left.data && node.data == node.right.data)

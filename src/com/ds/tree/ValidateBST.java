@@ -3,18 +3,21 @@ package com.ds.tree;
 
 public class ValidateBST {
 
-	private boolean isValidBST(TreeNode root) {
-		return isValidBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+	private static boolean isValidBST(TreeNode root) {
+
+		return helper(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
 	}
 
-	private boolean isValidBST(TreeNode root, Integer min, Integer max) {
+	private static boolean helper(TreeNode node, Integer min, Integer max) {
 
-		if (root == null)
+		if (node == null) {
 			return true;
-		if (root.data <= min || root.data >= max) {
+		}
+
+		if (node.data <= min || node.data >= max) {
 			return false;
 		}
-		return isValidBST(root.left, min, root.data) && isValidBST(root.right, root.data, max);
+		return helper(node.left, min, node.data) && helper(node.right, node.data, max);
 
 	}
 
@@ -29,7 +32,7 @@ public class ValidateBST {
 		bst.insert(root, 40);
 		bst.insert(root, 60);
 
-		ValidateBST lt = new ValidateBST();
-		System.out.println(lt.isValidBST(root));
+
+		System.out.println(isValidBST(root));
 	}
 }

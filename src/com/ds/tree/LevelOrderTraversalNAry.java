@@ -13,11 +13,11 @@ import java.util.Queue;
 
 class NaryTreeNode {
 	int data;
-	List<NaryTreeNode> nextQueue;
+	List<NaryTreeNode> children;
 
 	public NaryTreeNode(int data) {
 		this.data = data;
-		nextQueue = new ArrayList<NaryTreeNode>();
+		children = new ArrayList<NaryTreeNode>();
 	}
 }
 
@@ -39,7 +39,7 @@ public class LevelOrderTraversalNAry {
 			NaryTreeNode n = currentQueue.poll();
 			list.add(n.data);
 
-			for(NaryTreeNode child : n.nextQueue) {
+			for(NaryTreeNode child : n.children) {
 				nextQueue.offer(child);
 			}
 

@@ -12,6 +12,8 @@ Diameter is bottom up approach  (bottomUpDFS)
 length is the distance from 1 node to another
 diameter - doesn't have to go thru root
 
+its like post order traversal (left, right and then root)
+
 
 length from 4 yo 5 is 2: 4>2 and 2>5
 possible diameters here are 4-2-5, 4-2-1-3, 5-2-1-3
@@ -51,10 +53,14 @@ public class DiameterOfBtree {
         int ldist = 0; int rdist = 0;
 
         // ldist = (distance of left child) + 1
-        if(node.left != null) ldist = helper(node.left) + 1;
+        if(node.left != null) {
+            ldist = helper(node.left) + 1;
+        }
 
         // rdist = (distance of right child) + 1
-        if(node.right != null) rdist = helper(node.right) + 1;
+        if(node.right != null) {
+            rdist = helper(node.right) + 1;
+        }
 
         // check if mydisance > maxDistance
         int mydistance = ldist + rdist;
@@ -76,9 +82,21 @@ public class DiameterOfBtree {
         bst.insert(root, 50);
         bst.insert(root, 40);
         bst.insert(root, 60);
-
         BTreePrinter.printNode(root);
+        System.out.println(getDiameterOfTree(root));
 
+        root = new TreeNode(30);
+        bst.insert(root, 50);
+        bst.insert(root, 40);
+        bst.insert(root, 60);
+        bst.insert(root, 40);
+        bst.insert(root, 39);
+        bst.insert(root, 38);
+        bst.insert(root, 37);
+        bst.insert(root, 36);
+        bst.insert(root, 35);
+
+        //BTreePrinter.printNode(root);
         System.out.println(getDiameterOfTree(root));
     }
 
