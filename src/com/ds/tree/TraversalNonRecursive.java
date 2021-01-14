@@ -1,6 +1,7 @@
 package com.ds.tree;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
@@ -100,11 +101,19 @@ public class TraversalNonRecursive {
 		bst.insert(root, 60);
 		bst.insert(root, 15);
 
+
+		List<Integer> result =  inorderTraversal(root);
+		System.out.println(result.get(0));
+		int[] a = result.stream().mapToInt(i -> i).toArray();
+		System.out.println(Arrays.toString(a));
+
 		BTreePrinter.printNode(root);
 
 		System.out.println("Preorder Traversal: " + preorderTraversal(root));
 		System.out.println("Inorder Traversal: " + inorderTraversal(root));
 		System.out.println("Postorder Traversal: " + postorderTraversal(root));
+
+
 
 	}
 }
