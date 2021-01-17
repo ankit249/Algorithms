@@ -14,6 +14,22 @@ can also be solved by union find
 
 (1) Clarity
 (2) Data Structure decision
+Leetcode medium -- google standard
+most problem 1 or 2 DS
+                          Graph
+                      /         \
+                traversal       construction (creation of graph)
+                problems         problems
+               /          \
+         undirected        directed
+         /      \         /   |    \
+       dfs      bfs     dfs  bfs  topological
+                                     sort
+
+NODES -- meaning its either tree or graph problem
+EDGES -- more then likely its a graph problem
+UNDIRECTED or DIRECTED -- meanings its a graph problem
+
 (3) Data Flow - TC / SC
 (4) Execution
     - High level frame

@@ -2,7 +2,7 @@ package com.ds.graph;
 
 /*
 
-https://zhuhan0.blogspot.com/2017/07/leetcode-261-graph-valid-tree.html
+http://buttercola.blogspot.com/2015/08/leetcode-graph-valid-tree.html
 
 1 clarity
 ---------
@@ -34,7 +34,10 @@ connected:  traverse -- all nodes / edges in the graph which is O(N+E)  [ if som
 
 so TC is O(N+E) + O(N+E) == O(N+E)
 
-SC:  visited which O(N) and dfs -- call stack O(N) == O(N)
+WNY N + E > graph can be connected(nodes and eges are equal) - sometimes more edges than nodes or  non connected(where nodes are more than edges) so in general
+its alwasy N + E
+
+SC:  visited which O(N) and dfs -- call stack O(N), adjlist is O(N) == O(N)
 
 4 Execution
 -----------
@@ -42,7 +45,15 @@ SC:  visited which O(N) and dfs -- call stack O(N) == O(N)
  -- frame all details
  -- corner cases
 
+ hascycle explanation
+[[0, 1], [0, 2], [0, 3], [1, 4]]
 
+0: visited {0} parent {-1}
+1: visited {0,1} parent {0}
+2: visited {0,1,2} parent {1}
+3: visited {0,1,2,3} parent {2}
+
+now 3 has a neighbor 1 -- is nnot parent of 3, i was visited before
 
  */
 
@@ -90,6 +101,8 @@ public class GraphValidTree {
         }
 
         return adjlist;
+
+
     }
 
     private static boolean hasCycledfs(int node, List[] adjlist, Set<Integer> visited, int parent) {
@@ -131,15 +144,35 @@ public class GraphValidTree {
 
         /*
         // not a valid tree
-        int n = 5;
+        int n = 3;
         int[][] edges = { {0, 1}, {1, 2}, {2, 0} };
         System.out.println(validTree(n, edges));
 
          */
 
+        /*
+        // valid tree
+        int n = 4;
+        int[][] edges = { {0, 1}, {1, 2}, {2, 3} };
+        System.out.println(validTree(n, edges));
+        */
+
+        /*
+        For example:
+        Given n = 5 and edges = [[0, 1], [0, 2], [0, 3], [1, 4]], return true.
+        Given n = 5 and edges = [[0, 1], [1, 2], [2, 3], [1, 3], [1, 4]], return false.
+         */
+
+        /*
         // valid tree
         int n = 5;
-        int[][] edges = { {0, 1}, {1, 2}, {2, 3} };
+        int[][] edges = { {0, 1}, {0, 2}, {0, 3}, {1, 4} };
+        System.out.println(validTree(n, edges));
+        */
+
+        // not valid tree
+        int n = 5;
+        int[][] edges = { {0, 1}, {1, 2}, {2, 3}, {1, 3}, {1, 4} };
         System.out.println(validTree(n, edges));
 
 
