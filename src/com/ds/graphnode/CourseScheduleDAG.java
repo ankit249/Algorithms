@@ -6,21 +6,54 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+/*
+
+https://leetcode.com/problems/course-schedule-ii/
+
+1. Clarity
+---------
+courses --> node
+pairs -> edges so this implies graph problems
+
+2. Algo
+-------
+
+Graph - No Construction
+Traverse - Not undirected, its directed because its one way
+so for directed - bfs, dfs, toposort
+THis one is TOPO SOrt becuase dependencies, here you also have to find sequence and thats why toposort
+-- if the question is how many pre-requisites - that can be solved with BFS/DFS
+
+
+
+ 0
+ 1 - 0
+ 2 - 0
+ 3 - 1, 2
+
+3.
+
+TC - // TC  O(N+E)
+
+
+ */
+
+// TC  O(N+E)
 public class CourseScheduleDAG {
 
 	// representation of the graph in adjacency lists
-	private Map<Integer, List<Integer>> neighbors = new HashMap<Integer, List<Integer>>();
+	private static Map<Integer, List<Integer>> neighbors = new HashMap<Integer, List<Integer>>();
 
-	public void addVertex(Integer vertex) {
+	public static void addVertex(Integer vertex) {
 		neighbors.put(vertex, new ArrayList<Integer>());
 	}
 
-	public void addEdge(Integer from, Integer to) {
+	public static void addEdge(Integer from, Integer to) {
 		neighbors.get(from).add(to);
 	}
 
 	// you need to find the inDegree and store it in the map for all the nodes, needed for topological sort
-	public Map<Integer, Integer> inDegree() {
+	public static Map<Integer, Integer> inDegree() {
 		Map<Integer, Integer> result = new HashMap<Integer, Integer>();
 		for (Integer v : neighbors.keySet()) {
 			result.put(v, 0);
@@ -36,7 +69,7 @@ public class CourseScheduleDAG {
 	}
 
 	// topological sort
-	public List<Integer> topSort() {
+	public static List<Integer> topSort() {
 		Map<Integer, Integer> in_deg = inDegree();
 		List<Integer> result = new ArrayList<Integer>();
 		Stack<Integer> stack = new Stack<Integer>();
@@ -66,11 +99,12 @@ public class CourseScheduleDAG {
 	}
 
 	// if cycle is detected
-	public boolean isCycleDetected() {
+	public static boolean isCycleDetected() {
 		return topSort() == null;
 	}
 
-	public String toString() {
+
+	public static String printGraph() {
 		StringBuffer s = new StringBuffer();
 		for (Integer v : neighbors.keySet())
 			s.append("\n    " + v + " -> " + neighbors.get(v));
@@ -78,26 +112,32 @@ public class CourseScheduleDAG {
 	}
 
 	public static void main(String[] args) {
-		CourseScheduleDAG g = new CourseScheduleDAG();
+		// CourseScheduleDAG g = new CourseScheduleDAG();
 		// Testcase 1
-		int courses = 4;
-		int[][] prerequisites = new int[][] { { 1, 0 }, { 2, 0 } };
+		//int courses = 4;
+		//int[][] prerequisites = new int[][] { { 1, 0 }, { 2, 0 } };
 
 		// Testcase 2
 		// int courses = 2;
 		// int[][] prerequisites = new int[][] { { 1, 0 }, { 0, 1 } };
 
+		// Testcase 3
+		int courses = 4;
+		int[][] prerequisites = new int[][] { { 1,0 }, { 2,0 }, {3, 1}, {3, 2} };
+
+
+
 		for (int i = 0; i < courses; i++) {
-			g.addVertex(i);
+			addVertex(i);
 		}
 		for (int i = 0; i < prerequisites.length; i++) {
-			g.addEdge(prerequisites[i][1], prerequisites[i][0]);
+			addEdge(prerequisites[i][1], prerequisites[i][0]);
 		}
 
-		System.out.println("Graph represntation of the courses: " + g.toString());
-		System.out.println("InDegree for this graph for all nodes: " + g.inDegree());
-		System.out.println("Topological sort, course needs to be completed in this order: " + g.topSort());
-		System.out.println("Can you complete the course? " + !g.isCycleDetected());
+		System.out.println("Graph represntation of the courses: " + printGraph());
+		System.out.println("InDegree for this graph for all nodes: " + inDegree());
+		System.out.println("Topological sort, course needs to be completed in this order: " + topSort());
+		System.out.println("Can you complete the course? " + !isCycleDetected());
 
 	}
 }
