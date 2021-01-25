@@ -149,21 +149,36 @@ public class ProductPlan {
     SC: 2 * days : O(1) <-- could be O(1) because i am not looking beyond two days
     TODO
     */
+    /*
     public static void productionPlanSpaceOptimized(int[][] forecast) {
+        // tell verbally to interview what to do -- forecast can't contain multiple numbers
+        //validateInput(forecast);
+        final int A = 0, B = 1;
+        int days = 2;
+        int lastday = (days - 1) % 2;
 
+        int[][] profit = new int[2][days];  // mention here you will come back with space optimized soln
+
+        for(int d = 0; d < days; d++) {
+            profit[A][d % 2] = Math.max(d >= 1 ? profit[A][(d - 1) % 2] : 0, d >= 2 ? profit[B][(d - 2) % 2]: 0) + forecast[A][d % 2];
+            profit[B][d % 2] = Math.max(d >= 1 ? profit[B][(d - 1) % 2] : 0, d >= 2 ? profit[A][(d - 2) % 2]: 0) + forecast[B][d % 2];
+        }
+        int maxProfit = Math.max(profit[A][lastday], profit[A][lastday]);
+        System.out.println("Maximum Profit: " + maxProfit);
+        /// THIS ANSWERS the maximum profit
     }
+     */
 
 
 
     public static void main(String[] args) {
         System.out.println();
         System.out.println("ProductPlan...");
-        int[][] forecast = new int[][] { {4,1}, {2,2}, {1,5}, {7,4}};
+        int[][] forecast = new int[][] { {4,2,1,7}, {1,2,5,4}};
+        productionPlan(forecast);
+        System.out.println();
 
-        // can you
-        for (int i = 0; i <= 8; i++) {
-            productionPlan(forecast);
-        }
+        //productionPlanSpaceOptimized(forecast);
         System.out.println();
 
     }
