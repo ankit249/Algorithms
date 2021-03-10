@@ -68,7 +68,7 @@ R,  R,  G,  G,  G,  G,  B,  B
 
 // THIS IS CALLED 3 way partitioning - similar to quicksort (which is 2 way partition)
 
-public class ArrangeZeroOneTwoDutchNationalFlag {
+public class ArrangeZeroOneTwoDutchNationalFlagRedGreen {
 
     public static void arrangeInOnePass(char[] input) {
         int lo = 0;

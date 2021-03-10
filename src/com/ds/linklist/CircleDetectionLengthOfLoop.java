@@ -1,6 +1,6 @@
 package com.ds.linklist;
 
-public class CircleDetection {
+public class CircleDetectionLengthOfLoop {
 	public void add(ListNode head, int data) {
 		ListNode tmp = new ListNode(data);
 		ListNode current = head;
@@ -10,7 +10,7 @@ public class CircleDetection {
 		current.next = tmp;
 	}
 
-	public void print(ListNode p) {
+	public static void print(ListNode p) {
 		ListNode current = p;
 		while (current != null) {
 			System.out.print(current.data + "-->");
@@ -20,10 +20,10 @@ public class CircleDetection {
 	}
 
 	// TC - O(n + lambda) where lambda <=n which is equates to O(n), SC - O(1)
-	private boolean hasCycle(ListNode head) {
+	private static int countLoopInCycle(ListNode head) {
 
 		if (head == null) // list does not exist..so no loop either.
-			return false;
+			return -1;
 
 		ListNode slow = head; // create two references.
 		ListNode fast = head; // make both refer to the start of the list.
@@ -32,32 +32,41 @@ public class CircleDetection {
 			slow = slow.next;
 			fast = fast.next.next;
 			if (slow == fast) {
-				return true;
+				return count(slow);
 			}
 		}
 
-		return false;
+		return -1;
+	}
+
+	private static int count(ListNode slow) {
+		ListNode tmp = slow;
+		int count = 1;
+		while(tmp.next != slow) {
+			tmp = tmp.next;
+			count ++;
+		}
+		return count;
 	}
 
 	public static void main(String[] args) {
 
 		// even nummber of elements - use second middle node
-		CircleDetection list = new CircleDetection();
+		CircleDetectionLengthOfLoop list = new CircleDetectionLengthOfLoop();
+
+
 		ListNode head = new ListNode(1);
-		list.add(head, 2);
-		list.add(head, 3);
-		list.add(head, 4);
-		list.add(head, 5);
-		list.add(head, 6);
+		head.next = new ListNode(2);
+		head.next.next = new ListNode(3);
+		head.next.next.next = new ListNode(4);
+		head.next.next.next.next = new ListNode(5);
 
-		//list.add(head, 7);
+		/* Create a loop for testing */
+		head.next.next.next.next.next = head.next;
+		// infinite loop
+		//print(head);
 
-		list.print(head);
-
-
-		System.out.println(list.hasCycle(head));
-
-
+		System.out.println( countLoopInCycle(head));
 	}
 
 }
