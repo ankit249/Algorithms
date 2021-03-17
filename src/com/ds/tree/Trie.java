@@ -6,7 +6,7 @@ import java.util.Map;
 //http://www.programcreek.com/2014/05/leetcode-implement-trie-prefix-tree-java/        
 class TrieNode {
 	char c;
-	HashMap<Character, TrieNode> children = new HashMap<Character, TrieNode>();
+	Map<Character, TrieNode> children = new HashMap<Character, TrieNode>();
 	boolean isLeaf;
 
 	public TrieNode() {
@@ -30,7 +30,7 @@ public class Trie {
 
 	// Inserts a word into the trie.
 	public void insert(String word) {
-		HashMap<Character, TrieNode> children = root.children;
+		Map<Character, TrieNode> children = root.children;
 
 		for (int i = 0; i < word.length(); i++) {
 			char c = word.charAt(i);
@@ -99,6 +99,7 @@ public class Trie {
 		trie.insert("inn");
 
 		System.out.println(trie.search("tennis"));
+		System.out.println(trie.startsWith("te"));
 
 	}
 }

@@ -1,5 +1,12 @@
 package com.ds.linklist;
 
+
+/**
+ *    1 > 2 > 3 > 4 > 5
+ *        ^
+ *        |           |
+ *         -----------
+ */
 public class FindStartOftheCycle {
     public void add(ListNode head, int data) {
         ListNode tmp = new ListNode(data);
